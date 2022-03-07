@@ -1,0 +1,41 @@
+A faire:
+
+- Faire un prompt qui affiche le curr dir
+	Avec readline c'est facile, le prompt qui affiche
+	le dir on peut LE FAIRE AVEC getcwd()
+
+- Faire un historique
+	? peut etre add_hsitory
+
+- Lancer des executables EXEC
+	avec execve
+
+- Ne pas laisser des guillemets non fermes PARSING
+
+- Gerer les single et double quotes PARSING
+
+- Redirections <, >, <<, >> EXEC
+	> faire un write(fd, etc)
+	le reste aucne idee
+
+- Pipes EXEC
+	fork()
+
+- Builtin EXEC
+	echo: c simple
+	cd: chdir
+	pwd: print getcwd()
+	export: je sais pas trop comment ca marche mais
+		on a peut etre que a mettre un nouvel element
+		dans notre env
+	env: print de tout env
+	exit n: exit(n) ayant tout free avant (a faire en dernier imo);
+	
+	comme on doit presque jamais handle des args, 
+	je propose une erreur de parsing si ils essayent
+	de mettre un arg
+
+- Interception de signal EXEC
+	ctrl-C SIGINT: Je sais pas mais on met $? a 1 (si on doit implementer $?)
+	ctrl-D (?): On apelle la meme fonction que pour exit avec exit(1)
+	ctrl-\ (?): Rien, pour l'instant ca fait crash readline
