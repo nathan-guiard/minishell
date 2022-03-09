@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/09 17:45:47 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/09 19:09:00 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*prompt(void);
 
 void	echo(char **args);
 void	cd(char **args);
+void	pwd(char **args);
+void	clear(void);
 
 /* Utils */
 

@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/09 17:46:35 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/09 19:26:50 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,12 @@ SRC =  srcs/main.c						\
 		srcs/utils.c					\
 		builtin/echo.c					\
 		builtin/cd.c					\
+		builtin/pwd.c					\
+		builtin/clear.c					\
 		parsing/remove_command_name.c	\
 		
 
-CFLAGS = -g -lreadline #-Wall -Werror -Wextra
+CFLAGS = -g -lreadline -fsanitize=address #-Wall -Werror -Wextra
 
 OBJ = ${SRC:.c=.o}
 
