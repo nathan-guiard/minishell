@@ -1,6 +1,10 @@
 srcs/*.o
 srcs/.*.swp
 
+libft/*.o
+libft/libft.a
+libft/README.md
+
 minishell
 a.out
 *test*
