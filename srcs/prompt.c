@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:22 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/09 12:48:22 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/09 15:44:44 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 static char *get_prompt_text(void);
 static char *get_only_dir_name(char *abs_dir);
 static char *get_full_prompt(char *only_dir);
+static char *is_home(char *abs_dir);
 
-/* Revonvoie la chaine malloced du prompt, a free */
+/*	Revonvoie la chaine malloced du prompt, a free.	
+	Si il y a une erreur lors de la recuperation du
+	path, affiche un path "somewhere" et une erreur	*/
 char *prompt(void)
 {
 	char	*res;
@@ -30,6 +33,9 @@ char *prompt(void)
 	return (res);
 }
 
+/*	Malloc une string qui a tout le path de curr dir 
+	Si il y a un probleme, donne "somewhere" comme string
+	et affiche une erreur, on peut enlever l'erreur si jamais	*/
 static char *get_prompt_text(void)
 {
 	char *abs_dir;
@@ -42,14 +48,16 @@ static char *get_prompt_text(void)
 	return (get_full_prompt(only_dir));
 }
 
-/* Transforme le chemin absolu en "que le dossier" */
+/*	Transforme le chemin absolu en "que le dossier" */
 static char *get_only_dir_name(char *abs_dir)
 {
 	char *res;
 	int		i;
 
 	i = ft_strlen(abs_dir);
-	res = is_home();
+	res = is_home(abs_dir);
+	if (res)
+		return (res);
 	if (abs_dir[1] == '\0')
 		return (free(abs_dir), ft_strdup("/"));
 	while (abs_dir[i] != '/' && i != 0)
@@ -59,6 +67,7 @@ static char *get_only_dir_name(char *abs_dir)
 	return (res);
 }
 
+/*	Rend le prompt final avec ce qu'il y a autour, free only_dir*/
 static char *get_full_prompt(char *only_dir)
 {
 	char	*res;
@@ -73,4 +82,14 @@ static char *get_full_prompt(char *only_dir)
 	if (to_free)
 		free(to_free);
 	return (res);
+}
+
+/*	Si on est dans notre home, renvoie "~" sinon renvoie NULL
+	/!\ ATTENTION: Ne fonctionne pas tant qu'on a pas
+	l'environnement en globale, ou tout court d'ailleurs		*/
+static char *is_home(char *abs_dir)
+{
+	if (ft_strncmp(abs_dir, "$HOME quand on aura l'env", ft_strlen(abs_dir)) == 0)
+		return (ft_strdup("~"));
+	return (NULL);
 }
