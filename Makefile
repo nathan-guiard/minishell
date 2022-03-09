@@ -6,13 +6,17 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/09 16:57:27 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/09 17:46:35 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =  srcs/main.c			\
-		srcs/prompt.c		\
-		builtin/echo.c		\
+SRC =  srcs/main.c						\
+		srcs/prompt.c					\
+		srcs/utils.c					\
+		builtin/echo.c					\
+		builtin/cd.c					\
+		parsing/remove_command_name.c	\
+		
 
 CFLAGS = -g -lreadline #-Wall -Werror -Wextra
 
