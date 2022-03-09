@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/09 16:52:46 by nguiard          ###   ########.fr       */
+/*   Created: 2021/11/16 19:18:07 by nguiard           #+#    #+#             */
+/*   Updated: 2022/03/09 16:54:27 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <readline/readline.h>
-#include <readline/history.h>
+#include <stddef.h>
 
-char	*prompt(void);
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t	i;
 
-/* Built-in */
-
-void	echo(char **args);
+	i = 0;
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	if (s1[i] != s2[i])
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	return (0);
+}

@@ -1,11 +1,16 @@
 srcs/*.o
 srcs/.*.swp
+srcs/main.c
+# ^ a retirer a la fin
 
 libft/*.o
 libft/libft.a
 libft/README.md
 
+*/*.o
+
 minishell
 a.out
 *test*
 *truc*
+philo

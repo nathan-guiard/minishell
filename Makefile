@@ -6,12 +6,13 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/09 11:50:32 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/09 16:57:27 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC =  srcs/main.c			\
 		srcs/prompt.c		\
+		builtin/echo.c		\
 
 CFLAGS = -g -lreadline #-Wall -Werror -Wextra
 
@@ -44,6 +45,7 @@ a:=0
 	$(eval nb=$(shell echo $$(($(nb)+1))))
 
 ${NAME}: ${OBJ}
+	@make -C libft
 	@${CC} ${INCLUDE} ${OBJ} ${LIBFT} ${CFLAGS} -o ${NAME}
 	@echo "\033[1;92m\033[6;0fminishell pret!\033[0m\033[?25h"
 
