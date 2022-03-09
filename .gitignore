@@ -1,0 +1,7 @@
+srcs/*.o
+srcs/.*.swp
+
+minishell
+a.out
+*test*
+*truc*
