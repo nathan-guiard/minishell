@@ -1,0 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 19:32:04 by nguiard           #+#    #+#             */
+/*   Updated: 2022/03/09 19:56:14 by nguiard          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+static void	exit_with_args(char **args);
+static int	has_only_digit(char *s);
+
+/*	exit avec exit_value, si il y a des args alors
+	reproduit le comportement de bash				*/
+void	ft_exit(int exit_value, char **args)
+{
+	if (args)
+		exit_with_args(args);
+	else
+	{
+		free_tabtab(args);
+		//Free tout le bullshit
+		exit(exit_value);
+	}
+}
+
+/*	exit modulo 256 car bash le fait comme ca 
+	Je me tate a laisser les exit de STDOUT			*/
+static void	exit_with_args(char **args)
+{
+	int i;
+	int atoi;
+
+	i = 0;
+	while (args[i])
+		i++;
+	if (i > 2)
+	{
+		ft_putstr_fd("exit\n", 1);
+		ft_putstr_fd("exit: too many arguments\n", 2);
+		return ;
+	}
+	if (has_only_digit(args[0]) == 0)
+	{
+		ft_putstr_fd("exit", 1);
+		ft_putstr_fd("exit: numeric argument required\n", 2);
+		exit(2);
+	}
+	atoi = ft_atoi(args[0]);
+	free_tabtab(args);
+	exit(atoi % 256);
+}
+
+/* Check si il y a que des nombres dans une string	*/
+static int	has_only_digit(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (ft_isdigit(s[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
