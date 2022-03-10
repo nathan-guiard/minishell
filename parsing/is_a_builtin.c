@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 08:48:34 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 10:10:04 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 11:11:45 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,15 @@ char **get_builtin_tab_name(void)
 		return (free_tabtab(builtin_tab), NULL);
 	builtin_tab[4] = ft_strdup("pwd");
 	if (!builtin_tab[4])
+		return (free_tabtab(builtin_tab), NULL);
+	builtin_tab[5] = ft_strdup("env");
+	if (!builtin_tab[5])
+		return (free_tabtab(builtin_tab), NULL);
+	builtin_tab[6] = ft_strdup("export");
+	if (!builtin_tab[6])
+		return (free_tabtab(builtin_tab), NULL);
+	builtin_tab[7] = ft_strdup("unset");
+	if (!builtin_tab[7])
 		return (free_tabtab(builtin_tab), NULL);
 	builtin_tab[BUILTIN_NB] = NULL;
 	return (builtin_tab);

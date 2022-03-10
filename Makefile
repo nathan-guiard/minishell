@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/10 10:24:00 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/10 11:10:40 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ SRC =  srcs/main.c						\
 		builtin/pwd.c					\
 		builtin/exit.c					\
 		builtin/clear.c					\
+		builtin/env.c					\
+		builtin/export.c				\
+		builtin/unset.c					\
 		parsing/remove_command_name.c	\
 		parsing/get_builtin_fnc.c		\
 		parsing/is_a_builtin.c			\

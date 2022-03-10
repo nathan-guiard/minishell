@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 10:48:31 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 11:11:02 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define TRUE 		1
 # define FALSE 		-42
 # define ERR		420
-# define BUILTIN_NB	5
+# define BUILTIN_NB	8
 
 /*	Pointer sur fonction de type "void(char **)", aka nos builtins			*/
 typedef void (*builtin_fnc)(char **);
@@ -35,6 +35,9 @@ void	cd(char **args);
 void	pwd(char **args);
 void	clear(char **args);
 void	ft_exit_builtin(char **args);
+void	env(char **args);
+void	export(char **args);
+void	unset(char **args);
 void	ft_exit(int exit_value, char **args);
 
 /* Utils */

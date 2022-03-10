@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:32:04 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 10:52:44 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 11:16:52 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	has_only_digit(char *s);
 	pointeur sur fonctions														*/
 void	ft_exit_builtin(char **args)
 {
+	ft_putstr_fd("exit\n", 1);
 	ft_exit(0, args);
 }
  
