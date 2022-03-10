@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/09 19:08:43 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 08:20:22 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,18 @@ int main(int argc, char **argv, char **env)
 	int i = 0;
 	char **command;
 
+	catch_signals();
+	//while (1)
+	//{
+	//	prompt();
+	//}
 	while (1)
 	{
-		command = ft_split(prompt(), ' ');
-		if (command)
+		char *line = prompt();
+		if (line)
 		{
+			printf("ligne recue:%s\n", line);
+			command = ft_split(line, ' ');
 			if (ft_strcmp(command[0], "echo") == 0)
 			{
 				command = remove_command_name(command);
@@ -36,6 +43,12 @@ int main(int argc, char **argv, char **env)
 			{
 				command = remove_command_name(command);
 				pwd(command);
+			}
+			else if (ft_strcmp(command[0], "exit") == 0)
+			{
+				command = remove_command_name(command);
+				//reprendre ce que j'ai fait sur linux
+				exit(command);
 			}
 			else if (ft_strcmp(command[0], "clear") == 0)
 				clear();

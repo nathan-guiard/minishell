@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/09 19:09:00 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 07:36:32 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	clear(void);
 /* Utils */
 
 void	free_tabtab(char **tab);
+void	catch_signals(void);
 
 /* Parsing */
 
