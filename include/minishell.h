@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 11:11:02 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 11:51:06 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 # define TRUE 		1
 # define FALSE 		-42
 # define ERR		420
+/*	Nombre de builtin qu'on a												*/
 # define BUILTIN_NB	8
 
 /*	Pointer sur fonction de type "void(char **)", aka nos builtins			*/
 typedef void (*builtin_fnc)(char **);
-/*	Fonction qui retourne un pointeur sur fonction "void(char **)"			*/
-typedef builtin_fnc (*ret_builtin_fnc)();
+
 
 /* Built-in */
 
