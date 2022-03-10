@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 11:15:39 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 11:33:03 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int main(int argc, char **argv, char **env)
 					fnc(command);
 				}
 			}
+			else
+				printf("%s: command not found\n", command[0]);
 			free_tabtab(command);
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:22 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 10:48:41 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 11:38:11 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ char *get_prompt_text(void)
 	char *abs_dir;
 	char *only_dir;
 
-	abs_dir = ft_calloc(1000, 1);
-	if (getcwd(abs_dir, 999) == NULL)
+	abs_dir = ft_calloc(10000, 1);
+	if (getcwd(abs_dir, 9999) == NULL)
 		return (ft_putstr_fd("getcwd error\n", 2), NULL);
 	only_dir = get_only_dir_name(abs_dir);
 	return (get_full_prompt(only_dir));
@@ -83,12 +83,13 @@ static char *get_full_prompt(char *only_dir)
 	return (res);
 }
 
-/*	Si on est dans notre home, renvoie "~" sinon renvoie NULL
-	/!\ ATTENTION: Ne fonctionne pas tant qu'on a pas
-	l'environnement en globale, ou tout court d'ailleurs		*/
+/*	Si on est dans notre home, renvoie "~" sinon renvoie NULL		*/
 static char *is_home(char *abs_dir)
 {
-	if (ft_strncmp(abs_dir, "$HOME quand on aura l'env", ft_strlen(abs_dir)) == 0)
+	char	*home;
+
+	home = getenv("HOME");
+	if (ft_strcmp(abs_dir, home) == 0)
 		return (ft_strdup("~"));
 	return (NULL);
 }

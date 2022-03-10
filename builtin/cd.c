@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:42:03 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/09 17:45:28 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 11:40:29 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 void	cd(char **args)
 {
-	if (!args || args[0] == NULL)
+	char	*home;
+
+	home = getenv("HOME");
+	if (!args)
 		return ;
-	chdir(args[0]);
+	if (args[0] == NULL || args[0][0] == '~' )
+		chdir(home);
+	else
+		chdir(args[0]);
 }
