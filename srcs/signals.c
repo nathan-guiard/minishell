@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 07:16:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 10:50:29 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 11:22:46 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ void	catch_signals(void)
 	struct sigaction sigstop;
 
 	sigint.sa_sigaction = catch_sigint;
+	sigint.sa_flags = SA_RESTART;
 	sigquit.sa_sigaction = catch_sigquit;
+	sigquit.sa_flags = SA_RESTART;
 	sigstop.sa_sigaction = catch_sigstop;
+	sigstop.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &sigint, NULL);
 	sigaction(SIGQUIT, &sigquit, NULL);
 	sigaction(SIGSTOP, &sigstop, NULL);
