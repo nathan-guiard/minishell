@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/10 11:10:40 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/10 13:18:25 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,9 @@ SRC =  srcs/main.c						\
 		parsing/remove_command_name.c	\
 		parsing/get_builtin_fnc.c		\
 		parsing/is_a_builtin.c			\
+		parsing/exec_path.c				\
+		exec/builtin.c					\
+		exec/exec_simple_command.c		\
 		
 
 CFLAGS = -g -lreadline -fsanitize=address #-Wall -Werror -Wextra
@@ -51,18 +54,18 @@ a:=0
 
 .c.o:
 	@${CC} ${INCLUDE} ${CFLAGS_OBJ} -c $< -o ${<:.c=.o}
-	#$(eval n=$(shell echo $$(($(nb)/5 * 70))))
-	#$(eval a=$(shell echo $$((202 - $(n)))))
-	#@printf "\033[?25l\033[0;0f"
-	#@printf "\033[1;0f~~~~~~~~~~TURBO MAKEFILE~~~~~~~~~~\033[J"
-	#@printf "\033[0;38;5;%dm" "${a}"
-	#@echo -n "\033[2;0fCompilation de l'objet" ${nb} "terminee\033[J\033[0m\n"
-	#$(eval nb=$(shell echo $$(($(nb)+1))))
+#	$(eval n=$(shell echo $$(($(nb)/5 * 70))))
+#	$(eval a=$(shell echo $$((202 - $(n)))))
+#	@printf "\033[?25l\033[0;0f"
+#	@printf "\033[1;0f~~~~~~~~~~TURBO MAKEFILE~~~~~~~~~~\033[J"
+#	@printf "\033[0;38;5;%dm" "${a}"
+#	@echo -n "\033[2;0fCompilation de l'objet" ${nb} "terminee\033[J\033[0m\n"
+#	$(eval nb=$(shell echo $$(($(nb)+1))))
 
 ${NAME}: ${OBJ}
 	@make -C libft
 	@${CC} ${INCLUDE} ${OBJ} ${LIBFT} ${CFLAGS} -o ${NAME}
-	#@echo "\033[1;92m\033[6;0fminishell pret!\033[0m\033[?25h"
+#	@echo "\033[1;92m\033[6;0fminishell pret!\033[0m\033[?25h"
 
 clean:
 	@rm -f ${OBJ}

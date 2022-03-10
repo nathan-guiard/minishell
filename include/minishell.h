@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 11:51:06 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 13:05:20 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define TRUE 		1
 # define FALSE 		-42
 # define ERR		420
+# define S_ERR		"error string"
 /*	Nombre de builtin qu'on a												*/
 # define BUILTIN_NB	8
 
@@ -28,7 +29,7 @@
 typedef void (*builtin_fnc)(char **);
 
 
-/* Built-in */
+/*	Built-in	*/
 
 void	echo(char **args);
 void	cd(char **args);
@@ -40,18 +41,22 @@ void	export(char **args);
 void	unset(char **args);
 void	ft_exit(int exit_value, char **args);
 
-/* Utils */
+/*	Utils	*/
 
 void	free_tabtab(char **tab);
 void	catch_signals(void);
 char	*prompt(void);
-char		*get_prompt_text(void);
+char	*get_prompt_text(void);
 
+/*	Exec	*/
+int		builtin(char **command);
+int		exec_simple_command(char **command, char **env);
 
-/* Parsing */
+/*	Parsing	*/
 
 char	**remove_command_name(char **);
 int		is_a_builtin(char *cmd_name);
 char 	**get_builtin_tab_name(void);
 void 	*get_builtin_fnc(char *cmd_name);
+char 	*exec_path(char *cmd_name);
 #endif

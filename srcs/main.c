@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 11:33:03 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 13:06:33 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,26 @@
 
 int main(int argc, char **argv, char **env)
 {
-	int i = 0;
 	char **command;
-	builtin_fnc	fnc;
-
+	char *path;
+	int	res;
+	
 	catch_signals();
-	//while (1)
-	//{
-	//	prompt();
-	//}
 	while (1)
 	{
 		char *line = prompt();
 		if (line)
 		{
-			//add_history(line);
 			command = ft_split(line, ' ');
 			free(line);
-			if (is_a_builtin(command[0]) != FALSE)
+			path = exec_path(command[0]);
+			res = builtin(command);
+			if (res == FALSE || res == ERR)
 			{
-				if (is_a_builtin(command[0]) == TRUE)
-				{
-					fnc = get_builtin_fnc(command[0]);
-					command = remove_command_name(command);
-					fnc(command);
-				}
+				res = exec_simple_command(command, env);
+				if (!(res == FALSE || res == ERR))
+					printf("%s: command not found\n", command[0]);
 			}
-			else
-				printf("%s: command not found\n", command[0]);
 			free_tabtab(command);
 		}
 		else
