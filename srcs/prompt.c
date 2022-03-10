@@ -6,13 +6,12 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:22 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/09 15:44:44 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 10:48:41 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char *get_prompt_text(void);
 static char *get_only_dir_name(char *abs_dir);
 static char *get_full_prompt(char *only_dir);
 static char *is_home(char *abs_dir);
@@ -36,7 +35,7 @@ char *prompt(void)
 /*	Malloc une string qui a tout le path de curr dir 
 	Si il y a un probleme, donne "somewhere" comme string
 	et affiche une erreur, on peut enlever l'erreur si jamais	*/
-static char *get_prompt_text(void)
+char *get_prompt_text(void)
 {
 	char *abs_dir;
 	char *only_dir;

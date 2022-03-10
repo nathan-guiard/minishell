@@ -6,13 +6,14 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:05:24 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/09 19:09:45 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 09:07:44 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	clear(void)
+void	clear(char **args)
 {
+	(void)args;
 	write(1, "\033[0;0H\033[2J", 10);
 }

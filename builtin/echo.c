@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:44:24 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/09 17:27:24 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/10 08:39:31 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@ void	echo(char **args)
 	int i;
 
 	i = 0;
-	if (!args || args[0] == NULL)
+	if (!args)
 		return ;
+	if (args[0] == NULL)
+	{
+		printf("\n");
+		return ;
+	}
 	if (ft_strcmp(args[0], "-n") == 0)
 		i++;
 	while (args[i])
