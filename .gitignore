@@ -7,6 +7,9 @@ libft/*.o
 libft/libft.a
 libft/README.md
 
+minishell.dSYM/*
+minishell.dSYM
+
 */*.o
 
 minishell
