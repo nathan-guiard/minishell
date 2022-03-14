@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 09:38:58 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 11:12:31 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/14 13:22:00 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void *get_builtin_fnc(char *cmd_name)
 			return (fnc_tab[i]);
 		i++;
 	}
+	free_tabtab(name_tab);
+	free(fnc_tab);
 	return (NULL);
 }
 
@@ -38,7 +40,7 @@ static void	*get_fnc_tab(void)
 {
 	builtin_fnc	*tab;
 
-	tab = ft_calloc(sizeof(builtin_fnc), BUILTIN_NB + 1);
+	tab = malloc(sizeof(builtin_fnc) * (BUILTIN_NB + 1));
 	tab[0] = echo;
 	tab[1] = ft_exit_builtin;
 	tab[2] = clear;

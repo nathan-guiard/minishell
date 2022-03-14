@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 08:48:34 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 11:11:45 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/14 13:22:16 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char **get_builtin_tab_name(void)
 	int i;
 
 	i = 0;
-	builtin_tab = ft_calloc(sizeof(char *), BUILTIN_NB + 1);
+	builtin_tab =malloc(sizeof(char *) * (BUILTIN_NB + 1));
 	builtin_tab[0] = ft_strdup("echo");
 	if (!builtin_tab[0])
 		return (free_tabtab(builtin_tab), NULL);

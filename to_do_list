@@ -42,6 +42,4 @@ A faire:
 
 Nathan:
 Faire le ctrl-C de readline
-Faire le parsing de l'execution de fichiers en faisaint un split de
-	PATH avec ':' et tester chaque path en faisant un strjoin de 
-	path_tab[i] et cmd_name.
+

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 13:05:20 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/14 13:03:55 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,20 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 
 # define TRUE 		1
 # define FALSE 		-42
 # define ERR		420
 # define S_ERR		"error string"
+# define ALONE		4103
 /*	Nombre de builtin qu'on a												*/
 # define BUILTIN_NB	8
 
 /*	Pointer sur fonction de type "void(char **)", aka nos builtins			*/
 typedef void (*builtin_fnc)(char **);
-
+typedef	char **t_doubletab;
 
 /*	Built-in	*/
 
@@ -59,4 +62,5 @@ int		is_a_builtin(char *cmd_name);
 char 	**get_builtin_tab_name(void);
 void 	*get_builtin_fnc(char *cmd_name);
 char 	*exec_path(char *cmd_name);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:36:24 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/09 19:28:38 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/14 13:22:34 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char **remove_command_name(char **args)
 	i = 1;
 	while (args[len])
 		len++;
-	res = ft_calloc(sizeof(char *), len + 1);
+	res = malloc(sizeof(char *) * (len + 1));
 	while (args[i])
 	{
 		res[i - 1] = ft_strdup(args[i]);
