@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/14 13:03:55 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 10:04:17 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,13 @@
 # define TRUE 		1
 # define FALSE 		-42
 # define ERR		420
+# define M_ERR		90
+# define P_ERR		54
+/*	Strings a strcmp avec le resultat si jamais on a des erreurs			*/
 # define S_ERR		"error string"
+# define S_MERR		"malloc error string"
+# define S_PERR		"parsing error string"
+# define DS_MERR	(char **)&S_MERR
 # define ALONE		4103
 /*	Nombre de builtin qu'on a												*/
 # define BUILTIN_NB	8
@@ -62,5 +68,8 @@ int		is_a_builtin(char *cmd_name);
 char 	**get_builtin_tab_name(void);
 void 	*get_builtin_fnc(char *cmd_name);
 char 	*exec_path(char *cmd_name);
+char 	*replace_variables(char *line);
 
+
+char *test(char *line);
 #endif

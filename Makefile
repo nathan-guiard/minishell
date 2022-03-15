@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/14 13:23:53 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/15 09:48:31 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,15 @@ SRC =  srcs/main.c						\
 		parsing/get_builtin_fnc.c		\
 		parsing/is_a_builtin.c			\
 		parsing/exec_path.c				\
-		parsing/variables.c				\
+		parsing/variables/v_main.c		\
+		parsing/variables/v_replace.c	\
 		exec/builtin.c					\
 		exec/exec_simple_command.c		\
 		
 
-CFLAGS = -g -lreadline #-fsanitize=address #-Wall -Werror -Wextra
+CFLAGS = -g -lreadline -fsanitize=address -Wall -Werror -Wextra
 
-CFLAGS_OBJ = -g #-fsanitize=address #-Wall -Werror -Wextra
+CFLAGS_OBJ = -g -fsanitize=address -Wall -Werror -Wextra
 
 OBJ = ${SRC:.c=.o}
 

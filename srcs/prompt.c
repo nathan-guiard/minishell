@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:22 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/14 13:22:49 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 09:22:57 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char *get_prompt_text(void)
 	char *only_dir;
 
 	abs_dir = malloc(10000);
+	if (!abs_dir)
+		return (S_MERR);
 	if (getcwd(abs_dir, 9999) == NULL)
 		return (ft_putstr_fd("getcwd error\n", 2), NULL);
 	only_dir = get_only_dir_name(abs_dir);

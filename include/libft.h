@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:54:18 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/09 16:58:35 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 10:40:22 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ char		*read_until_newline(int fd, char *rest);
 char		*the_line(char *s);
 
 /* Utils */
-char		*ft_strjoin_g(char *s1, char *s2);
 char		*ft_strchr_g(const char *s, int c);
 char		*join(char *rest, char *buff);
 

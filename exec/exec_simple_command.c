@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 13:00:32 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 13:31:22 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 09:54:26 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	exec_simple_command(char **command, char **env)
 {
 	char	*path;
-	char	**args;
 	pid_t	pid;
 
 	path = exec_path(command[0]);

@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   variables.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 10:24:25 by nguiard          ###   ########.fr       */
+/*   Created: 2022/03/15 09:14:19 by nguiard           #+#    #+#             */
+/*   Updated: 2022/03/15 09:56:06 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef VARIABLES_H
+# define VARIABLES_H
 
-int main(int argc, char **argv, char **env)
-{
-	char	*line;
-	char 	*test_l;
+int			is_a_valid_env(char *line, int i);
+char		*replace_variable_by_content(char *line, int i);
+int			where_is_end_var(char *line, int start_var);
+char		*only_content(char *line, int start_var);
 
-	(void)argc;
-	(void)argv;
-	(void)env;
-//	catch_signals();
-	while (1)
-	{
-		line = prompt();
-		if (line)
-		{
-			test_l = test(line);
-			printf("%s\n", test_l);
-		}
-		else
-			ft_exit_builtin(NULL);
-	}
-	return(0);
-}
+#endif

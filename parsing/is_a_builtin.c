@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 08:48:34 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/14 13:22:16 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 09:53:16 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		is_a_builtin(char *cmd_name)
 		return (FALSE);
 	builtin_tab_name = get_builtin_tab_name();
 	if (!builtin_tab_name)
-		return (ft_putstr_fd("malloc() error", 2), ERR);
+		return (M_ERR);
 	while (builtin_tab_name[i])
 	{
 		if (ft_strcmp(builtin_tab_name[i], cmd_name) == 0)
@@ -41,10 +41,10 @@ int		is_a_builtin(char *cmd_name)
 char **get_builtin_tab_name(void)
 {
 	char **builtin_tab;
-	int i;
 
-	i = 0;
-	builtin_tab =malloc(sizeof(char *) * (BUILTIN_NB + 1));
+	builtin_tab = malloc(sizeof(char *) * (BUILTIN_NB + 1));
+	if (!builtin_tab)
+		return (DS_MERR);
 	builtin_tab[0] = ft_strdup("echo");
 	if (!builtin_tab[0])
 		return (free_tabtab(builtin_tab), NULL);

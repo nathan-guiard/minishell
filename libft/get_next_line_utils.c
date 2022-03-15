@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 11:29:03 by nguiard           #+#    #+#             */
-/*   Updated: 2022/01/29 11:02:27 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 10:40:30 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,35 +43,6 @@ char	*ft_strchr_g(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin_g(char *s1, char *s2)
-{
-	size_t	a;
-	char	*res;
-	int		i;
-	int		j;
-
-	if (!s1 || !s2)
-		return (NULL);
-	j = 0;
-	i = 0;
-	a = ft_strlen(s1) + ft_strlen(s2) + 1;
-	res = (char *)malloc(a * sizeof(char));
-	if (!res)
-		return (NULL);
-	while (s1[i])
-	{
-		res[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		res[i + j] = s2[j];
-		j++;
-	}
-	res[i + j] = '\0';
-	return (res);
-}
-
 char	*join(char *rest, char *buff)
 {
 	char	*new_rest;
@@ -83,7 +54,14 @@ char	*join(char *rest, char *buff)
 			return (NULL);
 		rest[0] = '\0';
 	}
-	new_rest = ft_strjoin_g(rest, buff);
+	if (!buff)
+	{
+		buff = malloc(sizeof(char));
+		if (!buff)
+			return (NULL);
+		buff[0] = '\0';
+	}
+	new_rest = ft_strjoin(rest, buff);
 	free(rest);
 	rest = NULL;
 	return (new_rest);

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 07:16:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/14 12:36:13 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 09:50:08 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	catch_signals(void)
 
 void	catch_sigint(int sig, siginfo_t *truc, void *context)
 {
+	(void)sig;
+	(void)truc;
+	(void)context;
 	if (sig == SIGINT)
 	{
 		rl_redisplay();
@@ -41,4 +44,6 @@ void	catch_sigint(int sig, siginfo_t *truc, void *context)
 void	catch_sigquit(int sig, siginfo_t *truc, void *context)
 {
 	(void)sig;
+	(void)truc;
+	(void)context;
 }
