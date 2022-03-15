@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:16:54 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 12:29:40 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 13:25:03 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,30 @@ char *replace_variables(char *line)
 
 	ret = 0;
 	i = 0;
-	while (line[i])
+	while (line[i] != '\0')
 	{
-		ret = is_a_valid_env(line, i);
-		if (line[i] == '$' && ret == M_ERR)
-			return (printf("Main: return S_MERR\n"), S_MERR);
-		else if (line[i] == '$' && ret == TRUE)
+		if (line[i] == '$')
 		{
-			line = replace_variable_by_content(line, i);
-			if (ft_strcmp(S_ERR, line) == 0)
-				return (printf("Main: retour S_ERR\n"), S_ERR);
+			ret = is_a_valid_env(line, i);
+			if (ret == M_ERR)
+				return (printf("Main: return S_MERR\n"), S_MERR);
+			else if (ret == TRUE)
+			{
+				line = replace_variable_by_content(line, i);
+				if (ft_strcmp(S_ERR, line) == 0)
+					return (printf("Main: retour S_ERR\n"), S_ERR);
+				i = 0;
+			}
+			else if (ret == FALSE)
+			{
+				line = replace_variable_by_nothing(line, i);
+				if (ft_strcmp(S_ERR, line) == 0)
+					return (S_ERR);
+				i = 0;
+			}
 		}
-		//else if (line[i] == '$' && (ret == FALSE || ret == ALONE))
-		//{
-		//	line = replace_variable_by_nothing(line, i);
-		//	if (ft_strcmp(S_ERR, line) == 0)
-		//		return (S_ERR);
-		//}
-				i++;
+		if ((size_t)i < ft_strlen(line))
+			i++;
 	}
 	return (line);
 }
@@ -75,12 +81,12 @@ int	is_a_valid_env(char *line, int i)
 	}
 	test[j] = '\0';
 	test = remove_brackets(test);
-	printf("test: %s\n", test);
+	//printf("test: %s\n", test);
 	ptr = getenv(test);
 	free(test);
 	if (ptr)
-		return (printf("RETURN TRUE\n"), TRUE);
-	return (printf("RETURN FALSE\n"), FALSE);	
+		return (TRUE);
+	return (FALSE);	
 }
 
 int	where_is_end_var(char *line, int start_var)
@@ -96,6 +102,7 @@ int	where_is_end_var(char *line, int start_var)
 	}
 	else
 		search = ' ';
+	i++;
 	while (line[i] != search && line[i])
 	{
 		if (line[i] == '\f' || line[i] == '\t' || line[i] == '\n'

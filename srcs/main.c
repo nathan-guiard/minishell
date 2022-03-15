@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 12:04:29 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 13:00:13 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	(void)env;
-	catch_signals();
+	//catch_signals();
 	while (1)
 	{
 		line = prompt();

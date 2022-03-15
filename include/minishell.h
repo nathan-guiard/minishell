@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 10:04:17 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 12:59:45 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define S_ERR		"error string"
 # define S_MERR		"malloc error string"
 # define S_PERR		"parsing error string"
+/* TRES MAUVAIS MDR															*/
 # define DS_MERR	(char **)&S_MERR
 # define ALONE		4103
 /*	Nombre de builtin qu'on a												*/
@@ -36,6 +37,7 @@
 
 /*	Pointer sur fonction de type "void(char **)", aka nos builtins			*/
 typedef void (*builtin_fnc)(char **);
+
 typedef	char **t_doubletab;
 
 /*	Built-in	*/
