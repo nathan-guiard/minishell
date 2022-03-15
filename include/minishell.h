@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 12:59:45 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 14:10:49 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # define M_ERR		90
 # define P_ERR		54
 /*	Strings a strcmp avec le resultat si jamais on a des erreurs			*/
-# define S_ERR		"error string"
-# define S_MERR		"malloc error string"
-# define S_PERR		"parsing error string"
+# define S_ERR		"\033error string"
+# define S_MERR		"\033malloc error string"
+# define S_PERR		"\033parsing error string"
 /* TRES MAUVAIS MDR															*/
 # define DS_MERR	(char **)&S_MERR
 # define ALONE		4103
@@ -37,8 +37,9 @@
 
 /*	Pointer sur fonction de type "void(char **)", aka nos builtins			*/
 typedef void (*builtin_fnc)(char **);
-
 typedef	char **t_doubletab;
+
+extern t_list	*g_env;
 
 /*	Built-in	*/
 
@@ -72,6 +73,4 @@ void 	*get_builtin_fnc(char *cmd_name);
 char 	*exec_path(char *cmd_name);
 char 	*replace_variables(char *line);
 
-
-char *test(char *line);
 #endif

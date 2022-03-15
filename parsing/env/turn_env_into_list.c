@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   e_turn_env_into_list.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 13:52:45 by nguiard          ###   ########.fr       */
+/*   Created: 2022/03/15 13:33:47 by nguiard           #+#    #+#             */
+/*   Updated: 2022/03/15 13:41:18 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(int argc, char **argv, char **env)
+void	turn_env_into_list(char **env)
 {
-	char	*line;
-	char 	*test_l;
+	int	i;
+	t_list	*node;
 
-	(void)argc;
-	(void)argv;
-	(void)env;
-	//catch_signals();
-	while (1)
+	i = 1;
+	node = ft_lstnew(env[0]);
+	while (env[i])
 	{
-		line = prompt();
-		if (line)
-		{
-			test_l = replace_variables(line);
-			set_layout_printf(C_GREEN, C_RESET, C_BOLD);
-			printf("Retour test: %s\n", test_l);
-			set_layout_printf(C_RESET, C_RESET, C_RESET);
-			free(test_l);
-		}
-		else
-			ft_exit_builtin(NULL);
+		ft_lstadd_back(&node, ft_lstnew(env[i]));
+		i++;
 	}
-	return(0);
+	g_env = node;
 }

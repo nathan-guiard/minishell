@@ -6,30 +6,30 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/15 11:42:27 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/15 14:09:26 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =  srcs/main.c						\
-		srcs/prompt.c					\
-		srcs/utils.c					\
-		srcs/signals.c					\
-		builtin/echo.c					\
-		builtin/cd.c					\
-		builtin/pwd.c					\
-		builtin/exit.c					\
-		builtin/clear.c					\
-		builtin/env.c					\
-		builtin/export.c				\
-		builtin/unset.c					\
-		parsing/remove_command_name.c	\
-		parsing/get_builtin_fnc.c		\
-		parsing/is_a_builtin.c			\
-		parsing/exec_path.c				\
-		parsing/variables/v_main.c		\
-		parsing/variables/v_replace.c	\
-		exec/builtin.c					\
-		exec/exec_simple_command.c		\
+SRC =  srcs/main.c								\
+		srcs/prompt.c							\
+		srcs/utils.c							\
+		srcs/signals.c							\
+		builtin/echo.c							\
+		builtin/cd.c							\
+		builtin/pwd.c							\
+		builtin/exit.c							\
+		builtin/clear.c							\
+		builtin/env.c							\
+		builtin/export.c						\
+		builtin/unset.c							\
+		parsing/remove_command_name.c			\
+		parsing/get_builtin_fnc.c				\
+		parsing/is_a_builtin.c					\
+		parsing/exec_path.c						\
+		parsing/variables/variable_replace.c	\
+		parsing/variables/variable_utils.c		\
+		exec/builtin.c							\
+		exec/exec_simple_command.c				\
 		
 
 CFLAGS = -g -lreadline -fsanitize=address -Wall -Werror -Wextra

@@ -1,60 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v_main.c                                           :+:      :+:    :+:   */
+/*   variable_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 12:16:54 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 13:25:03 by nguiard          ###   ########.fr       */
+/*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
+/*   Updated: 2022/03/15 14:25:25 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "variables.h"
 
-char *test(char *line)
-{
-	return (replace_variables(line));
-}
-
-/*	Remplace les variables par leur valeur dans l'environnement
-	Retour la ligne cahngee ou alors retourne S_ERR en cas d'erreur	*/
-char *replace_variables(char *line)
-{
-	int	i;
-	int ret;
-
-	ret = 0;
-	i = 0;
-	while (line[i] != '\0')
-	{
-		if (line[i] == '$')
-		{
-			ret = is_a_valid_env(line, i);
-			if (ret == M_ERR)
-				return (printf("Main: return S_MERR\n"), S_MERR);
-			else if (ret == TRUE)
-			{
-				line = replace_variable_by_content(line, i);
-				if (ft_strcmp(S_ERR, line) == 0)
-					return (printf("Main: retour S_ERR\n"), S_ERR);
-				i = 0;
-			}
-			else if (ret == FALSE)
-			{
-				line = replace_variable_by_nothing(line, i);
-				if (ft_strcmp(S_ERR, line) == 0)
-					return (S_ERR);
-				i = 0;
-			}
-		}
-		if ((size_t)i < ft_strlen(line))
-			i++;
-	}
-	return (line);
-}
-
+/*	Check si la variable existe	*/
 int	is_a_valid_env(char *line, int i)
 {
 	char *test;
@@ -89,6 +48,7 @@ int	is_a_valid_env(char *line, int i)
 	return (FALSE);	
 }
 
+/*	Trouve l'indice de la fin de la variable	*/
 int	where_is_end_var(char *line, int start_var)
 {
 	int		i;
@@ -112,14 +72,16 @@ int	where_is_end_var(char *line, int start_var)
 	}
 	if (search == '}' && line[i] != search)
 		return (P_ERR);
+	if (search == '}')
+		return (i + 1);
 	return (i);
 }
 
-
+/*	Enleve les {} d'une chaine (*variable shell dans notre cas)	*/
 char	*remove_brackets(char *tab)
 {
-	int	start;
-	int	end;
+	int		start;
+	int		end;
 	char	*to_free;
 
 	if (tab[0] != '{')
@@ -129,5 +91,6 @@ char	*remove_brackets(char *tab)
 	to_free = tab;
 	tab = ft_substr(tab, start, end);
 	free(to_free);
+	printf("remove brackets: %s\n", tab);
 	return (tab);	
 }
