@@ -11,6 +11,7 @@ minishell.dSYM/*
 minishell.dSYM
 
 */*.o
+*/*/*.o
 
 minishell
 a.out
