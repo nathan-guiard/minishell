@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 10:36:30 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 12:28:47 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,17 @@ char *replace_variable_by_content(char *line, int start_var)
 		return (printf("partone\n"), S_ERR);
 	part_two = ft_substr(line, end_var, INT_MAX);
 	line = only_content(line, start_var);
+	//printf("Only content: %s\n", line);
 	res = join(part_one, line);
+	//printf("apres premier join: %s\n", res);
 	if (!res)
 		return (printf("1er join\n"),S_ERR);
-	free(part_one);
-	free(line);
-	part_one = res;
 	res = join(res, part_two);
+	//printf("apres deuxieme join: %s\n", res);
 	if (!res)
 		return (printf("join\n"),S_ERR);
 	if (part_two)
 		free(part_two);
-	free(part_one);
 	return (res);
 }
 
@@ -46,11 +45,16 @@ char	*only_content(char *line, int start_var)
 	char *to_free;
 	char	*sub;
 
-	sub = ft_substr(line, start_var, where_is_end_var(line, start_var) - start_var);
+	if (line[start_var] == '{')
+		start_var++;
+	sub = ft_substr(line, start_var + 1, where_is_end_var(line, start_var) - start_var - 1);
+	//printf("Sub (getenv): %s (%ld)\n", sub, ft_strlen(sub));
 	to_free = line;
 	line = getenv(sub);
-	free(to_free);
-	free(sub);
+	if (to_free)
+		free(to_free);
+	if (sub)
+		free(sub);
 	return (line);
 }
 
