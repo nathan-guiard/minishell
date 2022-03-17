@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 11:47:54 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/17 12:19:16 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,7 @@ char 	**get_builtin_tab_name(void);
 void 	*get_builtin_fnc(char *cmd_name);
 char 	*exec_path(char *cmd_name);
 char 	*replace_variables(char *line);
+
+char *test(char *line);
 
 #endif

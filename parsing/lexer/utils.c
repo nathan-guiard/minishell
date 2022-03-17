@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 12:27:51 by nguiard          ###   ########.fr       */
+/*   Created: 2022/03/17 12:03:53 by nguiard           #+#    #+#             */
+/*   Updated: 2022/03/17 12:23:57 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(int argc, char **argv, char **env)
+int	is_a_sep(char c)
 {
-	char	*line;
-	char 	*test_l;
+	if (c == '\0' || c == '\n' || c == '\f'
+		|| c == '\t' || c == '\r' || c == '\v'
+		|| c == ' ' || c == '|')
+		return (TRUE);
+	return (FALSE);
+}
 
-	(void)argc;
-	(void)argv;
-	(void)env;
-	//catch_signals();
-	while (1)
-	{
-		line = prompt();
-		if (line)
-		{
-			test_l = test(line);
-			set_layout_printf(C_GREEN, C_RESET, C_BOLD);
-			printf("Retour test: |%s|\n", test_l);
-			set_layout_printf(C_RESET, C_RESET, C_RESET);
-			free(test_l);
-		}
-		else
-			ft_exit_builtin(NULL);
-	}
-	return(0);
+int	get_lexer_len(char *line, int i)
+{
+	int	len;
+
+	len = i;
+	while (is_a_sep(line[len]) == FALSE)
+		len++;
+	return (len - i);
 }

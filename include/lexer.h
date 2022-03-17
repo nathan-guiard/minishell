@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 11:48:01 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/17 12:24:05 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ typedef enum	e_types
 	heredoc,
 	path,
 	command,
-	builtin,
+	sb_builtin,
 	argument,
 	variable,
 	quote,
 	d_quote,
-	pipe,
+	sb_pipe,
 	string,
 }	t_symbol;
 
@@ -47,5 +47,10 @@ t_lexer	*ft_lexerindex(t_lexer *lst, int index);
 t_lexer	*ft_lexerlast(t_lexer *lst);
 t_lexer	*ft_lexernew(char *content, t_symbol symbol);
 int		ft_lexersize(t_lexer *lst);
+
+
+int		is_a_sep(char c);
+int		get_lexer_len(char *line, int i);
+char	*get_lexer_content(char *line, int *i);
 
 #endif
