@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 12:27:51 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/17 13:22:54 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ int main(int argc, char **argv, char **env)
 		{
 			test_l = test(line);
 			set_layout_printf(C_GREEN, C_RESET, C_BOLD);
-			printf("Retour test: |%s|\n", test_l);
+			printf("Retour test: \\%s\\\n", test_l);
 			set_layout_printf(C_RESET, C_RESET, C_RESET);
 			free(test_l);
+			free(line);
 		}
 		else
 			ft_exit_builtin(NULL);

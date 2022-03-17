@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/17 12:32:46 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/17 13:35:20 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC =  srcs/main.c								\
 		exec/builtin.c							\
 		exec/exec_simple_command.c				\
 		
+SHELL := /bin/zsh
 
 CFLAGS = -g -lreadline -fsanitize=address -Wall -Werror -Wextra
 
@@ -68,10 +69,11 @@ a:=0
 	@${CC} ${INCLUDE} ${CFLAGS_OBJ} -c $< -o ${<:.c=.o} 2>>error.log
 	$(eval n=$(shell echo $$(($(nb)/15 * 35))))
 	$(eval a=$(shell echo $$((202 - $(n)))))
-	@printf "\033[?25l\033[0;0f"
-	@printf "\033[1;0f~~~~~~~~~~TURBO MAKEFILE~~~~~~~~~~\033[J"
+	@if [ ${nb} = "1" ]; then\
+		printf "\033[1;0f\033[?25l~~~~~~~~~~TURBO MAKEFILE~~~~~~~~~~\033[J";\
+	fi 2> error.log
 	@printf "\033[0;38;5;%dm" "${a}"
-	@echo -n "\033[2;0fCompilation de l'objet" ${nb} "terminee\033[J\033[0m\n"
+	@echo -n "\033[2;0fCompilation de l'objet" ${nb} "terminee\033[0m\n"
 	$(eval nb=$(shell echo $$(($(nb)+1))))
 
 ${NAME}: ${OBJ}
@@ -91,4 +93,9 @@ fclean:
 
 re: fclean all
 
-.PHONY: all clean fclean re
+error:
+	@printf "\033[0;0H\033[1;31mAn error as occured:\033[J\033[0m\n"
+	@cat error.log 2>/dev/null
+	@echo "\033[?25h"
+
+.PHONY: all clean fclean re error
