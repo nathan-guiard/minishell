@@ -6,13 +6,13 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:04:25 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 13:25:17 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/17 15:23:34 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_lexer	*get_symbol_table(char *line, int *i);
+t_lexer		*get_symbol_table(char *line, int *i);
 
 char	*test(char *line)
 {
@@ -40,18 +40,18 @@ t_list	*symbol_table_list(char *line)
 	return (res);
 }
 
-t_lexer	get_symbol_table(char *line, int *i)
+t_lexer	*get_symbol_table(char *line, int *i)
 {
 	char		*content;
 	t_symbol	symbol;
 	t_lexer		*res;
 	t_lexer		*node;
 
-	while (line[*i] != '\0' && is_a_valid_pipe(line, line[*i]) != TRUE)
+	while (line[*i] != '\0' && is_a_valid_pipe(line, *i) != TRUE)
 	{
 		content	= get_lexer_content(line, i);
 		symbol = get_symbol(content);
-		node = ft_lexernew(content, t_symbol);
+		node = ft_lexernew(content, symbol);
 		ft_lexeradd_back(&res, node);
 	}
 	return (res);

@@ -6,11 +6,11 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/17 13:35:20 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/17 15:25:01 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =  srcs/main.c								\
+SRC =	srcs/main.c								\
 		srcs/prompt.c							\
 		srcs/utils.c							\
 		srcs/signals.c							\
@@ -30,6 +30,7 @@ SRC =  srcs/main.c								\
 		parsing/variables/variable_utils.c		\
 		parsing/lexer/symbol_table.c			\
 		parsing/lexer/utils.c					\
+		parsing/lexer/get_symbol.c				\
 		list/ft_lexeradd_back.c					\
 		list/ft_lexeradd_front.c				\
 		list/ft_lexerclear.c					\
@@ -76,8 +77,7 @@ a:=0
 	@echo -n "\033[2;0fCompilation de l'objet" ${nb} "terminee\033[0m\n"
 	$(eval nb=$(shell echo $$(($(nb)+1))))
 
-${NAME}: ${OBJ}
-	@rm -rf error.log
+${NAME}: rm_log ${OBJ}
 	@make -C libft
 	@${CC} ${INCLUDE} ${OBJ} ${LIBFT} ${CFLAGS} -o ${NAME} 2>>error.log
 	@echo "\033[1;92m\033[6;0fminishell pret!\033[0m\033[?25h"
@@ -94,8 +94,11 @@ fclean:
 re: fclean all
 
 error:
-	@printf "\033[0;0H\033[1;31mAn error as occured:\033[J\033[0m\n"
+	@printf "\033[0;0H\033[1;31m\033[JAn error as occured:\033[J\033[0m\n"
 	@cat error.log 2>/dev/null
 	@echo "\033[?25h"
 
-.PHONY: all clean fclean re error
+rm_log:
+	@rm -rf error.log
+
+.PHONY: all clean fclean re error rm_log

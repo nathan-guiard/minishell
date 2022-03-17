@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 12:24:05 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/17 15:29:25 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
 
 typedef enum	e_types
 {
-	red_in,
-	red_out,
-	append,
-	heredoc,
-	path,
-	command,
-	sb_builtin,
-	argument,
-	variable,
-	quote,
-	d_quote,
-	sb_pipe,
-	string,
+	red_in = 1,
+	red_out = 2,
+	append = 3,
+	heredoc = 4,
+	path = 5,
+	command = 6,
+	sb_builtin = 7,
+	argument = 8,
+	variable = 9,
+	quote = 10,
+	d_quote = 11,
+	sb_pipe = 12,
+	string = 13,
 }	t_symbol;
 
 typedef struct s_lexer
@@ -52,5 +52,6 @@ int		ft_lexersize(t_lexer *lst);
 int		is_a_sep(char c);
 int		get_lexer_len(char *line, int i);
 char	*get_lexer_content(char *line, int *i);
+int		is_a_valid_pipe(char *line, int breakpoint);
 
 #endif

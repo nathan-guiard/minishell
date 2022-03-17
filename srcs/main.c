@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 13:22:54 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/17 15:24:17 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int main(int argc, char **argv, char **env)
 {
-	char	*line;
-	char 	*test_l;
+	char		*line;
+	t_symbol	test_l;
 
 	(void)argc;
 	(void)argv;
@@ -26,11 +26,11 @@ int main(int argc, char **argv, char **env)
 		line = prompt();
 		if (line)
 		{
-			test_l = test(line);
+			test_l = get_symbol(line);
 			set_layout_printf(C_GREEN, C_RESET, C_BOLD);
-			printf("Retour test: \\%s\\\n", test_l);
+			printf("Retour test: \\%d\\\n", test_l);
 			set_layout_printf(C_RESET, C_RESET, C_RESET);
-			free(test_l);
+		//	free(test_l);
 			free(line);
 		}
 		else
