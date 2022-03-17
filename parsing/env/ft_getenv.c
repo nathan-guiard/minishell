@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:41:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 14:01:15 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/17 10:04:31 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	is_name_in_env(name)
 	{
 		if (ft_strncmp(name, tmp->content, ft_strlen(name)) != 0)
 			return (TRUE);
-		tmp = tmp->tmp;
+		tmp = tmp->next;
 	}
 	return (TRUE);
 }

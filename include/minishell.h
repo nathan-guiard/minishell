@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 14:10:49 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/17 11:47:54 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define MINISHELL_H
 
 # include "libft.h"
+# include "lexer.h"
+# include "variables.h"
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
@@ -22,9 +24,9 @@
 
 # define TRUE 		1
 # define FALSE 		-42
-# define ERR		420
-# define M_ERR		90
-# define P_ERR		54
+# define ERR		-420
+# define M_ERR		-90
+# define P_ERR		-54
 /*	Strings a strcmp avec le resultat si jamais on a des erreurs			*/
 # define S_ERR		"\033error string"
 # define S_MERR		"\033malloc error string"
