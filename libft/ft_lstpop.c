@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstpop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:37:08 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/16 17:23:21 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/16 17:20:12 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_lstpop(t_list **alst, t_list *node)
 {
-	if (!lst || !(lst->content))
-		return ;
-	(*del)(lst->content);
-	free(lst);
-}
+	t_list	*following;
+	t_list	*buff;
 
-void	ft_lstdelone_int(t_list_int *lst)
-{
-	if (lst)
-		free(lst);
+	if (!alst || !(node->content) || !node)
+		return ;
+	if (node->next == NULL)
+		return (ft_lstdelone(node, free));
+	buff = *alst;
+	while (buff->next != NULL)
+	{
+		if (buff == node)
+		{
+			following = node->next;
+			ft_lstdelone(node, free);
+			ft_lstadd_back(alst, following);
+			break;
+		}
+		buff = buff->next;
+	}
 }

@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/15 14:09:26 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/15 20:35:45 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRC =  srcs/main.c								\
 		parsing/exec_path.c						\
 		parsing/variables/variable_replace.c	\
 		parsing/variables/variable_utils.c		\
+		parsing/env/turn_env_into_list.c		\
+		parsing/env/ft_getenv.c					\
 		exec/builtin.c							\
 		exec/exec_simple_command.c				\
 		
@@ -62,7 +64,7 @@ a:=0
 #	@printf "\033[1;0f~~~~~~~~~~TURBO MAKEFILE~~~~~~~~~~\033[J"
 #	@printf "\033[0;38;5;%dm" "${a}"
 #	@echo -n "\033[2;0fCompilation de l'objet" ${nb} "terminee\033[J\033[0m\n"
-#	$(eval nb=$(shell echo $$(($(nb)+1))))
+#	@eval nb=$(shell echo $$(($(nb)+1)))
 
 ${NAME}: ${OBJ}
 	@make -C libft

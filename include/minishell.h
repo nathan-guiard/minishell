@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 14:10:49 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/16 17:20:47 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 # define TRUE 		1
 # define FALSE 		-42
-# define ERR		420
-# define M_ERR		90
-# define P_ERR		54
+# define ERR		-420
+# define M_ERR		-90
+# define P_ERR		-54
 /*	Strings a strcmp avec le resultat si jamais on a des erreurs			*/
 # define S_ERR		"\033error string"
 # define S_MERR		"\033malloc error string"
@@ -42,19 +42,17 @@ typedef	char **t_doubletab;
 extern t_list	*g_env;
 
 /*	Built-in	*/
-
 void	echo(char **args);
 void	cd(char **args);
 void	pwd(char **args);
 void	clear(char **args);
 void	ft_exit_builtin(char **args);
-void	env(char **args);
+void	ft_env(char **args);
 void	export(char **args);
 void	unset(char **args);
 void	ft_exit(int exit_value, char **args);
 
 /*	Utils	*/
-
 void	free_tabtab(char **tab);
 void	catch_signals(void);
 char	*prompt(void);
@@ -65,12 +63,19 @@ int		builtin(char **command);
 int		exec_simple_command(char **command, char **env);
 
 /*	Parsing	*/
-
 char	**remove_command_name(char **);
 int		is_a_builtin(char *cmd_name);
 char 	**get_builtin_tab_name(void);
 void 	*get_builtin_fnc(char *cmd_name);
 char 	*exec_path(char *cmd_name);
 char 	*replace_variables(char *line);
+
+/*	Environnement	*/
+void	turn_env_into_list(char **env);
+char	*cut_env_name(char *env_line, char *name);
+char	*get_env_line(char *name);
+int		is_name_in_env(char *name);
+char	*ft_getenv(char *name);
+char	**turn_env_into_tab(void);
 
 #endif

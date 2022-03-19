@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 03:13:28 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/09 16:58:29 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/16 17:38:21 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC =  ft_isalpha.c 		\
 	ft_lstadd_back.c	\
 	ft_lstdelone.c		\
 	ft_lstclear.c		\
+	ft_lstpop.c			\
 	ft_lstiter.c		\
 	ft_lstmap.c		\
 	get_next_line.c		\

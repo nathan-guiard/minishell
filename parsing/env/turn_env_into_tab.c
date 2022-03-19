@@ -1,29 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   turn_env_into_tab.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 11:07:30 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 18:10:50 by nguiard          ###   ########.fr       */
+/*   Created: 2022/03/15 16:06:56 by nguiard           #+#    #+#             */
+/*   Updated: 2022/03/15 16:28:34 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_env(char **args)
+char	**turn_env_into_tab(void)
 {
+	int		len;
+	char	**res;
+	int		i;
 	t_list	*buff;
+	char	*line;
 
-	if (args == NULL || args[0] == NULL)
+	i = 0;
+	len = how_many_env();
+	res = malloc(sizeof(char *) * (len + 1));
+	buff = g_env;
+	while (buff->next != NULL)
 	{
-		buff = g_env;
-		while (buff->next != NULL)
+		line = ft_strdup(buff->content);
+		if (!line)
 		{
-			printf("%s\n", (char *)buff->content);
-			buff = buff->next;
+			printf("malloc() error");
+			return ;
 		}
-		printf("%s\n", (char *)buff->content);
+		res[i] = line;
+		i++;
+		buff = buff->next;	
 	}
+	line = ft_strdup(buff->content);
+	if (!line)
+	{
+		printf("malloc() error");
+		return ;
+	}
+	res[len] = line;
+	return (res);
 }

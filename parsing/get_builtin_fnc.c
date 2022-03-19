@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 09:38:58 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/14 13:22:00 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/15 16:05:34 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	*get_fnc_tab(void)
 	tab[2] = clear;
 	tab[3] = cd;
 	tab[4] = pwd;
-	tab[5] = env;
+	tab[5] = ft_env;
 	tab[6] = export;
 	tab[7] = unset;
 	return (tab);

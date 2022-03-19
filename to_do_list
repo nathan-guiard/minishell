@@ -1,9 +1,5 @@
 A faire:
 
-- Faire un prompt qui affiche le curr dir
-	Avec readline c'est facile, le prompt qui affiche
-	le dir on peut LE FAIRE AVEC getcwd()
-
 - Faire un historique
 	? peut etre add_hsitory
 
@@ -22,18 +18,11 @@ A faire:
 	fork()
 
 - Builtin EXEC
-	echo: c simple
-	cd: chdir
-	pwd: print getcwd()
-	export: je sais pas trop comment ca marche mais
-		on a peut etre que a mettre un nouvel element
-		dans notre env
+	export: ajouter a la liste env
 	env: print de tout env
-	exit n: exit(n) ayant tout free avant (a faire en dernier imo);
-	
-	comme on doit presque jamais handle des args, 
-	je propose une erreur de parsing si ils essayent
-	de mettre un arg
+	unset: pop de env
+
+Debut du prog: export $? = 0
 
 - Interception de signal EXEC
 	ctrl-C SIGINT: Je sais pas mais on met $? a 1 (si on doit implementer $?)
@@ -43,5 +32,4 @@ A faire:
 Nathan:
 Faire le ctrl-C de readline
 
-Faire notre propre environnement avec des listes ou un tab de tab
-Faire notre propre getenv
+https://fr.wikipedia.org/wiki/Analyseur_LR (LR parser)
