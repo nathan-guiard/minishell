@@ -1,0 +1,8 @@
+Il faut avoir vu la video: https://www.youtube.com/watch?v=sJKFLcsysVs
+
+En gros je vais faire une symbol table par pipe, des que j'ai une pipe j'en refait une
+
+je pense que je vais faire une liste de symbol table et je vais fare en sorte de pas creer une nouvelle table quand on
+a un pipe dans des quotes
+
+je ferais la gestion d'erreur APRES cette phase
