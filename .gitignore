@@ -1,6 +1,6 @@
 srcs/*.o
 srcs/.*.swp
-srcs/main.c
+#srcs/main.c
 # ^ a retirer a la fin
 
 libft/*.o
