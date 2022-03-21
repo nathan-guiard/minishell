@@ -1,0 +1,862 @@
+==171043== Memcheck, a memory error detector
+==171043== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==171043== Using Valgrind-3.16.1-36d6727e1d-20200622X and LibVEX; rerun with -h for copyright info
+==171043== Command: ./minishell
+==171043== Parent PID: 123548
+==171043== 
+--171043-- 
+--171043-- Valgrind options:
+--171043--    --leak-check=full
+--171043--    --show-leak-kinds=all
+--171043--    --track-origins=yes
+--171043--    --verbose
+--171043--    --log-file=valgrind-out.txt
+--171043-- Contents of /proc/version:
+--171043--   Linux version 5.10.103-v8+ (dom@buildbot) (aarch64-linux-gnu-gcc-8 (Ubuntu/Linaro 8.4.0-3ubuntu1) 8.4.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #1530 SMP PREEMPT Tue Mar 8 13:06:35 GMT 2022
+--171043-- 
+--171043-- Arch and hwcaps: ARM64, LittleEndian, baseline
+--171043-- Page sizes: currently 4096, max supported 65536
+--171043-- Valgrind library directory: /usr/lib/aarch64-linux-gnu/valgrind
+--171043-- Reading syms from /home/nguiard/minishell/minishell
+--171043-- Reading syms from /usr/lib/aarch64-linux-gnu/ld-2.31.so
+--171043--   Considering /usr/lib/debug/.build-id/af/801cd7ccf35a8f1f8de0cbc4ee94bc749849ba.debug ..
+--171043--   .. build-id is valid
+--171043-- Reading syms from /usr/lib/aarch64-linux-gnu/valgrind/memcheck-arm64-linux
+--171043--   Considering /usr/lib/debug/.build-id/55/2b6c08fce7efb631c7becbfdbaf99ee9bb045e.debug ..
+--171043--   .. build-id is valid
+--171043--    object doesn't have a dynamic symbol table
+--171043-- Scheduler: using generic scheduler lock implementation.
+--171043-- Reading suppressions file: /usr/lib/aarch64-linux-gnu/valgrind/default.supp
+==171043== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-171043-by-nguiard-on-???
+==171043== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-171043-by-nguiard-on-???
+==171043== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-171043-by-nguiard-on-???
+==171043== 
+==171043== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==171043== don't want to do, unless you know exactly what you're doing,
+==171043== or are doing some strange experiment):
+==171043==   /usr/bin/vgdb --pid=171043 ...command...
+==171043== 
+==171043== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==171043==   /path/to/gdb ./minishell
+==171043== and then give GDB the following command
+==171043==   target remote | /usr/bin/vgdb --pid=171043
+==171043== --pid is optional if only one valgrind process is running
+==171043== 
+--171043-- REDIR: 0x4019a00 (ld-linux-aarch64.so.1:strlen) redirected to 0x580c8258 (vgPlain_arm64_linux_REDIR_FOR_strlen)
+--171043-- REDIR: 0x4018a00 (ld-linux-aarch64.so.1:strcmp) redirected to 0x580c82ac (vgPlain_arm64_linux_REDIR_FOR_strcmp)
+--171043-- REDIR: 0x4018900 (ld-linux-aarch64.so.1:index) redirected to 0x580c8280 (vgPlain_arm64_linux_REDIR_FOR_index)
+--171043-- Reading syms from /usr/lib/aarch64-linux-gnu/valgrind/vgpreload_core-arm64-linux.so
+--171043--   Considering /usr/lib/debug/.build-id/86/2ef07f508ed868e9ce3095734b2ce9a19f61ad.debug ..
+--171043--   .. build-id is valid
+--171043-- Reading syms from /usr/lib/aarch64-linux-gnu/valgrind/vgpreload_memcheck-arm64-linux.so
+--171043--   Considering /usr/lib/debug/.build-id/5b/38e3948c6b3565f564e907d1c4867e69b35835.debug ..
+--171043--   .. build-id is valid
+--171043-- Reading syms from /usr/lib/aarch64-linux-gnu/libreadline.so.8.1
+--171043--    object doesn't have a symbol table
+--171043-- Reading syms from /usr/lib/aarch64-linux-gnu/libc-2.31.so
+--171043--   Considering /usr/lib/debug/.build-id/c9/6a2b76aab47831ed75a76aaa29d573768329f0.debug ..
+--171043--   .. build-id is valid
+--171043-- Reading syms from /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2
+--171043--    object doesn't have a symbol table
+--171043-- REDIR: 0x49513f0 (libc.so.6:memchr) redirected to 0x48346c8 (_vgnU_ifunc_wrapper)
+--171043-- REDIR: 0x49501c0 (libc.so.6:strlen) redirected to 0x48346c8 (_vgnU_ifunc_wrapper)
+--171043-- REDIR: 0x4951d00 (libc.so.6:memcpy) redirected to 0x48346c8 (_vgnU_ifunc_wrapper)
+--171043-- REDIR: 0x49515d0 (libc.so.6:memmove) redirected to 0x48346c8 (_vgnU_ifunc_wrapper)
+--171043-- REDIR: 0x49516e0 (libc.so.6:memset) redirected to 0x48346c8 (_vgnU_ifunc_wrapper)
+--171043-- REDIR: 0x4950640 (libc.so.6:rindex) redirected to 0x484cd00 (rindex)
+--171043-- REDIR: 0x494baa0 (libc.so.6:malloc) redirected to 0x4849dd8 (malloc)
+--171043-- REDIR: 0x4959240 (libc.so.6:__GI_strlen) redirected to 0x484d328 (__GI_strlen)
+--171043-- REDIR: 0x495041c (libc.so.6:strncmp) redirected to 0x484daa8 (strncmp)
+--171043-- REDIR: 0x494c070 (libc.so.6:free) redirected to 0x484af70 (free)
+--171043-- REDIR: 0x494fa80 (libc.so.6:strcpy) redirected to 0x484d418 (strcpy)
+--171043-- REDIR: 0x49534c0 (libc.so.6:strchrnul) redirected to 0x4851930 (strchrnul)
+--171043-- REDIR: 0x49087c4 (libc.so.6:setenv) redirected to 0x48529e8 (setenv)
+--171043-- REDIR: 0x494f840 (libc.so.6:index) redirected to 0x484ceb0 (index)
+--171043-- REDIR: 0x494c2c0 (libc.so.6:realloc) redirected to 0x484c2e8 (realloc)
+--171043-- REDIR: 0x4957900 (libc.so.6:__GI_memcpy) redirected to 0x484f070 (__GI_memcpy)
+--171043-- REDIR: 0x494f940 (libc.so.6:strcmp) redirected to 0x484e338 (strcmp)
+--171043-- REDIR: 0x494c7b0 (libc.so.6:calloc) redirected to 0x484c0c0 (calloc)
+--171043-- REDIR: 0x4950264 (libc.so.6:strnlen) redirected to 0x484d2b0 (strnlen)
+--171043-- REDIR: 0x4951020 (libc.so.6:strstr) redirected to 0x4852158 (strstr)
+--171043-- REDIR: 0x49b2680 (libc.so.6:__memcpy_chk) redirected to 0x4852048 (__memcpy_chk)
+--171043-- REDIR: 0x4958b00 (libc.so.6:__GI_memset) redirected to 0x4850df0 (memset)
+--171043-- REDIR: 0x49505e0 (libc.so.6:strncpy) redirected to 0x484d5d8 (strncpy)
+--171043-- REDIR: 0x4959040 (libc.so.6:__GI_memchr) redirected to 0x484e528 (__GI_memchr)
+--171043-- REDIR: 0x4951900 (libc.so.6:stpcpy) redirected to 0x48506b8 (stpcpy)
+--171043-- REDIR: 0x4951b10 (libc.so.6:strcasecmp) redirected to 0x484dc08 (strcasecmp)
+--171043-- REDIR: 0x4951b70 (libc.so.6:strncasecmp) redirected to 0x484dce8 (strncasecmp)
+--171043-- REDIR: 0x4951440 (libc.so.6:bcmp) redirected to 0x4850598 (bcmp)
+==171043== 
+==171043== HEAP SUMMARY:
+==171043==     in use at exit: 203,747 bytes in 226 blocks
+==171043==   total heap usage: 466 allocs, 240 frees, 244,348 bytes allocated
+==171043== 
+==171043== Searching for pointers to 226 not-freed blocks
+==171043== Checked 214,216 bytes
+==171043== 
+==171043== 8 bytes in 1 blocks are still reachable in loss record 1 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x494FE9F: strdup (strdup.c:42)
+==171043==    by 0x4A5EA93: _nc_trim_sgr0 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5963B: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8 bytes in 1 blocks are still reachable in loss record 2 of 66
+==171043==    at 0x484C368: realloc (vg_replace_malloc.c:834)
+==171043==    by 0x48AAB33: xrealloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4892933: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4893527: rl_expand_prompt (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487DA3B: rl_set_prompt (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F253: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8 bytes in 1 blocks are definitely lost in loss record 3 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x10B7C3: ft_strjoin (in /home/nguiard/minishell/minishell)
+==171043==    by 0x10C56F: ft_strrm_index (in /home/nguiard/minishell/minishell)
+==171043==    by 0x10B0A3: fill_the_quote_void (quote_handling.c:89)
+==171043==    by 0x10AEE3: quote_handling (quote_handling.c:33)
+==171043==    by 0x10A93F: full_symbol_table (full_symbol_table.c:32)
+==171043==    by 0x108D37: main (main.c:36)
+==171043== 
+==171043== 9 bytes in 1 blocks are definitely lost in loss record 4 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x10AB3B: replace_pipe_and_spaces (replace_special_char.c:27)
+==171043==    by 0x10A90B: full_symbol_table (full_symbol_table.c:28)
+==171043==    by 0x108D37: main (main.c:36)
+==171043== 
+==171043== 9 bytes in 1 blocks are definitely lost in loss record 5 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x10B907: ft_strdup (in /home/nguiard/minishell/minishell)
+==171043==    by 0x10A983: transform_tabs_into_nodes (full_symbol_table.c:48)
+==171043==    by 0x10A933: full_symbol_table (full_symbol_table.c:31)
+==171043==    by 0x108D37: main (main.c:36)
+==171043== 
+==171043== 13 bytes in 1 blocks are still reachable in loss record 6 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488F03B: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F15F: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 14 bytes in 1 blocks are still reachable in loss record 7 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x494FE9F: strdup (strdup.c:42)
+==171043==    by 0x4A55BE7: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A55F6B: _nc_first_db (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E2E7: _nc_read_entry2 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58B67: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F0B: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043== 
+==171043== 14 bytes in 1 blocks are still reachable in loss record 8 of 66
+==171043==    at 0x484C368: realloc (vg_replace_malloc.c:834)
+==171043==    by 0x4A56487: _nc_doalloc (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5A517: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5C09F: _nc_tiparm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E8A3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5EA83: _nc_trim_sgr0 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5963B: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 15 bytes in 1 blocks are still reachable in loss record 9 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x494FE9F: strdup (strdup.c:42)
+==171043==    by 0x4A58F4F: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 15 bytes in 2 blocks are definitely lost in loss record 10 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x10B7C3: ft_strjoin (in /home/nguiard/minishell/minishell)
+==171043==    by 0x10C56F: ft_strrm_index (in /home/nguiard/minishell/minishell)
+==171043==    by 0x10B0A3: fill_the_quote_void (quote_handling.c:89)
+==171043==    by 0x10B033: neutralize_the_quote (quote_handling.c:70)
+==171043==    by 0x10AECB: quote_handling (quote_handling.c:32)
+==171043==    by 0x10A93F: full_symbol_table (full_symbol_table.c:32)
+==171043==    by 0x108D37: main (main.c:36)
+==171043== 
+==171043== 16 bytes in 1 blocks are still reachable in loss record 11 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x487F05B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 20 bytes in 1 blocks are still reachable in loss record 12 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488FE27: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488EA9F: rl_parse_and_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488EFA7: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F15F: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 24 bytes in 1 blocks are still reachable in loss record 13 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x49A2BA3: tsearch (tsearch.c:338)
+==171043==    by 0x4A5BBEF: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5BFD7: _nc_tiparm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E8A3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5EA83: _nc_trim_sgr0 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5963B: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 26 bytes in 1 blocks are still reachable in loss record 14 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x4A56827: _nc_home_terminfo (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A55F53: _nc_first_db (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E2E7: _nc_read_entry2 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58B67: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F0B: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 46 bytes in 1 blocks are still reachable in loss record 15 of 66
+==171043==    at 0x484C368: realloc (vg_replace_malloc.c:834)
+==171043==    by 0x4A56487: _nc_doalloc (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5DAF3: _nc_read_termtype (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5DDFF: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E1D3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E2FB: _nc_read_entry2 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58B67: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F0B: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043== 
+==171043== 46 bytes in 1 blocks are still reachable in loss record 16 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x4A53E27: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F23: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 48 bytes in 1 blocks are still reachable in loss record 17 of 66
+==171043==    at 0x484C164: calloc (vg_replace_malloc.c:760)
+==171043==    by 0x4A5605B: _nc_first_db (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E2E7: _nc_read_entry2 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58B67: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F0B: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 55 bytes in 1 blocks are still reachable in loss record 18 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487DA67: rl_set_prompt (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F253: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 55 bytes in 1 blocks are still reachable in loss record 19 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48928FF: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4893527: rl_expand_prompt (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487DA3B: rl_set_prompt (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F253: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 78 bytes in 1 blocks are still reachable in loss record 20 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x4A53E83: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F23: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 93 bytes in 1 blocks are still reachable in loss record 21 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x494FE9F: strdup (strdup.c:42)
+==171043==    by 0x4A5BBD3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5BFD7: _nc_tiparm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E8A3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5EA83: _nc_trim_sgr0 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5963B: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 94 bytes in 1 blocks are still reachable in loss record 22 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x4A5B8FB: _nc_tparm_analyze (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5BB2B: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5BFD7: _nc_tiparm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E8A3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5EA83: _nc_trim_sgr0 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5963B: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 95 bytes in 1 blocks are still reachable in loss record 23 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x4A55FCB: _nc_first_db (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E2E7: _nc_read_entry2 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58B67: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F0B: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 156 bytes in 1 blocks are still reachable in loss record 24 of 66
+==171043==    at 0x484C368: realloc (vg_replace_malloc.c:834)
+==171043==    by 0x4A56487: _nc_doalloc (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5DB0B: _nc_read_termtype (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5DDFF: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E1D3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E2FB: _nc_read_entry2 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58B67: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F0B: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043== 
+==171043== 168 bytes in 1 blocks are still reachable in loss record 25 of 66
+==171043==    at 0x484C164: calloc (vg_replace_malloc.c:760)
+==171043==    by 0x4A5BBB7: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5BFD7: _nc_tiparm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E8A3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5EA83: _nc_trim_sgr0 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5963B: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 256 bytes in 1 blocks are still reachable in loss record 26 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F20B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 280 bytes in 1 blocks are still reachable in loss record 27 of 66
+==171043==    at 0x484C164: calloc (vg_replace_malloc.c:760)
+==171043==    by 0x4A58ECB: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 608 bytes in 1 blocks are still reachable in loss record 28 of 66
+==171043==    at 0x484C164: calloc (vg_replace_malloc.c:760)
+==171043==    by 0x4A5DC73: _nc_read_termtype (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5DDFF: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E1D3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E2FB: _nc_read_entry2 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58B67: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F0B: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043== 
+==171043== 608 bytes in 1 blocks are still reachable in loss record 29 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x4A53EE7: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F23: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 940 bytes in 1 blocks are still reachable in loss record 30 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x4A5DBA7: _nc_read_termtype (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5DDFF: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E1D3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E2FB: _nc_read_entry2 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58B67: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F0B: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043== 
+==171043== 1,024 bytes in 1 blocks are still reachable in loss record 31 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB47: xrealloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4892287: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48923DB: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4898397: rl_redisplay (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487DB87: readline_internal_setup (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F283: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 1,024 bytes in 1 blocks are still reachable in loss record 32 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB47: xrealloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489229B: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48923DB: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4898397: rl_redisplay (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487DB87: readline_internal_setup (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F283: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 1,024 bytes in 1 blocks are still reachable in loss record 33 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB47: xrealloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48922AF: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48923DB: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4898397: rl_redisplay (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487DB87: readline_internal_setup (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F283: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 1,024 bytes in 1 blocks are still reachable in loss record 34 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB47: xrealloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48922C3: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48923DB: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4898397: rl_redisplay (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487DB87: readline_internal_setup (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F283: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 1,024 bytes in 1 blocks are still reachable in loss record 35 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489240B: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4898397: rl_redisplay (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487DB87: readline_internal_setup (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F283: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 1,024 bytes in 1 blocks are still reachable in loss record 36 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4892423: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4898397: rl_redisplay (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487DB87: readline_internal_setup (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F283: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 1,024 bytes in 1 blocks are still reachable in loss record 37 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4892437: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4898397: rl_redisplay (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487DB87: readline_internal_setup (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F283: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 1,024 bytes in 1 blocks are still reachable in loss record 38 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489244B: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x4898397: rl_redisplay (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487DB87: readline_internal_setup (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F283: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 1,536 bytes in 1 blocks are still reachable in loss record 39 of 66
+==171043==    at 0x484C368: realloc (vg_replace_malloc.c:834)
+==171043==    by 0x48AAB33: xrealloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488467F: rl_add_funmap_entry (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48846D7: rl_initialize_funmap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F153: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 1,602 bytes in 1 blocks are still reachable in loss record 40 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x4A5D573: _nc_read_termtype (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5DDFF: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E1D3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E2FB: _nc_read_entry2 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58B67: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F0B: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043== 
+==171043== 2,032 bytes in 1 blocks are still reachable in loss record 41 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489EACB: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 2,240 bytes in 140 blocks are still reachable in loss record 42 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488462F: rl_add_funmap_entry (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48846D7: rl_initialize_funmap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F153: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 3,904 bytes in 1 blocks are still reachable in loss record 43 of 66
+==171043==    at 0x484C368: realloc (vg_replace_malloc.c:834)
+==171043==    by 0x4A56487: _nc_doalloc (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5DB23: _nc_read_termtype (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5DDFF: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E1D3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A5E2FB: _nc_read_entry2 (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58B67: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F0B: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043== 
+==171043== 3,904 bytes in 1 blocks are still reachable in loss record 44 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x4A53E43: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A58F23: _nc_setupterm (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A593CF: tgetent_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E85B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 4,080 bytes in 1 blocks are still reachable in loss record 45 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489EABB: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 4,112 bytes in 1 blocks are still reachable in loss record 46 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489E0FB: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489EA73: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 4,112 bytes in 1 blocks are still reachable in loss record 47 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489E16B: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489EA73: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 4,112 bytes in 1 blocks are still reachable in loss record 48 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489E16B: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489EA7F: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 4,112 bytes in 1 blocks are still reachable in loss record 49 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489E16B: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489EA8B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 4,112 bytes in 1 blocks are still reachable in loss record 50 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487D9BF: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EFA7: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 4,112 bytes in 1 blocks are still reachable in loss record 51 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487D9BF: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EFB3: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 4,112 bytes in 1 blocks are still reachable in loss record 52 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487D9BF: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EFDB: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 7,952 bytes in 1 blocks are still reachable in loss record 53 of 66
+==171043==    at 0x484C164: calloc (vg_replace_malloc.c:760)
+==171043==    by 0x4A550D3: ??? (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A558F3: _nc_find_type_entry (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x4A59D37: tgetstr_sp (in /usr/lib/aarch64-linux-gnu/libtinfo.so.6.2)
+==171043==    by 0x489E963: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8,224 bytes in 2 blocks are still reachable in loss record 54 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489E15B: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489EA73: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8,224 bytes in 2 blocks are still reachable in loss record 55 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489E0FB: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489EA7F: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8,224 bytes in 2 blocks are still reachable in loss record 56 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489E15B: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489EA7F: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8,224 bytes in 2 blocks are still reachable in loss record 57 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489E0FB: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489EA8B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8,224 bytes in 2 blocks are still reachable in loss record 58 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489E15B: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x489EA8B: _rl_init_terminal_io (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EF1B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8,224 bytes in 2 blocks are still reachable in loss record 59 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487D9AF: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EFA7: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8,224 bytes in 2 blocks are still reachable in loss record 60 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487D9AF: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EFB3: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8,224 bytes in 2 blocks are still reachable in loss record 61 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487D9AF: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EFDB: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8,224 bytes in 2 blocks are still reachable in loss record 62 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EFFB: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 8,224 bytes in 2 blocks are still reachable in loss record 63 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F00B: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 12,336 bytes in 3 blocks are still reachable in loss record 64 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487D987: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EFB3: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 12,336 bytes in 3 blocks are still reachable in loss record 65 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488E15F: rl_bind_keyseq_if_unbound_in_map (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487D987: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487EFDB: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== 28,784 bytes in 7 blocks are still reachable in loss record 66 of 66
+==171043==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
+==171043==    by 0x48AAB0B: xmalloc (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x48847CF: rl_make_bare_keymap (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488CD83: rl_generic_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488EE23: rl_parse_and_bind (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x488EFA7: ??? (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F15F: rl_initialize (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x487F257: readline (in /usr/lib/aarch64-linux-gnu/libreadline.so.8.1)
+==171043==    by 0x108E1B: prompt (prompt.c:30)
+==171043==    by 0x108D1F: main (main.c:32)
+==171043== 
+==171043== LEAK SUMMARY:
+==171043==    definitely lost: 41 bytes in 5 blocks
+==171043==    indirectly lost: 0 bytes in 0 blocks
+==171043==      possibly lost: 0 bytes in 0 blocks
+==171043==    still reachable: 203,706 bytes in 221 blocks
+==171043==         suppressed: 0 bytes in 0 blocks
+==171043== 
+==171043== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)

@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 03:13:28 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/17 12:33:32 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/21 15:46:52 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRC =  ft_isalpha.c 		\
 	get_whole_file.c	\
 	ft_xtoi.c			\
 	ft_strcmp.c			\
+	ft_strrm_index.c	\
 
 
 CFLAGS = -Wall -Werror -Wextra

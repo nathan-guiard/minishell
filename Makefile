@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/21 13:39:49 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/21 16:47:27 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC =	srcs/main.c								\
 		parsing/lexer/get_symbol.c				\
 		parsing/lexer/full_symbol_table.c		\
 		parsing/lexer/replace_special_char.c	\
+		parsing/lexer/quote_handling.c			\
 		list/ft_lexeradd_back.c					\
 		list/ft_lexeradd_front.c				\
 		list/ft_lexerclear.c					\
@@ -46,9 +47,9 @@ SRC =	srcs/main.c								\
 		
 SHELL := /bin/zsh
 
-CFLAGS = -g -lreadline -fsanitize=address -Wall -Werror -Wextra
+CFLAGS = -g -lreadline #-fsanitize=address -Wall -Werror -Wextra
 
-CFLAGS_OBJ = -g -fsanitize=address -Wall -Werror -Wextra
+CFLAGS_OBJ = -g #-fsanitize=address -Wall -Werror -Wextra
 
 OBJ = ${SRC:.c=.o}
 

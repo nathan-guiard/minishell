@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/21 13:46:54 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 16:38:34 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	(void)env;
+
+//	printf("%s", ft_strrm_index(argv[1], 4));
+
+
 	//catch_signals();
 	while (1)
 	{

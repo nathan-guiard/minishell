@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpop.c                                        :+:      :+:    :+:   */
+/*   ft_strrm_index.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 18:37:08 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/21 15:45:11 by nguiard          ###   ########.fr       */
+/*   Created: 2022/03/21 15:30:26 by nguiard           #+#    #+#             */
+/*   Updated: 2022/03/21 16:38:09 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstpop(t_list **alst, t_list *node)
+/*	Enleve l'index <index> du tableau	*/
+char	*ft_strrm_index(char *str, int index)
 {
-	t_list	*following;
-	t_list	*buff;
+	char	*before;
+	char	*after;
+	char	*res;
 
-	if (!alst || !(node->content) || !node)
-		return ;
-	if (node->next == NULL)
-		return (ft_lstdelone(node, free));
-	buff = *alst;
-	while (buff->next != NULL)
-	{
-		if (buff == node)
-		{
-			following = node->next;
-			ft_lstdelone(node, free);
-			ft_lstadd_back(alst, following);
-			break ;
-		}
-		buff = buff->next;
-	}
+	before = ft_substr(str, 0, index);
+	if (!before)
+		return (NULL);
+	after = ft_substr(str, index + 1, INT_MAX);
+	if (!after)
+		return (free(before), NULL);
+	res = ft_strjoin(before, after);
+	if (!res)
+		return (free(before), free(after), NULL);
+	free(before);
+	free(after);
+	return (res);
 }

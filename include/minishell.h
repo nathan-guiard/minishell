@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/21 13:42:39 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 14:12:18 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@
 /*	Nombre de builtin qu'on a												*/
 # define BUILTIN_NB	8
 /*	remplace les char spec qui cassent les couilles par des un-writable		*/
-# define VALID_PIPE		'\033'
-# define VALID_SPACE	'\030'
+# define VALID_PIPE			'\033'
+# define VALID_SPACE		'\030'
+# define REPLACE_THIS_HOLE	4
 //# define VALID_QUOTE	'Q'
 //# define VALID_DQUOTE	'D'
 /*	Pointer sur fonction de type "void(char **)", aka nos builtins			*/

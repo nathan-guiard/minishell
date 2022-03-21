@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:54:18 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 10:40:38 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 15:48:06 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ t_list_int	*ft_lstindex_int(t_list_int *lst, int index);
 char		*get_whole_file(int fd);
 int			ft_xtoi_comma(char *s);
 void		free_all(char **s);
+char		*ft_strrm_index(char *tab, int index);
 
 /* get_next_line */
 
