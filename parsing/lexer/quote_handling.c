@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:57:48 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/21 12:16:17 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 13:35:34 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	quote_handling(t_lexer **list)
 	while (buff)
 	{
 		neutralize_the_quote(buff);
-		
+		buff = buff->next;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/21 12:35:43 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/21 13:39:49 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRC =	srcs/main.c								\
 		parsing/lexer/utils.c					\
 		parsing/lexer/get_symbol.c				\
 		parsing/lexer/full_symbol_table.c		\
-		parsing/lexer/replace_quotes_and_pipe.c	\
+		parsing/lexer/replace_special_char.c	\
 		list/ft_lexeradd_back.c					\
 		list/ft_lexeradd_front.c				\
 		list/ft_lexerclear.c					\

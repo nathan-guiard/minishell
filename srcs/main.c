@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/21 13:30:56 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 13:40:18 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main(int argc, char **argv, char **env)
 		line = prompt();
 		if (line)
 		{
-			line = replace_pipe(line);
+			line = replace_pipe_and_spaces(line);
 			//node = full_symbol_table(line);
 			//t_lexer *save = node;
 			//while (node != NULL)

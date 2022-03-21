@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   replace_quotes_and_pipe.c                          :+:      :+:    :+:   */
+/*   replace_special_char.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:27:17 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/21 13:30:11 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 13:41:11 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 //int	is_a_valid_quote(char *line, int breakpoint);
 //int	is_a_valid_dquote(char *line, int breakpoint);
+int	is_a_valid_space(char *line, int breakpoint);
 
-char *replace_pipe(char *line)
+char *replace_pipe_and_spaces(char *line)
 {
 	char	*res;
 	int		i;
@@ -30,6 +31,8 @@ char *replace_pipe(char *line)
 	{
 		if (is_a_valid_pipe(line, i) == TRUE)
 			res[i] = VALID_PIPE;
+		else if (is_a_valid_space(line, i) == TRUE)
+			res[i] = VALID_SPACE;
 		else
 			res[i] = line[i];
 		i++;
@@ -108,4 +111,31 @@ int	is_a_valid_pipe(char *line, int breakpoint)
 	if (quote_type != 0)
 		return (FALSE);
 	return (TRUE);
+}
+
+int	is_a_valid_space(char *line, int breakpoint)
+{
+	int		i;
+	char	quote_type;
+
+	i = 0;
+	quote_type = 0;
+	if (breakpoint == 0 && line[0] == ' ')
+		return (FALSE);
+	if (line[breakpoint] != ' ')
+		return FALSE;
+	while (line[i] != '\0' && i <= breakpoint)
+	{
+		if (line[i] == '\'' || line[i] == '\"')
+		{
+			if (line[i] == quote_type)
+				quote_type = 0;
+			else if (line[i] != quote_type && quote_type == 0)
+				quote_type = line[i];
+		}
+		i++;
+	}
+	if (quote_type != 0)
+		return (TRUE);
+	return (FALSE);
 }
