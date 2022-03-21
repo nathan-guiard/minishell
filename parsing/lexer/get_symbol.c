@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:47:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/21 11:36:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 13:34:15 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_symbol	get_onechar_symbol(char *line)
 		return (red_in);
 	if (line[0] == '>')
 		return (red_out);
-	if (line[0] == '|')
+	if (line[0] == VALID_PIPE)
 		return (sb_pipe);
 	if (line[0] == '\"')
 		return (d_quote);

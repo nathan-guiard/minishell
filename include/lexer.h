@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/21 11:46:03 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 13:30:32 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,7 @@ char	*get_lexer_content(char *line, int *i);
 int		is_a_valid_pipe(char *line, int breakpoint);
 
 t_lexer	*full_symbol_table(char *line);
+void	quote_handling(t_lexer **list);
+char *replace_pipe(char *line);
+
 #endif

@@ -33,3 +33,5 @@ Nathan:
 Faire le ctrl-C de readline
 
 https://fr.wikipedia.org/wiki/Analyseur_LR (LR parser)
+
+probleme: le super makefile relink :'(
