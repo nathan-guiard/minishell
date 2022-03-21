@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:03:53 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 14:20:07 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 11:25:01 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_a_sep(char c)
 {
-	if (c == '\0' || c == '\n' || c == '\f'
+	if (c == '\n' || c == '\f'
 		|| c == '\t' || c == '\r' || c == '\v'
 		|| c == ' ' || c == '|')
 		return (TRUE);
@@ -26,7 +26,7 @@ int	get_lexer_len(char *line, int i)
 	int	len;
 
 	len = i;
-	while (is_a_sep(line[len]) == FALSE)
+	while (is_a_sep(line[len]) == FALSE && line[len] != '\0')
 		len++;
 	return (len - i);
 }
@@ -54,4 +54,19 @@ int	is_a_valid_pipe(char *line, int breakpoint)
 	if (quote_type != 0)
 		return (FALSE);
 	return (TRUE);
+}
+
+/*	Check si le symbole est un separateur dans une string, genre
+	echo|ls le pipe "separe" la commande							*/
+int	is_a_symbol_sep(t_symbol symbol)
+{
+	if (symbol == red_in
+		|| symbol == red_out
+		|| symbol == append
+		|| symbol == heredoc
+		|| symbol == quote
+		|| symbol == d_quote
+		|| symbol == sb_pipe)
+		return (TRUE);
+	return (FALSE);
 }

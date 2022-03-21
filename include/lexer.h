@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 15:29:25 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 11:46:03 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 typedef enum	e_types
 {
+	string = 0,
 	red_in = 1,
 	red_out = 2,
 	append = 3,
@@ -29,7 +30,7 @@ typedef enum	e_types
 	quote = 10,
 	d_quote = 11,
 	sb_pipe = 12,
-	string = 13,
+	quoted_string = 50,
 }	t_symbol;
 
 typedef struct s_lexer
@@ -54,4 +55,5 @@ int		get_lexer_len(char *line, int i);
 char	*get_lexer_content(char *line, int *i);
 int		is_a_valid_pipe(char *line, int breakpoint);
 
+t_lexer	*full_symbol_table(char *line);
 #endif

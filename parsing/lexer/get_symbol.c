@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:47:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 15:26:17 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 11:36:36 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ t_symbol	get_onechar_symbol(char *line)
 		return (d_quote);
 	if (line[0] == '\'')
 		return (quote);
-	return ((t_symbol)S_ERR);
+	return (string);
 }

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 15:23:40 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 11:44:52 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@
 # define ALONE		4103
 /*	Nombre de builtin qu'on a												*/
 # define BUILTIN_NB	8
-
+/*	remplace les pipes par un un-writable comme ca on est safe				*/
+# define VALIDE_PIPE '\033'
 /*	Pointer sur fonction de type "void(char **)", aka nos builtins			*/
 typedef void (*builtin_fnc)(char **);
 typedef	char **t_doubletab;
@@ -50,7 +51,7 @@ void	cd(char **args);
 void	pwd(char **args);
 void	clear(char **args);
 void	ft_exit_builtin(char **args);
-void	env(char **args);
+void	ft_env(char **args);
 void	export(char **args);
 void	unset(char **args);
 void	ft_exit(int exit_value, char **args);
@@ -77,6 +78,6 @@ char 	*replace_variables(char *line);
 t_symbol	get_symbol(char *content);
 
 
-char *test(char *line);
+t_list *test(char *line);
 
 #endif

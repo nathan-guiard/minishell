@@ -6,20 +6,18 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:04:25 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/17 15:23:34 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/21 09:50:49 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 t_lexer		*get_symbol_table(char *line, int *i);
+t_list		*symbol_table_list(char *line);
 
-char	*test(char *line)
+t_list	*test(char *line)
 {
-	int	i;
-
-	i = 0;
-	return (get_lexer_content(line, &i));
+	return (symbol_table_list(line));
 }
 
 t_list	*symbol_table_list(char *line)
@@ -30,6 +28,8 @@ t_list	*symbol_table_list(char *line)
 	int		i;
 
 	i = 0;
+	res = NULL;
+	node = NULL;
 	symbol_table = get_symbol_table(line, &i);
 	while (symbol_table != NULL)
 	{
@@ -47,6 +47,9 @@ t_lexer	*get_symbol_table(char *line, int *i)
 	t_lexer		*res;
 	t_lexer		*node;
 
+	content = NULL;
+	res = NULL;
+	node = NULL;
 	while (line[*i] != '\0' && is_a_valid_pipe(line, *i) != TRUE)
 	{
 		content	= get_lexer_content(line, i);
@@ -68,6 +71,8 @@ char	*get_lexer_content(char *line, int *i)
 	res = malloc(sizeof(char) * (get_lexer_len(line, *i) + 1));
 	while (is_a_sep(line[*i]) == FALSE)
 	{
+		if (line[*i] == '\0')
+			break;
 		res[*i - j] = line[*i];
 		*i = *i + 1;
 	}
