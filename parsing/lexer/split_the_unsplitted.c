@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:18 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 13:56:15 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 14:52:54 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ void	split_the_unsplitted(t_lexer **list)
 	{
 		if (symbol_change(buff->content, 0) != (int)ft_strlen(buff->content)
 			&& buff->symbol != quoted_string)
+		{
 			devide_the_node(list, buff);
-		buff = buff->next;
+			buff = *list;
+		}
+		else
+			buff = buff->next;
 	}
 }
 
@@ -49,7 +53,9 @@ static void	devide_the_node(t_lexer **list, void *to_be_splitted)
 		{
 			to_insert = new_splitted_list(buff->content);
 			ft_lexerinsert(list, to_insert, before);
-			//BESOIN DE POP QQPART
+			ft_lexerpop(list, buff);
+			ft_lexerdelone(buff, free);
+			buff = to_insert;
 		}
 		before = buff;
 		buff = buff->next;

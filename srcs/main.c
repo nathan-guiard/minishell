@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 13:36:59 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 14:37:17 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int main(int argc, char **argv, char **env)
 			ft_lexerclear(&save, free);
 		}
 		else
-			ft_exit_builtin(NULL);
+			break;
+			//ft_exit_builtin(NULL);
 	}
 	return(0);
 }

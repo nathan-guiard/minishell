@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 13:11:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 14:08:24 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_lexer		*ft_lexernew(char *content, t_symbol symbol);
 int			ft_lexersize(t_lexer *lst);
 void		ft_lexerinsert(t_lexer **alst, t_lexer *to_insert,
 				t_lexer *after_this_one);
+void		ft_lexerpop(t_lexer **alexer, t_lexer *node);
 
 int			is_a_sep(char c);
 int			get_lexer_len(char *line, int i);
@@ -63,6 +64,7 @@ int			is_a_symbol_sep(t_symbol symbol);
 t_symbol	get_symbol(char *line);
 size_t		sizeof_sep(t_symbol symbol);
 void		split_the_unsplitted(t_lexer **list);
+
 
 // a virer
 t_lexer *new_splitted_list(char *line);

@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/22 13:09:50 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/22 14:08:43 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC =	srcs/main.c								\
 		list/ft_lexernew.c						\
 		list/ft_lexersize.c						\
 		list/ft_lexerinsert.c					\
+		list/ft_lexerpop.c						\
 		exec/builtin.c							\
 		exec/exec_simple_command.c				\
 		

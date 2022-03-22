@@ -34,10 +34,10 @@ Faire le ctrl-C de readline
 
 https://fr.wikipedia.org/wiki/Analyseur_LR (LR parser)
 
-probleme: le super makefile relink :'(
-
-pour enlever les quotes:
-	j'avance dans ma string, des que je trouve un quote je l'enleve et je continue
-	jusqu'a trouver la meme et je l'enleve, et je CONTINUE pas de retour a 0
+probleme:	le super makefile relink :'(
+			truc'a'|l ne vas pas capter le | prcq je transforme
+				toute la string en quoted_string. 
+				(je pense abandonner le quoted_string) et transformer
+				les spec_char en marcoz
 
 .nfs: unlink sans close
