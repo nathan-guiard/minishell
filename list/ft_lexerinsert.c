@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:49:47 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 13:12:38 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 14:01:32 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,14 @@ void	ft_lexerinsert(t_lexer **alst, t_lexer *to_insert, t_lexer *after_this_one)
 	t_lexer *buff;
 	t_lexer	*following;
 
-	if (!alst || !(*alst) || !after_this_one)
+	if (!alst || !(*alst))
 		return ;
 	buff = *alst;
+	if (!after_this_one)
+	{
+		ft_lexerlast(buff)->next = to_insert;
+		return ;
+	}
 	while (buff)
 	{
 		if (buff == after_this_one)
