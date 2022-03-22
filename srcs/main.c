@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 09:41:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 13:36:59 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,13 @@ int main(int argc, char **argv, char **env)
 	(void)argv;
 	(void)env;
 
-//	printf("%s", ft_strrm_index(argv[1], 4));
-
-
 	//catch_signals();
 	while (1)
 	{
 		line = prompt();
 		if (line)
 		{
-			//line = replace_pipe_and_spaces(line);
+			//printf("%d\n", symbol_change(line, 0));
 			node = full_symbol_table(line);
 			t_lexer *save = node;
 			while (node != NULL)
@@ -49,3 +46,6 @@ int main(int argc, char **argv, char **env)
 	}
 	return(0);
 }
+
+
+//0x0000007ff3202c

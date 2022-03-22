@@ -39,3 +39,5 @@ probleme: le super makefile relink :'(
 pour enlever les quotes:
 	j'avance dans ma string, des que je trouve un quote je l'enleve et je continue
 	jusqu'a trouver la meme et je l'enleve, et je CONTINUE pas de retour a 0
+
+.nfs: unlink sans close

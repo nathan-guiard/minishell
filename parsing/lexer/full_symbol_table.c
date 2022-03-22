@@ -6,18 +6,18 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:06:50 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 09:41:51 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 13:09:04 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_lexer *transform_tabs_into_nodes(char **split);
-t_lexer	*get_nodes(char *tab);
-char *replace_non_writable_spaces(char *tab);
-char	**put_spaces_again(char **tab);
+static t_lexer	*transform_tabs_into_nodes(char **split);
+static char		*replace_non_writable_spaces(char *tab);
+static char		**put_spaces_again(char **tab);
 
 /*	Transforme la ligne en une liste "symbol table"
+	Gere bien les espaces dans les quotes
 	Check pas les pipes
 	Check pas les separations collees comme "cat|ls"				*/
 t_lexer	*full_symbol_table(char *line)
@@ -31,11 +31,12 @@ t_lexer	*full_symbol_table(char *line)
 	splitted = put_spaces_again(splitted);
 	res = transform_tabs_into_nodes(splitted);
 	quote_handling(&res);
+	split_the_unsplitted(&res);
 	return (res);
 }
 
 /*	Transforme chaques tableaux du split en maillons pour la liste	*/
-t_lexer *transform_tabs_into_nodes(char **split)
+static t_lexer *transform_tabs_into_nodes(char **split)
 {
 	t_lexer *res;
 	t_lexer	*node;
@@ -54,7 +55,8 @@ t_lexer *transform_tabs_into_nodes(char **split)
 	return (res);
 }
 
-char	**put_spaces_again(char **tab)
+/*	Remet les espaces du doubles tableaux qui etaient des VALID_SPACE	*/
+static char	**put_spaces_again(char **tab)
 {
 	int	i;
 
@@ -69,7 +71,8 @@ char	**put_spaces_again(char **tab)
 	return (tab);
 }
 
-char *replace_non_writable_spaces(char *tab)
+/*	Remet les espaces mais dans un tableau	*/
+static char *replace_non_writable_spaces(char *tab)
 {
 	int i;
 

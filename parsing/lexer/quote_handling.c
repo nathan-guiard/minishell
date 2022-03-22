@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:57:48 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 09:39:47 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 09:51:03 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ char	*neutralize_the_quote(char *tab)
 	return (tab);
 }
 
+/*	Enleve chaque REPLACE_THIS_HOLE pour avoir une string sans quote ni \004	*/
 char	*fill_the_quote_void(char *tab)
 {
 	int		i;

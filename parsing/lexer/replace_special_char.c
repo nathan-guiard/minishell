@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:27:17 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/21 13:41:11 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 13:23:21 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,50 +41,6 @@ char *replace_pipe_and_spaces(char *line)
 	free(line);
 	return (res);
 }
-
-//int	is_a_valid_quote(char *line, int breakpoint)
-//{
-//	int	i;
-//	int	quote;
-
-//	i = 0;
-//	quote = 0;
-//	if (breakpoint == 0 && line[0] == '\'')
-//		return (TRUE);
-//	if (line[breakpoint] != '\'')
-//		return FALSE;
-//	while (line[i] != '\0' && i <= breakpoint)
-//	{
-//		if (line[i] == '\"')
-//			quote++;
-//		i++;
-//	}
-//	if (quote % 2 == 0)
-//		return (TRUE);
-//	return (FALSE);
-//}
-
-//int	is_a_valid_dquote(char *line, int breakpoint)
-//{
-//	int	i;
-//	int	quote;
-
-//	i = 0;
-//	quote = 0;
-//	if (breakpoint == 0 && line[0] == '\"')
-//		return (TRUE);
-//	if (line[breakpoint] != '\"')
-//		return FALSE;
-//	while (line[i] != '\0' && i <= breakpoint)
-//	{
-//		if (line[i] == '\'')
-//			quote++;
-//		i++;
-//	}
-//	if (quote % 2 == 0)
-//		return (TRUE);
-//	return (FALSE);
-//}
 
 int	is_a_valid_pipe(char *line, int breakpoint)
 {
@@ -139,3 +95,47 @@ int	is_a_valid_space(char *line, int breakpoint)
 		return (TRUE);
 	return (FALSE);
 }
+
+//int	is_a_valid_quote(char *line, int breakpoint)
+//{
+//	int	i;
+//	int	quote;
+
+//	i = 0;
+//	quote = 0;
+//	if (breakpoint == 0 && line[0] == '\'')
+//		return (TRUE);
+//	if (line[breakpoint] != '\'')
+//		return FALSE;
+//	while (line[i] != '\0' && i <= breakpoint)
+//	{
+//		if (line[i] == '\"')
+//			quote++;
+//		i++;
+//	}
+//	if (quote % 2 == 0)
+//		return (TRUE);
+//	return (FALSE);
+//}
+
+//int	is_a_valid_dquote(char *line, int breakpoint)
+//{
+//	int	i;
+//	int	quote;
+
+//	i = 0;
+//	quote = 0;
+//	if (breakpoint == 0 && line[0] == '\"')
+//		return (TRUE);
+//	if (line[breakpoint] != '\"')
+//		return FALSE;
+//	while (line[i] != '\0' && i <= breakpoint)
+//	{
+//		if (line[i] == '\'')
+//			quote++;
+//		i++;
+//	}
+//	if (quote % 2 == 0)
+//		return (TRUE);
+//	return (FALSE);
+//}
