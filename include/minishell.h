@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/21 14:12:18 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 16:13:12 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@
 /*	remplace les char spec qui cassent les couilles par des un-writable		*/
 # define VALID_PIPE			'\033'
 # define VALID_SPACE		'\030'
+# define VALID_REDIN		-5
+# define VALID_REDOUT		-6
+# define VALID_APPEND		-7
+# define VALID_HEREDOC		-8
+# define VALID_DOLLAR		-9
 # define REPLACE_THIS_HOLE	4
 //# define VALID_QUOTE	'Q'
 //# define VALID_DQUOTE	'D'

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 14:37:17 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 15:19:56 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main(int argc, char **argv, char **env)
 			while (node != NULL)
 			{
 				set_layout_printf(C_GREEN, C_RESET, C_BOLD);
-				printf("Content:%s [len: %ld]\nsymbol:%d\nnext:%p\n\n", node->content, ft_strlen(node->content), node->symbol, node->next);
+				printf("Content:%s [len: %ld]\nsymbol:%d\n\n", node->content, ft_strlen(node->content), node->symbol);
 				set_layout_printf(C_RESET, C_RESET, C_RESET);
 				node = node->next;
 			}
@@ -43,8 +43,8 @@ int main(int argc, char **argv, char **env)
 		}
 		else
 			break;
-			//ft_exit_builtin(NULL);
 	}
+	ft_exit_builtin(NULL);
 	return(0);
 }
 

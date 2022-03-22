@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 14:08:24 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 16:28:21 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ int			is_a_symbol_sep(t_symbol symbol);
 t_symbol	get_symbol(char *line);
 size_t		sizeof_sep(t_symbol symbol);
 void		split_the_unsplitted(t_lexer **list);
+
+t_symbol	get_onechar_symbol(char *line);
+t_symbol	get_symbol_replaced(char *line);
 
 
 // a virer

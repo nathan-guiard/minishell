@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:06:50 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 13:09:04 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 16:14:03 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_lexer	*full_symbol_table(char *line)
 	char **splitted;
 	t_lexer	*res;
 
-	line = replace_pipe_and_spaces(line);
+	line = replace_special_char(line);
 	splitted = ft_split(line, ' ');
 	free(line);
 	splitted = put_spaces_again(splitted);
