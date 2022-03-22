@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:57:48 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/21 16:52:41 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/22 09:39:47 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,7 @@ void	quote_handling(t_lexer **list)
 		buff->content = neutralize_the_quote(buff->content);
 		buff->content = fill_the_quote_void(buff->content);
 		if (tmp != buff->content)
-		{
 			buff->symbol = quoted_string;
-			printf("Something has changed\n");
-		}
-		else
-			printf("Nothing has changed\n");
 		buff = buff->next;
 	}
 }
@@ -67,7 +62,7 @@ char	*neutralize_the_quote(char *tab)
 		}
 		i++;
 	}
-	fill_the_quote_void(tab);
+	tab = fill_the_quote_void(tab);
 	return (tab);
 }
 
