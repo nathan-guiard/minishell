@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 09:37:48 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 11:27:39 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef enum	e_types
 	quote = 10,
 	d_quote = 11,
 	sb_pipe = 12,
-	quoted_string = 50,
+	delimiter = 13,//pour le heredoc
 }	t_symbol;
 
 typedef struct s_lexer
@@ -76,6 +76,8 @@ void		split_the_unsplitted(t_lexer **list);
 
 t_symbol	get_onechar_symbol(char *line);
 t_symbol	get_symbol_replaced(char *line);
+
+int	check_error_full_string(t_lexer *list);
 
 
 // a virer

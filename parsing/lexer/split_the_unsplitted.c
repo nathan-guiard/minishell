@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:18 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 08:52:47 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 11:28:11 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	split_the_unsplitted(t_lexer **list)
 	buff = *list;
 	while (buff)
 	{
-		if (symbol_change(buff->content, 0) != (int)ft_strlen(buff->content)
-			&& buff->symbol != quoted_string)
+		if (symbol_change(buff->content, 0) != (int)ft_strlen(buff->content))
 		{
 			devide_the_node(list, buff);
 			buff = *list;

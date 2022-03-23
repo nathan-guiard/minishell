@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:06:50 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 08:51:33 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 10:55:28 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 static t_lexer	*transform_tabs_into_nodes(char **split);
 static char		*replace_non_writable_spaces(char *tab);
 static char		**put_spaces_again(char **tab);
+int 			quotes_closed(char *line);
 
 /*	Transforme la ligne en une liste "symbol table"
-	Gere bien les espaces dans les quotes
-	Check pas les pipes
-	Check pas les separations collees comme "cat|ls"				*/
+	Gere bien cahr speciaux dans ou hors des quotes
+	Check pas les pipes	(division)					*/
 t_lexer	*full_symbol_table(char *line)
 {
 	char **splitted;
 	t_lexer	*res;
 
+	if (quotes_closed(line) == FALSE)
+		return (NULL);
 	line = replace_special_char(line);
 	splitted = ft_split(line, ' ');
 	free(line);
@@ -32,6 +34,8 @@ t_lexer	*full_symbol_table(char *line)
 	res = transform_tabs_into_nodes(splitted);
 	quote_handling(&res);
 	split_the_unsplitted(&res);
+	if (check_error_full_string(res) == TRUE)
+		return (NULL);
 	return (res);
 }
 
@@ -86,4 +90,27 @@ static char *replace_non_writable_spaces(char *tab)
 		i++;
 	}
 	return (tab);
+}
+
+int quotes_closed(char *line)
+{
+	int	i;
+	char quote_type;
+
+	i = 0;
+	quote_type = 0;
+	while (line[i] != 0)
+	{
+		if (line[i] == '\'' || line[i] == '\"')
+		{
+			if (line[i] == quote_type)
+				quote_type = 0;
+			else if (line[i] != quote_type && quote_type == 0)
+				quote_type = line[i];
+		}
+		i++;
+	}
+	if (quote_type != 0)
+		return (FALSE);
+	return (TRUE);
 }

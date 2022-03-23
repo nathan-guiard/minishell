@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 15:19:56 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 11:01:36 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,20 @@ int main(int argc, char **argv, char **env)
 		{
 			//printf("%d\n", symbol_change(line, 0));
 			node = full_symbol_table(line);
-			t_lexer *save = node;
-			while (node != NULL)
+			if (node == NULL)
+				ft_putstr_fd("Syntax error.\n", 2);
+			else
 			{
-				set_layout_printf(C_GREEN, C_RESET, C_BOLD);
-				printf("Content:%s [len: %ld]\nsymbol:%d\n\n", node->content, ft_strlen(node->content), node->symbol);
-				set_layout_printf(C_RESET, C_RESET, C_RESET);
-				node = node->next;
+				t_lexer *save = node;
+				while (node != NULL)
+				{
+					set_layout_printf(C_GREEN, C_RESET, C_BOLD);
+					printf("Content:%s [len: %ld]\nsymbol:%d\n\n", node->content, ft_strlen(node->content), node->symbol);
+					set_layout_printf(C_RESET, C_RESET, C_RESET);
+					node = node->next;
+				}
+				ft_lexerclear(&save, free);
 			}
-			ft_lexerclear(&save, free);
 		}
 		else
 			break;

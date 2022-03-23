@@ -6,14 +6,12 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:27:17 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 09:58:12 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 10:22:36 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//int	is_a_valid_quote(char *line, int breakpoint);
-//int	is_a_valid_dquote(char *line, int breakpoint);
 int	is_a_valid_space(char *line, int breakpoint);
 char replace_special_onechar(char truc);
 int is_a_valid_special_char(char *line, int breakpoint);
@@ -147,74 +145,3 @@ int	is_a_valid_dollar(char *line, int breakpoint)
 		return (FALSE);
 	return (TRUE);
 }
-
-//int	is_a_valid_pipe(char *line, int breakpoint)
-//{
-//	int		i;
-//	char	quote_type;
-
-//	i = 0;
-//	quote_type = 0;
-//	if (breakpoint == 0 && line[0] == '|')
-//		return (FALSE);
-//	if (line[breakpoint] != '|')
-//		return FALSE;
-//	while (line[i] != '\0' && i <= breakpoint)
-//	{
-//		if (line[i] == '\'' || line[i] == '\"')
-//		{
-//			if (line[i] == quote_type)
-//				quote_type = 0;
-//			else if (line[i] != quote_type && quote_type == 0)
-//				quote_type = line[i];
-//		}
-//		i++;
-//	}
-//	if (quote_type != 0)
-//		return (FALSE);
-//	return (TRUE);
-//}
-
-//int	is_a_valid_quote(char *line, int breakpoint)
-//{
-//	int	i;
-//	int	quote;
-
-//	i = 0;
-//	quote = 0;
-//	if (breakpoint == 0 && line[0] == '\'')
-//		return (TRUE);
-//	if (line[breakpoint] != '\'')
-//		return FALSE;
-//	while (line[i] != '\0' && i <= breakpoint)
-//	{
-//		if (line[i] == '\"')
-//			quote++;
-//		i++;
-//	}
-//	if (quote % 2 == 0)
-//		return (TRUE);
-//	return (FALSE);
-//}
-
-//int	is_a_valid_dquote(char *line, int breakpoint)
-//{
-//	int	i;
-//	int	quote;
-
-//	i = 0;
-//	quote = 0;
-//	if (breakpoint == 0 && line[0] == '\"')
-//		return (TRUE);
-//	if (line[breakpoint] != '\"')
-//		return FALSE;
-//	while (line[i] != '\0' && i <= breakpoint)
-//	{
-//		if (line[i] == '\'')
-//			quote++;
-//		i++;
-//	}
-//	if (quote % 2 == 0)
-//		return (TRUE);
-//	return (FALSE);
-//}
