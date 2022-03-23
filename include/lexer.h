@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 16:28:21 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 09:37:48 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@ typedef struct s_lexer
 	struct	s_lexer	*next;
 }	t_lexer;
 
+# define VALID_PIPE			'\033'
+# define VALID_SPACE		'\030'
+# define VALID_REDIN		5
+# define VALID_REDOUT		6
+# define VALID_APPEND		7
+# define VALID_HEREDOC		16
+# define VALID_DOLLAR		17
+# define REPLACE_THIS_HOLE	4
+
 void		ft_lexeradd_front(t_lexer **alst, t_lexer *new);
 void		ft_lexeradd_back(t_lexer **alst, t_lexer *new);
 void		ft_lexerclear(t_lexer **lst, void (*del)(void *));
@@ -59,7 +68,7 @@ int			is_a_valid_pipe(char *line, int breakpoint);
 
 t_lexer		*full_symbol_table(char *line);
 void		quote_handling(t_lexer **list);
-char 		*replace_pipe_and_spaces(char *line);
+char 		*replace_special_char(char *line);
 int			is_a_symbol_sep(t_symbol symbol);
 t_symbol	get_symbol(char *line);
 size_t		sizeof_sep(t_symbol symbol);

@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/22 14:08:43 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/23 09:39:56 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ SRC =	srcs/main.c								\
 		parsing/exec_path.c						\
 		parsing/variables/variable_replace.c	\
 		parsing/variables/variable_utils.c		\
-		parsing/lexer/symbol_table.c			\
 		parsing/lexer/utils.c					\
 		parsing/lexer/get_symbol.c				\
 		parsing/lexer/full_symbol_table.c		\
@@ -100,7 +99,7 @@ fclean:
 re: fclean all
 
 error:
-	@printf "\033[0;0H\033[1;31m\033[JAn error as occured:\033[J\033[0m\n"
+	@printf "\033[0;0H\033[1;31m\033[JAn error has occured:\033[J\033[0m\n"
 	@cat error.log 2>/dev/null
 	@echo "\033[?25h"
 

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 14:25:25 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 09:18:23 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	is_a_valid_env(char *line, int i)
 	save = i;
 	while (line[i] != '\0' && line[i] != '\f' && line[i] != '\t'
 		&& line[i] != '\n' && line[i] != '\r' && line[i] != '\v'
-		&& line[i] != ' ' && line[i] != '$')
+		&& line[i] != ' ' && line[i] != VALID_DOLLAR)
 		i++;
 	if (i - save == 0)
 		return (ALONE);
@@ -66,7 +66,7 @@ int	where_is_end_var(char *line, int start_var)
 	while (line[i] != search && line[i])
 	{
 		if (line[i] == '\f' || line[i] == '\t' || line[i] == '\n'
-			|| line[i] == '\r' || line[i] == '\v' || line[i] == '$')
+			|| line[i] == '\r' || line[i] == '\v' || line[i] == VALID_DOLLAR)
 			break;
 		i++;
 	}

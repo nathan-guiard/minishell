@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:06:50 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 16:14:03 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 08:51:33 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_lexer *transform_tabs_into_nodes(char **split)
 	node = NULL;
 	while (split[i] != NULL)
 	{
-		node = ft_lexernew(ft_strdup(split[i]), get_symbol(split[i]));
+		node = ft_lexernew(ft_strdup(split[i]), get_symbol_replaced(split[i]));
 		ft_lexeradd_back(&res, node);
 		i++;
 	}

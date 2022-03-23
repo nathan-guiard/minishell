@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:18 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 14:52:54 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 08:52:47 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_lexer *new_splitted_list(char *line)
 	{
 		next = symbol_change(line, i);
 		new_content = ft_substr(line, i, next - i);
-		node = ft_lexernew(new_content, get_symbol(new_content));
+		node = ft_lexernew(new_content, get_symbol_replaced(new_content));
 		ft_lexeradd_back(&res, node);
 		i = next;
 		if (i > (int)ft_strlen(line))
@@ -102,14 +102,14 @@ int	symbol_change(char *line, int start)
 	nitro_fraude[0] = line[start];
 	if (line[start + 1] != '\0')
 		nitro_fraude[1] = line[start + 1];
-	curr = get_symbol(nitro_fraude);
+	curr = get_symbol_replaced(nitro_fraude);
 	i = start + sizeof_sep(curr);
 	while (line[i])
 	{
 		nitro_fraude[0] = line[i];
 		if (line[i + 1] != '\0')
 			nitro_fraude[1] = line[i + 1];
-		to_test = get_symbol(nitro_fraude);
+		to_test = get_symbol_replaced(nitro_fraude);
 		if (to_test != curr || (is_a_symbol_sep(to_test) == TRUE 
 			&& to_test == curr && (i - start >= (int)sizeof_sep(curr))))
 			break;

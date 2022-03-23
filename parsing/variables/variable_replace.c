@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:16:54 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 14:23:37 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 09:17:52 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char *replace_variables(char *line)
 	i = 0;
 	while (line[i] != '\0')
 	{
-		if (line[i] == '$')
+		if (line[i] == VALID_DOLLAR)
 		{
 			ret = is_a_valid_env(line, i);
 			if (ret == M_ERR)

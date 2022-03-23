@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 16:13:12 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 09:37:41 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,6 @@
 # define ALONE		4103
 /*	Nombre de builtin qu'on a												*/
 # define BUILTIN_NB	8
-/*	remplace les char spec qui cassent les couilles par des un-writable		*/
-# define VALID_PIPE			'\033'
-# define VALID_SPACE		'\030'
-# define VALID_REDIN		-5
-# define VALID_REDOUT		-6
-# define VALID_APPEND		-7
-# define VALID_HEREDOC		-8
-# define VALID_DOLLAR		-9
-# define REPLACE_THIS_HOLE	4
-//# define VALID_QUOTE	'Q'
-//# define VALID_DQUOTE	'D'
 /*	Pointer sur fonction de type "void(char **)", aka nos builtins			*/
 typedef void (*builtin_fnc)(char **);
 typedef	char **t_doubletab;
