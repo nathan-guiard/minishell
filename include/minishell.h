@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 11:31:27 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 12:20:49 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "lexer.h"
+# include "parsing_api.h"
 # include "variables.h"
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -80,5 +81,6 @@ char	*translate_symbol(t_symbol symbol);
 t_parstab	rename_strings(t_parstab tab);
 
 t_list *test(char *line);
+void	free_parstab(t_parstab tab);
 
 #endif

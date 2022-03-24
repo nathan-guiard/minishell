@@ -30,14 +30,8 @@ Debut du prog: export $? = 0
 	ctrl-\ (?): Rien, pour l'instant ca fait crash readline
 
 Nathan:
-Faire le ctrl-C de readline
-
-https://fr.wikipedia.org/wiki/Analyseur_LR (LR parser)
+faire les $
 
 probleme:	le super makefile relink :'(
-			truc'a'|l ne vas pas capter le | prcq je transforme
-				toute la string en quoted_string. 
-				(je pense abandonner le quoted_string) et transformer
-				les spec_char en marcoz
 
 .nfs: unlink sans close

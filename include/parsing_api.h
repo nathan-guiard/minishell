@@ -1,40 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   parsing_api.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 17:33:46 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 12:12:53 by nguiard          ###   ########.fr       */
+/*   Created: 2022/03/24 12:18:06 by nguiard           #+#    #+#             */
+/*   Updated: 2022/03/24 12:20:36 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 
-/*	Free un tableau de tableaux */
-void	free_tabtab(char **tab)
-{
-	int i;
+#ifndef PARSING_API_H
+# define PARSING_API_H
 
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-}
+# include "minishell.h"
 
-void	free_parstab(t_parstab tab)
-{
-	int	i;
+char *api_last_red_out(t_lexer *list);
 
-	i = 0;
-	while (tab[i])
-	{
-		ft_lexerclear(&tab[i], free);
-		i++;
-	}
-	free(tab);
-}
+#endif

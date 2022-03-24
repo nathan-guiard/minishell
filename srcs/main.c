@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 11:45:33 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 12:19:49 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,12 @@ int main(int argc, char **argv, char **env)
 						set_layout_printf(C_BLUE, C_RESET, C_ITALIC);
 						set_layout_printf(C_BLUE, C_RESET, C_BOLD);
 						ft_lexerprint(tab[i]);
+						
+						printf("last: %s\n", api_last_red_out(tab[i]));
 						i++;
 					}
 					i = 0;
-					while (tab[i])
-					{
-						ft_lexerclear(&tab[i], free);
-						i++;
-					}
-					free(tab);
+					free_parstab(tab);
 				}
 				i = 0;
 			}
