@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   api_last_red_out.c                                 :+:      :+:    :+:   */
+/*   api_last_red_in.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 12:08:20 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 12:41:40 by nguiard          ###   ########.fr       */
+/*   Created: 2022/03/24 12:33:34 by nguiard           #+#    #+#             */
+/*   Updated: 2022/03/24 12:41:36 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*	Renvoie nom du dernier fichier de redirection out ou
+/*	Renvoie nom du dernier fichier de redirection in ou
 	NULL si il y en a pas.
-	En gros c'est le fichier qu'on doit remplir
+	Si un heredoc a ete detecte, renvoie HEREDOC_STRING
+	En gros c'est le fichier qu'on doit lire
 	A NE PAS FREE										*/
-char *api_last_red_out(t_lexer *list)
+char	*api_last_red_in(t_lexer *list)
 {
 	t_lexer *buff;
 	char	*last;
@@ -25,9 +26,10 @@ char *api_last_red_out(t_lexer *list)
 	buff = list;
 	while (buff)
 	{
-		if ((buff->symbol == append || buff->symbol == red_out)
-			&& buff->next)
+		if (buff->symbol == red_in && buff->next)
 			last = buff->next->content;
+		if (buff->symbol == heredoc)
+			return (HEREDOC_STRING);
 		buff = buff->next;
 	}
 	return (last);

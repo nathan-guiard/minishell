@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:06:50 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 09:47:25 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 12:39:14 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ t_lexer	*full_symbol_table(char *line)
 	quote_handling(&res);
 	split_the_unsplitted(&res);
 	if (check_error_full_string(res) == TRUE)
+	{
+		ft_lexerclear(&res, free);
 		return (NULL);
+	}
 	return (res);
 }
 

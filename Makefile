@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/24 12:21:17 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/24 12:42:14 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC =	srcs/main.c									\
 		parsing/errors/check_error_full_string.c	\
 		parsing/parsing_main.c						\
 		parsing_api/api_last_red_out.c				\
+		parsing_api/api_last_red_in.c				\
 		list/ft_lexeradd_back.c						\
 		list/ft_lexeradd_front.c					\
 		list/ft_lexerclear.c						\
