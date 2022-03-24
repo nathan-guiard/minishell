@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 10:01:54 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 10:40:18 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int argc, char **argv, char **env)
 		line = prompt();
 		if (line)
 		{
-			//printf("%d\n", symbol_change(line, 0));
+			printf("%s\n", translate_symbol(get_symbol(line)));
 			tab = full_parsing(line);
 			printf("%p\n", tab);
 			if (tab == NULL)
@@ -44,7 +44,8 @@ int main(int argc, char **argv, char **env)
 				{
 					set_layout_printf(C_GREEN, C_RESET, C_RESET);
 					printf("Pipe nb %d\n", i);
-					set_layout_printf(C_HGREN, C_RESET, C_ITALIC);
+					set_layout_printf(C_BLUE, C_RESET, C_ITALIC);
+					set_layout_printf(C_BLUE, C_RESET, C_BOLD);
 					ft_lexerprint(tab[i]);
 					i++;
 				}

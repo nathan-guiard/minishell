@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 09:10:55 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 09:24:16 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 10:39:07 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,13 @@ void	ft_lexerprint(t_lexer *lst)
 	while (buff)
 	{
 		symbol_str = translate_symbol(buff->symbol);
-		ft_printf("Content:%s\nSymbol:%s\n\n", buff->content, symbol_str);
+		if (buff->symbol == string)
+		{
+			printf("Content:%s\n", buff->content);
+			printf("Symbol:%s\n\n", symbol_str);
+		}
+		else
+			ft_printf("Symbol:%s\n\n", symbol_str);
 		buff = buff->next;
 		free(symbol_str);
 	}
