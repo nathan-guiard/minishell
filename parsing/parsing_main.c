@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 11:31:47 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 10:39:34 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 11:17:05 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_parstab full_parsing(char *line)
 		return (NULL);
 	pipe_nb = how_many_pipes(first_part);
 	tab = split_the_pipes(first_part, pipe_nb);
+	tab = rename_strings(tab);
 	return (tab);
-	return (NULL);
 }
 
 int	how_many_pipes(t_lexer *list)
