@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:09:17 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 10:03:45 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 11:48:16 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ t_parstab	split_the_pipes(t_lexer *list, int pipe_nb)
 		buff = buff->next;
 	}
 	res[pipe_nb + 1] = NULL;
+	ft_lexerclear(&list, free);
 	return (res);
 }
