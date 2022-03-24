@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:09:17 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 09:32:43 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 09:58:46 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_parstab	split_the_pipes(t_lexer *list, int pipe_nb)
 	int			i;
 	char		*new_content;
 
-	res = ft_calloc(sizeof(t_lexer *), (pipe_nb + 1));
+	res = ft_calloc(sizeof(t_lexer *), (pipe_nb + 2));
 	if (!res)
 		return (NULL);
 	buff = list;
