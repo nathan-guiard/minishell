@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 10:04:15 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 11:05:09 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/23 11:39:47 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	check_error_full_string(t_lexer *list)
 	t_lexer	*buff;
 
 	buff = list;
+	if (buff->symbol == sb_pipe)
+		return (TRUE);
 	while (buff->next)
 	{
 		if (is_a_symbol_sep(buff->symbol) == TRUE

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 09:37:41 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 09:21:31 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int		exec_simple_command(char **command, char **env);
 
 /*	Parsing	*/
 
+t_parstab full_parsing(char *line);
+
 char	**remove_command_name(char **);
 int		is_a_builtin(char *cmd_name);
 char 	**get_builtin_tab_name(void);
@@ -74,7 +76,7 @@ void 	*get_builtin_fnc(char *cmd_name);
 char 	*exec_path(char *cmd_name);
 char 	*replace_variables(char *line);
 t_symbol	get_symbol(char *content);
-
+char	*translate_symbol(t_symbol symbol);
 
 t_list *test(char *line);
 

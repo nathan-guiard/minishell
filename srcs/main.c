@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 11:01:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 09:32:19 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,41 @@ t_list *g_env;
 int main(int argc, char **argv, char **env)
 {
 	char		*line;
-	t_lexer		*node;
+	t_parstab	tab;
+//	int			i;
 
 	(void)argc;
 	(void)argv;
 	(void)env;
 
 	//catch_signals();
+	//i = 0;
 	while (1)
 	{
 		line = prompt();
 		if (line)
 		{
 			//printf("%d\n", symbol_change(line, 0));
-			node = full_symbol_table(line);
-			if (node == NULL)
+			tab = full_parsing(line);
+			printf("%p\n", tab);
+			if (tab == NULL)
 				ft_putstr_fd("Syntax error.\n", 2);
-			else
-			{
-				t_lexer *save = node;
-				while (node != NULL)
-				{
-					set_layout_printf(C_GREEN, C_RESET, C_BOLD);
-					printf("Content:%s [len: %ld]\nsymbol:%d\n\n", node->content, ft_strlen(node->content), node->symbol);
-					set_layout_printf(C_RESET, C_RESET, C_RESET);
-					node = node->next;
-				}
-				ft_lexerclear(&save, free);
-			}
+			//else
+			//{
+			//	while (tab[i] != NULL)
+			//	{
+			//		ft_lexerprint(tab[i]);
+			//		i++;
+			//	}
+			//	i = 0;
+			//	while (tab[i])
+			//	{
+			//		ft_lexerclear(&tab[i], free);
+			//		i++;
+			//	}
+			//	free(tab);
+			//}
+			//i = 0;
 		}
 		else
 			break;
@@ -52,6 +59,3 @@ int main(int argc, char **argv, char **env)
 	ft_exit_builtin(NULL);
 	return(0);
 }
-
-
-//0x0000007ff3202c

@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/23 10:21:10 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/24 09:21:15 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,8 @@ SRC =	srcs/main.c									\
 		parsing/lexer/replace_special_char.c		\
 		parsing/lexer/quote_handling.c				\
 		parsing/lexer/split_the_unsplitted.c		\
+		parsing/lexer/split_the_pipes.c				\
+		parsing/parsing_main.c						\
 		parsing/errors/check_error_full_string.c	\
 		list/ft_lexeradd_back.c						\
 		list/ft_lexeradd_front.c					\
@@ -45,6 +47,7 @@ SRC =	srcs/main.c									\
 		list/ft_lexersize.c							\
 		list/ft_lexerinsert.c						\
 		list/ft_lexerpop.c							\
+		list/ft_lexerprint.c						\
 		exec/builtin.c								\
 		exec/exec_simple_command.c					\
 		

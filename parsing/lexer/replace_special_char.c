@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:27:17 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 10:22:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 09:47:05 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ char replace_special_onechar(char truc);
 int is_a_valid_special_char(char *line, int breakpoint);
 int	is_a_valid_dollar(char *line, int breakpoint);
 
+/*	Retourne la meme ligne sauf que les caracteres speciaux
+	genre < ou | sont remplaces si ils ne sont pas
+	dans des quotes											*/
 char *replace_special_char(char *line)
 {
 	char	*res;
@@ -41,6 +44,7 @@ char *replace_special_char(char *line)
 	return (res);
 }
 
+/*	Retourne la macro VALID_<char> en fonction de char	*/
 char replace_special_onechar(char truc)
 {
 	t_symbol res;
@@ -62,20 +66,20 @@ char replace_special_onechar(char truc)
 	return (truc);
 }
 
+
 int is_a_valid_special_char(char *line, int breakpoint)
 {
 	int		i;
 	char	quote_type;
 
-	i = 0;
 	if (is_a_valid_space(line, breakpoint) == TRUE
 		|| is_a_valid_dollar(line, breakpoint) == TRUE)
 		return (TRUE);
+	if (get_onechar_symbol(line + breakpoint) == string
+		|| line[breakpoint] == '$' || line[breakpoint] == ' ')
+		return FALSE;
 	i = 0;
 	quote_type = 0;
-	if (get_onechar_symbol(line + breakpoint) == string
-		&& line[breakpoint] != '$' && line[breakpoint] != ' ')
-		return FALSE;
 	while (line[i] != '\0' && i <= breakpoint)
 	{
 		if (line[i] == '\'' || line[i] == '\"')
@@ -129,7 +133,7 @@ int	is_a_valid_dollar(char *line, int breakpoint)
 	if (breakpoint == 0 && line[0] == '$')
 		return (TRUE);
 	if (line[breakpoint] != '$')
-		return TRUE;
+		return FALSE;
 	while (line[i] != '\0' && i <= breakpoint)
 	{
 		if (line[i] == '\'')

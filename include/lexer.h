@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 11:27:39 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 09:23:00 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef enum	e_types
 	d_quote = 11,
 	sb_pipe = 12,
 	delimiter = 13,//pour le heredoc
+	red_in_file = 14,
+	red_out_file = 15,
+	append_file = 16
 }	t_symbol;
 
 typedef struct s_lexer
@@ -49,6 +52,8 @@ typedef struct s_lexer
 # define VALID_DOLLAR		17
 # define REPLACE_THIS_HOLE	4
 
+typedef t_lexer **t_parstab;
+
 void		ft_lexeradd_front(t_lexer **alst, t_lexer *new);
 void		ft_lexeradd_back(t_lexer **alst, t_lexer *new);
 void		ft_lexerclear(t_lexer **lst, void (*del)(void *));
@@ -60,6 +65,7 @@ int			ft_lexersize(t_lexer *lst);
 void		ft_lexerinsert(t_lexer **alst, t_lexer *to_insert,
 				t_lexer *after_this_one);
 void		ft_lexerpop(t_lexer **alexer, t_lexer *node);
+void		ft_lexerprint(t_lexer *lst);
 
 int			is_a_sep(char c);
 int			get_lexer_len(char *line, int i);
@@ -77,7 +83,9 @@ void		split_the_unsplitted(t_lexer **list);
 t_symbol	get_onechar_symbol(char *line);
 t_symbol	get_symbol_replaced(char *line);
 
-int	check_error_full_string(t_lexer *list);
+int			check_error_full_string(t_lexer *list);
+t_parstab	split_the_pipes(t_lexer *list, int pipe_nb);
+
 
 
 // a virer
