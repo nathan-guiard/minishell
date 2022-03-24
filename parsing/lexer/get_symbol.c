@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:47:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 09:38:20 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 10:55:33 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ t_symbol	get_symbol(char *line)
 		return (heredoc);
 	if (ft_strcmp(line, ">>") == 0)
 		return (append);
-	if (ft_strchr(line, '/') != NULL)
-		return (path);
 	if (is_a_builtin(line) == TRUE)
 		return (sb_builtin);
 	if (get_onechar_symbol(line) != string)
@@ -55,8 +53,6 @@ t_symbol	get_symbol_replaced(char *line)
 		return (heredoc);
 	if (ft_strcmp(line, "\006\006") == 0)
 		return (append);
-	if (ft_strchr(line, '/') != NULL)
-		return (path);
 	if (is_a_builtin(line) == TRUE)
 		return (sb_builtin);
 	if (get_onechar_symbol_replaced(line) != string)

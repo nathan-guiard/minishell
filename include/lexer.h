@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 09:23:00 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 10:49:41 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_lexer
 # define VALID_REDOUT		6
 # define VALID_APPEND		7
 # define VALID_HEREDOC		16
-# define VALID_DOLLAR		17
+# define VALID_DOLLAR		17.
 # define REPLACE_THIS_HOLE	4
 
 typedef t_lexer **t_parstab;

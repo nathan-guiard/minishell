@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 09:10:55 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 10:39:07 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/24 10:54:04 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_lexerprint(t_lexer *lst)
 			printf("Symbol:%s\n\n", symbol_str);
 		}
 		else
-			ft_printf("Symbol:%s\n\n", symbol_str);
+			ft_printf("Symbol:\t%s\n\n", symbol_str);
 		buff = buff->next;
 		free(symbol_str);
 	}
