@@ -39,6 +39,10 @@ donner comme content les bails genre echo truc:
 	echo -> commande
 	truc -> argument
 
+remplacer les $(unset) par NOTHING.
+faire un truc ou genre les NOTHING sont ignores
+si une liste n'as pas de commande -> rien faire (/usr/bin/true)
+
 probleme:	le super makefile relink :'(
 
 .nfs: unlink sans close

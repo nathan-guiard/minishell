@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 11:17:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 11:32:23 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/27 17:34:30 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_parstab	rename_strings(t_parstab tab)
 		}
 		i++;
 	}
+//	first_string_is_command();
 	return (tab);
 }
 
