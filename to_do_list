@@ -29,8 +29,15 @@ Debut du prog: export $? = 0
 	ctrl-D (?): On apelle la meme fonction que pour exit avec exit(1)
 	ctrl-\ (?): Rien, pour l'instant ca fait crash readline
 
+
+tt le mode:
+	pas de quote dans export genre TEST"'" ca marche pas
+	si env -i ./minishell: faire une list vide mais surtout
+		pas seg, ce qu'il se passe actuellement.
 Nathan:
-faire les $
+donner comme content les bails genre echo truc:
+	echo -> commande
+	truc -> argument
 
 probleme:	le super makefile relink :'(
 

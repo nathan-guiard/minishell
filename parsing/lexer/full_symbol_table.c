@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:06:50 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 12:39:14 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/27 17:16:49 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_lexer	*full_symbol_table(char *line)
 	if (quotes_closed(line) == FALSE)
 		return (NULL);
 	line = replace_special_char(line);
+	line = replace_variables(line);
+	printf("Variable remplacees:%s %d\n", line, (int)ft_strlen(line));
 	splitted = ft_split(line, ' ');
 	free(line);
 	splitted = put_spaces_again(splitted);

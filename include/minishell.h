@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 12:20:49 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/27 15:07:31 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ char 	*replace_variables(char *line);
 t_symbol	get_symbol(char *content);
 char	*translate_symbol(t_symbol symbol);
 t_parstab	rename_strings(t_parstab tab);
+char	*ft_getenv(char *name);
 
 t_list *test(char *line);
 void	free_parstab(t_parstab tab);

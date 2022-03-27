@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:18 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 11:28:11 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/27 17:09:38 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	symbol_change(char *line, int start)
 
 	ft_bzero(nitro_fraude, 3);
 	nitro_fraude[0] = line[start];
-	if (line[start + 1] != '\0')
+	if (line[start] && line[start + 1] != '\0')
 		nitro_fraude[1] = line[start + 1];
 	curr = get_symbol_replaced(nitro_fraude);
 	i = start + sizeof_sep(curr);
