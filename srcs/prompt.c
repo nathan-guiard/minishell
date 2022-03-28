@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:22 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:31:00 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:45:23 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ static char	*is_home(char *abs_dir)
 
 	home = getenv("HOME");
 	if (ft_strcmp(abs_dir, home) == 0)
-		return (ft_strdup("~"));
+		return (free(abs_dir), ft_strdup("~"));
 	return (NULL);
 }
