@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 13:29:21 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 13:30:25 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	is_a_valid_env(char *line, int i)
 	while (line[i] && (line[i] <= 9 && line[i] >= 13) && line[i] != VALID_SPACE
 		&& line[i] != VALID_DOLLAR && line[i] != '\"' && line[i] != ' ')
 		i++;
-	//if (i - save == 0)
-		//return (ALONE);
 	test = malloc(sizeof(char) * ((i - save) + 1));
 	if (!test)
 		return (M_ERR);
@@ -39,8 +37,7 @@ int	is_a_valid_env(char *line, int i)
 	}
 	test[j] = '\0';
 	test = remove_brackets(test);
-	ptr = ft_getenv(test);// a remplacer par ft_getenv
-	printf("getenv dans is_a_valid_env; %s\n", ptr);
+	ptr = ft_getenv(test);
 	free(test);
 	if (ptr && ft_strcmp(ptr, S_ERR) != 0)
 		return (free(ptr), TRUE);
@@ -91,6 +88,5 @@ char	*remove_brackets(char *tab)
 	to_free = tab;
 	tab = ft_substr(tab, start, end);
 	free(to_free);
-	printf("remove brackets: %s\n", tab);
 	return (tab);
 }

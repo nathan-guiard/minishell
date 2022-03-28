@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:09:13 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:15:29 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 14:50:18 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,17 @@
 
 void	unset(char **args)
 {
-	if (!args || !args[0])
+	t_list	*node;
+	int		i;
+
+	i = 1;
+	if (!args)
 		return ;
-	printf("unset not supported\n");
+	while (args[i])
+	{
+		node = get_env_node(args[i]);
+		if (node)
+			ft_lstpop(&g_env, node);
+		i++;
+	}
 }
