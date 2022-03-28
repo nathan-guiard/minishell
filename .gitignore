@@ -19,3 +19,6 @@ a.out
 *truc*
 philo
 error.log
+
+.vscode
+.vscode/*

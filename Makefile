@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/28 11:57:43 by nguiard          ###   ########.fr        #
+#    Updated: 2022/03/28 12:30:03 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,10 +55,10 @@ SRC =	srcs/main.c										\
 		list/ft_lexerprint.c							\
 		exec/builtin.c									\
 		exec/exec_simple_command.c						\
-#		parsing/env/ft_getenv.c							\
-		parsing/env/get_env_node.c						\
+		parsing/env/ft_getenv.c							\
 		parsing/env/turn_env_into_list.c				\
-		parsing/env/turn_env_into_tab.c					\
+#		parsing/env/turn_env_into_tab.c					\
+		parsing/env/get_env_node.c						\
 		
 SHELL := /bin/zsh
 

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:35:27 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 13:29:21 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ int	is_a_valid_env(char *line, int i)
 
 	i++;
 	save = i;
-	while (line[i] != '\0' && line[i] != '\f' && line[i] != 9 && line[i] != 10
-		&& line[i] != '\r' && line[i] != '\v' && line[i] != VALID_SPACE
-		&& line[i] != VALID_DOLLAR && line[i] != '\"')
+	while (line[i] && (line[i] <= 9 && line[i] >= 13) && line[i] != VALID_SPACE
+		&& line[i] != VALID_DOLLAR && line[i] != '\"' && line[i] != ' ')
 		i++;
-	if (i - save == 0)
-		return (ALONE);
+	//if (i - save == 0)
+		//return (ALONE);
 	test = malloc(sizeof(char) * ((i - save) + 1));
 	if (!test)
 		return (M_ERR);
@@ -40,11 +39,12 @@ int	is_a_valid_env(char *line, int i)
 	}
 	test[j] = '\0';
 	test = remove_brackets(test);
-	ptr = getenv(test);// a remplacer par ft_getenv
+	ptr = ft_getenv(test);// a remplacer par ft_getenv
+	printf("getenv dans is_a_valid_env; %s\n", ptr);
 	free(test);
-	if (ptr)
-		return (TRUE);
-	return (FALSE);
+	if (ptr && ft_strcmp(ptr, S_ERR) != 0)
+		return (free(ptr), TRUE);
+	return (free(ptr), FALSE);
 }
 
 /*	Trouve l'indice de la fin de la variable	*/

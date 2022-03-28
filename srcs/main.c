@@ -6,13 +6,13 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 12:01:04 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:59:56 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list *g_env;
+t_list *g_env = NULL;
 
 int main(int argc, char **argv, char **env)
 {
@@ -26,6 +26,7 @@ int main(int argc, char **argv, char **env)
 
 	//catch_signals();
 	i = 0;
+	turn_env_into_list(env);
 	while (1)
 	{
 		line = prompt();
@@ -33,6 +34,14 @@ int main(int argc, char **argv, char **env)
 		{
 			if (line[0] != '\0')
 			{
+				//line = replace_variables(line);
+				//if (line)
+				//{
+				//	char *test_env = ft_getenv(ft_substr(line, 1, INT_MAX));
+				//	if (test_env)
+				//		printf("%s\n", test_env);
+				//}
+				//free(test_env);
 				tab = full_parsing(line);
 				//printf("%p\n", tab);
 				if (tab == NULL)

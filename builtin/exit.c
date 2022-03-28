@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:32:04 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:15:09 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:47:13 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_exit(int exit_value, char **args)
 	else
 	{
 		//Free tout le bullshit
+		ft_lstclear(&g_env, free);
 		exit(exit_value);
 	}
 }

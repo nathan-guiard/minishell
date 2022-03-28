@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:18:51 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:30:41 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void		catch_signals(void);
 char		*prompt(void);
 char		*get_prompt_text(void);
 void		free_parstab(t_parstab tab);
+void		turn_env_into_list(char **env);
 
 /*	Exec	*/
 int			builtin(char **command);
