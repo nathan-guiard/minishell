@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:33:47 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 12:48:08 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 15:15:02 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	turn_env_into_list(char **env)
 	t_list	*node;
 
 	i = 1;
+	if (!env || !env[0])
+	{
+		g_env = NULL;
+		return ;
+	}
 	node = ft_lstnew(ft_strdup(env[0]));
 	while (env[i])
 	{
