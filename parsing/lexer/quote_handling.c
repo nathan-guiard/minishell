@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:57:48 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:23:33 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 16:01:30 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 char	*neutralize_the_quote(char *tab);
 char	*fill_the_quote_void(char *tab);
 
-/*	Change les parties quoted en un seul maillon quoted_string
-	Les maillons quoted_string sont a prendre tels quel et a
-	ne surtout pas changer le contenu							*/
+/*	Enleve les quotes					*/
 void	quote_handling(t_lexer **list)
 {
 	t_lexer	*buff;
@@ -47,7 +45,7 @@ char	*neutralize_the_quote(char *tab)
 	quote_type = 0;
 	while (tab[i])
 	{
-		if (tab[i] == '\'' || tab[i] == '\"')
+		if (tab[i] == VALID_QUOTE || tab[i] == VALID_DQUOTE)
 		{
 			if (quote_type == 0)
 			{

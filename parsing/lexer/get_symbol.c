@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:47:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:23:24 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 16:03:33 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ t_symbol	get_onechar_symbol(char *line)
 		return (red_out);
 	if (line[0] == '|')
 		return (sb_pipe);
-	if (line[0] == '\"')
-		return (d_quote);
-	if (line[0] == '\'')
-		return (quote);
+	//if (line[0] == '\"')
+	//	return (d_quote);
+	//if (line[0] == '\'')
+	//	return (quote);
 	return (string);
 }
 
@@ -64,9 +64,9 @@ t_symbol	get_onechar_symbol_replaced(char *line)
 		return (red_out);
 	if (line[0] == VALID_PIPE)
 		return (sb_pipe);
-	if (line[0] == '\"')
+	if (line[0] == VALID_DQUOTE)
 		return (d_quote);
-	if (line[0] == '\'')
+	if (line[0] == VALID_QUOTE)
 		return (quote);
 	if (line[0] == NOTHING)
 		return (nothing);

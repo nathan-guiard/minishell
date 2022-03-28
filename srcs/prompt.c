@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:22 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 15:15:57 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 16:47:19 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,12 @@ static char	*get_only_dir_name(char *abs_dir)
 static char	*get_full_prompt(char *only_dir)
 {
 	char	*res;
-	char	*to_free;
 
 	res = ft_strjoin("\033[0m\033[1;37m[\033[0mminishell: \033[32m", only_dir);
 	if (!res)
 		return (free(only_dir), NULL);
 	free(only_dir);
-	to_free = res;
-	res = ft_strjoin(res, "\033[1;37m]\033[0m ");
-	if (to_free)
-		free(to_free);
+	res = join(res, "\033[1;37m]\033[0m ");
 	return (res);
 }
 
@@ -92,6 +88,11 @@ static char	*is_home(char *abs_dir)
 
 	home = ft_getenv("HOME");
 	if (ft_strcmp(abs_dir, home) == 0)
-		return (free(abs_dir), ft_strdup("~"));
+	{
+		free(abs_dir);
+		free(home);
+		return (ft_strdup("~"));
+	}
+	free(home);
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:36:26 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 16:03:58 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_lexer
 # define VALID_HEREDOC		16
 # define VALID_DOLLAR		17
 # define NOTHING			18
+# define VALID_DQUOTE		19
+# define VALID_QUOTE		24
 # define REPLACE_THIS_HOLE	4
 
 typedef t_lexer	**t_parstab;
@@ -89,5 +91,5 @@ int			check_error_full_string(t_lexer *list);
 t_parstab	split_the_pipes(t_lexer *list, int pipe_nb);
 t_parstab	remaining_strings_are_arguments(t_parstab tab);
 int			symbol_change(char *line, int start);
-
+char 		*replace_quotes(char *line);
 #endif

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:27:17 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:25:18 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 16:02:33 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	is_a_valid_special_char(char *line, int breakpoint)
 	quote_type = 0;
 	while (line[i] != '\0' && i <= breakpoint)
 	{
-		if (line[i] == '\'' || line[i] == '\"')
+		if (line[i] == VALID_QUOTE || line[i] == VALID_DQUOTE)
 		{
 			if (line[i] == quote_type)
 				quote_type = 0;
@@ -108,7 +108,7 @@ int	is_a_valid_space(char *line, int breakpoint)
 		return (FALSE);
 	while (line[i] != '\0' && i <= breakpoint)
 	{
-		if (line[i] == '\'' || line[i] == '\"')
+		if (line[i] == VALID_QUOTE || line[i] == VALID_DQUOTE)
 		{
 			if (line[i] == quote_type)
 				quote_type = 0;
@@ -135,7 +135,7 @@ int	is_a_valid_dollar(char *line, int breakpoint)
 		return (FALSE);
 	while (line[i] != '\0' && i <= breakpoint)
 	{
-		if (line[i] == '\'')
+		if (line[i] == VALID_QUOTE)
 		{
 			if (line[i] == quote_type)
 				quote_type = 0;
