@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:03:53 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 09:20:08 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 09:44:21 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,7 @@ char	*translate_symbol(t_symbol symbol)
 		return (ft_strdup("red_out_file"));
 	if (symbol == append_file)
 		return (ft_strdup("append_file"));
+	if (symbol == nothing)
+		return (ft_strdup("nothing"));
 	return (ft_strdup("symbol not found"));
 }

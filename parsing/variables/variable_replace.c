@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:16:54 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/27 16:24:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 09:50:36 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,12 @@ char *replace_variable_by_nothing(char *line, int start_var)
 
 	end_var = where_is_end_var(line, start_var);
 	part_one = ft_substr(line, 0, start_var);
+	part_one = join(part_one, "\022");
 	if (!part_one)
 		return (S_ERR);
 	part_two = ft_substr(line, end_var, INT_MAX);
 	res = join(part_one, part_two);
 	free(part_two);
+	free(line);
 	return (res);
 }

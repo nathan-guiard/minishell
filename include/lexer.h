@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/27 17:23:45 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 09:41:00 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef enum	e_types
 	delimiter = 13,//pour le heredoc
 	red_in_file = 14,
 	red_out_file = 15,
-	append_file = 16
+	append_file = 16,
+	nothing = 17
 }	t_symbol;
 
 typedef struct s_lexer
@@ -50,6 +51,7 @@ typedef struct s_lexer
 # define VALID_APPEND		7
 # define VALID_HEREDOC		16
 # define VALID_DOLLAR		17
+# define NOTHING			18
 # define REPLACE_THIS_HOLE	4
 
 typedef t_lexer **t_parstab;
