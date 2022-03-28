@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 09:41:00 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 10:46:53 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ t_symbol	get_symbol_replaced(char *line);
 
 int			check_error_full_string(t_lexer *list);
 t_parstab	split_the_pipes(t_lexer *list, int pipe_nb);
+t_parstab	remaining_strings_are_arguments(t_parstab tab);
 
 
 

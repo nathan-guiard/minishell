@@ -34,13 +34,15 @@ tt le mode:
 	pas de quote dans export genre TEST"'" ca marche pas
 	si env -i ./minishell: faire une list vide mais surtout
 		pas seg, ce qu'il se passe actuellement.
+
+
 Nathan:
-donner comme content les bails genre echo truc:
+donner comme content les bails genre (echo truc):
 	echo -> commande
 	truc -> argument
+mettre $? = 0 dans l'env direct
+faire tout les truc d'env
 
-remplacer les $(unset) par NOTHING.
-faire un truc ou genre les NOTHING sont ignores
 si une liste n'as pas de commande -> rien faire (/usr/bin/true)
 
 probleme:	le super makefile relink :'(

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 09:10:55 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 11:39:27 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 10:02:09 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	ft_lexerprint(t_lexer *lst)
 		symbol_str = translate_symbol(buff->symbol);
 		if (is_writable(buff->symbol) == TRUE)
 		{
-			printf("Content:%s\n", buff->content);
-			printf("Symbol:%s\n\n", symbol_str);
+			ft_printf("Content:%s\n", buff->content);
+			ft_printf("Symbol:%s\n\n", symbol_str);
 		}
 		else
 			ft_printf("Symbol:\t%s\n\n", symbol_str);
@@ -46,7 +46,7 @@ int	is_writable(t_symbol symbol)
 		|| symbol == sb_builtin || symbol == argument
 		|| symbol == variable || symbol == delimiter
 		|| symbol == red_in_file || symbol == red_out_file
-		|| symbol == append_file)
+		|| symbol == append_file || symbol == command)
 		return (TRUE);
 	return (FALSE);
 }

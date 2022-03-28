@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/27 17:06:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 10:51:40 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,15 @@ int main(int argc, char **argv, char **env)
 					while (tab[i] != NULL)
 					{
 						set_layout_printf(C_GREEN, C_RESET, C_RESET);
-						printf("Pipe nb %d\n", i);
-						set_layout_printf(C_BLUE, C_RESET, C_ITALIC);
-						set_layout_printf(C_BLUE, C_RESET, C_BOLD);
+						printf("Pipe nb %d, taille de la liste: %d \n", i, ft_lexersize(tab[i]));
+						set_layout(C_BLUE, C_RESET, C_ITALIC);
+						set_layout(C_BLUE, C_RESET, C_BOLD);
 						ft_lexerprint(tab[i]);
 						
-						printf("last: %s\n", api_last_red_in(tab[i]));
+						set_layout_printf(C_RESET, C_RESET, C_RESET);
+						set_layout_printf(C_HYELLOW, C_RESET, C_ITALIC);
+						printf("last red_in: %s\n", api_last_red_in(tab[i]));
+						printf("last red_out: %s\n", api_last_red_out(tab[i]));
 						i++;
 					}
 					i = 0;
