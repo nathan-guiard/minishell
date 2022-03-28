@@ -37,9 +37,6 @@ tt le mode:
 
 
 Nathan:
-donner comme content les bails genre (echo truc):
-	echo -> commande
-	truc -> argument
 mettre $? = 0 dans l'env direct
 faire tout les truc d'env
 
