@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 10:51:40 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:01:04 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ int main(int argc, char **argv, char **env)
 						set_layout_printf(C_HYELLOW, C_RESET, C_ITALIC);
 						printf("last red_in: %s\n", api_last_red_in(tab[i]));
 						printf("last red_out: %s\n", api_last_red_out(tab[i]));
+						
+						int j = 0;
+						t_doubletab test = api_get_command_tab(tab[i]);
+						printf("Tab de tab:\n");
+						while (test[j])
+						{
+							printf("Content: %s\n", test[j]);
+							j++;
+						}
+						free_tabtab(test);
 						i++;
 					}
 					i = 0;

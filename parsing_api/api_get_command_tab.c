@@ -6,11 +6,13 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:59:57 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:30:08 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:58:33 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_lexer	*get_all_args(t_lexer *list);
 
 /*	Prend en arguments un liste et renvoie le tableau de tableau
 	avec la commande et les arguments pour execve.
@@ -36,7 +38,22 @@ char	**api_get_command_tab(t_lexer *list)
 		i++;
 		arg_list = arg_list->next;
 	}
-	res[i];
-	ft_lexerclear(to_free, free);
+	ft_lexerclear(&to_free, free);
+	return (res);
+}
+
+t_lexer	*get_all_args(t_lexer *list)
+{
+	t_lexer	*buff;
+	t_lexer	*res;
+
+	res = NULL;
+	buff = list;
+	while (buff)
+	{
+		if (buff->symbol == command || buff->symbol == argument)
+			ft_lexeradd_back(&res, ft_lexernew(ft_strdup(buff->content), buff->symbol));
+		buff = buff->next;
+	}
 	return (res);
 }
