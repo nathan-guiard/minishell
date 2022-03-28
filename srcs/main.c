@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 14:33:52 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 14:55:50 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,14 @@ int main(int argc, char **argv, char **env)
 			if (line[0] != '\0')
 			{
 				dtab =  ft_split(line, ' ');
-				unset(dtab);
+				if (ft_strcmp(dtab[0], "unset") == 0)
+					unset(dtab);
+				else if (ft_strcmp(dtab[0], "env") == 0)
+					ft_env(NULL);
+				else if (ft_strcmp(dtab[0], "export") == 0)
+					export(dtab);
 				free_tabtab(dtab);
 				free(line);
-				ft_env(NULL);
 				//line = replace_variables(line);
 				//if (line)
 				//{

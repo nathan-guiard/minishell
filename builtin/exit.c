@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:32:04 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 12:47:13 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 15:04:05 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_exit(int exit_value, char **args)
 	{
 		//Free tout le bullshit
 		ft_lstclear(&g_env, free);
+		printf("Clear g_env: ok\n");
 		exit(exit_value);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:09:13 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 14:50:18 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 15:05:40 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	unset(char **args)
 	{
 		node = get_env_node(args[i]);
 		if (node)
+		{
 			ft_lstpop(&g_env, node);
+			ft_lstdelone(node, free);
+		}
 		i++;
 	}
 }
