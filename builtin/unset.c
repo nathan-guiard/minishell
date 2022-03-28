@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:09:13 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/16 18:10:53 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:15:29 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	unset(char **args)
 {
-	//char	
 	if (!args || !args[0])
-		return;
-	
+		return ;
 	printf("unset not supported\n");
 }

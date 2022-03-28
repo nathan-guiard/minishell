@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:41:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/27 15:11:54 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:20:33 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_getenv(char *name)
 	return (env_line);
 }
 
-int	is_name_in_env(name)
+int	is_name_in_env(char *name)
 {
 	t_list	*tmp;
 

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 11:31:47 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 11:17:05 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:37:17 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	how_many_pipes(t_lexer *list);
 
-t_parstab full_parsing(char *line)
+t_parstab	full_parsing(char *line)
 {
 	t_parstab	tab;
 	t_lexer		*first_part;

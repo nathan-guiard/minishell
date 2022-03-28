@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:33:46 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 12:12:53 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:32:48 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*	Free un tableau de tableaux */
 void	free_tabtab(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])

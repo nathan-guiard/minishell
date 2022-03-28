@@ -6,20 +6,20 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:22 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 09:22:57 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:31:00 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char *get_only_dir_name(char *abs_dir);
-static char *get_full_prompt(char *only_dir);
-static char *is_home(char *abs_dir);
+static char	*get_only_dir_name(char *abs_dir);
+static char	*get_full_prompt(char *only_dir);
+static char	*is_home(char *abs_dir);
 
 /*	Revonvoie la chaine malloced du prompt, a free.	
 	Si il y a une erreur lors de la recuperation du
 	path, affiche un path "somewhere" et une erreur	*/
-char *prompt(void)
+char	*prompt(void)
 {
 	char	*res;
 	char	*prompt_text;
@@ -35,10 +35,10 @@ char *prompt(void)
 /*	Malloc une string qui a tout le path de curr dir 
 	Si il y a un probleme, donne "somewhere" comme string
 	et affiche une erreur, on peut enlever l'erreur si jamais	*/
-char *get_prompt_text(void)
+char	*get_prompt_text(void)
 {
-	char *abs_dir;
-	char *only_dir;
+	char	*abs_dir;
+	char	*only_dir;
 
 	abs_dir = malloc(10000);
 	if (!abs_dir)
@@ -50,9 +50,9 @@ char *get_prompt_text(void)
 }
 
 /*	Transforme le chemin absolu en "que le dossier" */
-static char *get_only_dir_name(char *abs_dir)
+static char	*get_only_dir_name(char *abs_dir)
 {
-	char *res;
+	char	*res;
 	int		i;
 
 	i = ft_strlen(abs_dir);
@@ -69,7 +69,7 @@ static char *get_only_dir_name(char *abs_dir)
 }
 
 /*	Rend le prompt final avec ce qu'il y a autour, free only_dir*/
-static char *get_full_prompt(char *only_dir)
+static char	*get_full_prompt(char *only_dir)
 {
 	char	*res;
 	char	*to_free;
@@ -86,7 +86,7 @@ static char *get_full_prompt(char *only_dir)
 }
 
 /*	Si on est dans notre home, renvoie "~" sinon renvoie NULL		*/
-static char *is_home(char *abs_dir)
+static char	*is_home(char *abs_dir)
 {
 	char	*home;
 

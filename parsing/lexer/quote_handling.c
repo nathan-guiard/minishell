@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:57:48 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/23 09:42:19 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:23:33 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	quote_handling(t_lexer **list)
 /*	Change toutes les quotes valides par REPLACE_THIS_HOLE		*/
 char	*neutralize_the_quote(char *tab)
 {
-	int i;
+	int		i;
 	char	quote_type;
 
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 08:48:34 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 09:53:16 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:36:55 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 	ou si c'est autre chose, voici la liste des builtins geres pour
 	l'instant:
 	echo		exit		pwd
-	clear		cd																*/
-int		is_a_builtin(char *cmd_name)
+	clear		cd													*/
+int	is_a_builtin(char *cmd_name)
 {
-	int i;
-	char **builtin_tab_name;
+	int		i;
+	char	**builtin_tab_name;
 
 	i = 0;
 	if (!cmd_name)
@@ -37,10 +37,10 @@ int		is_a_builtin(char *cmd_name)
 	return (free_tabtab(builtin_tab_name), FALSE);
 }
 
-/*	Retourne un tableau de tableau avec tous les noms de builtin				*/
-char **get_builtin_tab_name(void)
+/*	Retourne un tableau de tableau avec tous les noms de builtin	*/
+char	**get_builtin_tab_name(void)
 {
-	char **builtin_tab;
+	char	**builtin_tab;
 
 	builtin_tab = malloc(sizeof(char *) * (BUILTIN_NB + 1));
 	if (!builtin_tab)

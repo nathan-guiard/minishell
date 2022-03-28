@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:37:08 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:13:21 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:20:06 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lexerpop(t_lexer **alexer, t_lexer *node)
 {
 	t_lexer	*following;
 	t_lexer	*buff;
-	t_lexer *before;
+	t_lexer	*before;
 
 	if (!alexer || !(node->content) || !node)
 		return ;

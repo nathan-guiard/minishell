@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/27 16:23:09 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:35:27 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,16 @@
 /*	Check si la variable existe	*/
 int	is_a_valid_env(char *line, int i)
 {
-	char *test;
-	char *ptr;
-	int	save;
-	int	j;
+	char	*test;
+	char	*ptr;
+	int		save;
+	int		j;
 
 	i++;
 	save = i;
-	while (line[i] != '\0' && line[i] != '\f' && line[i] != '\t'
-		&& line[i] != '\n' && line[i] != '\r' && line[i] != '\v'
-		&& line[i] != VALID_SPACE && line[i] != VALID_DOLLAR
-		&& line[i] != '\"')
+	while (line[i] != '\0' && line[i] != '\f' && line[i] != 9 && line[i] != 10
+		&& line[i] != '\r' && line[i] != '\v' && line[i] != VALID_SPACE
+		&& line[i] != VALID_DOLLAR && line[i] != '\"')
 		i++;
 	if (i - save == 0)
 		return (ALONE);
@@ -41,12 +40,11 @@ int	is_a_valid_env(char *line, int i)
 	}
 	test[j] = '\0';
 	test = remove_brackets(test);
-	//printf("test: %s\n", test);
-	ptr = getenv(test);
+	ptr = getenv(test);// a remplacer par ft_getenv
 	free(test);
 	if (ptr)
 		return (TRUE);
-	return (FALSE);	
+	return (FALSE);
 }
 
 /*	Trouve l'indice de la fin de la variable	*/
@@ -69,7 +67,7 @@ int	where_is_end_var(char *line, int start_var)
 		if (line[i] == '\f' || line[i] == '\t' || line[i] == '\n'
 			|| line[i] == '\r' || line[i] == '\v' || line[i] == VALID_DOLLAR
 			|| line[i] == '\"' || line[i] == '\'')
-			break;
+			break ;
 		i++;
 	}
 	if (search == '}' && line[i] != search)
@@ -94,5 +92,5 @@ char	*remove_brackets(char *tab)
 	tab = ft_substr(tab, start, end);
 	free(to_free);
 	printf("remove brackets: %s\n", tab);
-	return (tab);	
+	return (tab);
 }

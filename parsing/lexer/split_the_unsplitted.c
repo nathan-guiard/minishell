@@ -6,14 +6,14 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:18 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/27 17:09:38 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:27:17 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static void		devide_the_node(t_lexer **list, void *to_be_splitted);
-/*static */t_lexer	*new_splitted_list(char *line);
+t_lexer			*new_splitted_list(char *line);
 
 /*	Decolle les maillons colles comme "cat|ls"
 	Necessite d'ajouter des maillons a l'interieur
@@ -61,7 +61,7 @@ static void	devide_the_node(t_lexer **list, void *to_be_splitted)
 	}
 }
 
-t_lexer *new_splitted_list(char *line)
+t_lexer	*new_splitted_list(char *line)
 {
 	t_lexer	*res;
 	t_lexer	*node;
@@ -82,7 +82,7 @@ t_lexer *new_splitted_list(char *line)
 		ft_lexeradd_back(&res, node);
 		i = next;
 		if (i > (int)ft_strlen(line))
-			break;
+			break ;
 	}
 	return (res);
 }
@@ -109,15 +109,16 @@ int	symbol_change(char *line, int start)
 		if (line[i + 1] != '\0')
 			nitro_fraude[1] = line[i + 1];
 		to_test = get_symbol_replaced(nitro_fraude);
-		if (to_test != curr || (is_a_symbol_sep(to_test) == TRUE 
-			&& to_test == curr && (i - start >= (int)sizeof_sep(curr))))
-			break;
+		if (to_test != curr || (is_a_symbol_sep(to_test) == TRUE
+				&& to_test == curr && (i - start >= (int)sizeof_sep(curr))))
+			break ;
 		i++;
 	}
 	return (i);
 }
 
-/*	Retourne la taille de char que fait un symbole, 0 si la taille est indefinie	*/
+/*	Retourne la taille de char que fait un symbole,
+	0 si la taille est indefinie					*/
 size_t	sizeof_sep(t_symbol symbol)
 {
 	if (symbol == heredoc || symbol == append)

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:33:47 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/16 14:55:57 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:20:51 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	turn_env_into_list(char **env)
 {
-	int	i;
+	int		i;
 	t_list	*node;
 
 	i = 1;

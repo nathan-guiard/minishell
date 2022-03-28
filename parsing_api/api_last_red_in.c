@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:33:34 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 12:41:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:30:19 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 	A NE PAS FREE										*/
 char	*api_last_red_in(t_lexer *list)
 {
-	t_lexer *buff;
+	t_lexer	*buff;
 	char	*last;
 
 	last = NULL;

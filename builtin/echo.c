@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:44:24 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 08:39:31 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:14:40 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*	Echo, -n implemente, pas de gestion de $*/
 void	echo(char **args)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!args)

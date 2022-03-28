@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:06:50 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 10:04:33 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:23:10 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 static t_lexer	*transform_tabs_into_nodes(char **split);
 static char		*replace_non_writable_spaces(char *tab);
 static char		**put_spaces_again(char **tab);
-int 			quotes_closed(char *line);
+int				quotes_closed(char *line);
 
 /*	Transforme la ligne en une liste "symbol table"
 	Gere bien cahr speciaux dans ou hors des quotes
 	Check pas les pipes	(division)					*/
 t_lexer	*full_symbol_table(char *line)
 {
-	char **splitted;
+	char	**splitted;
 	t_lexer	*res;
 
 	if (quotes_closed(line) == FALSE)
@@ -44,9 +44,9 @@ t_lexer	*full_symbol_table(char *line)
 }
 
 /*	Transforme chaques tableaux du split en maillons pour la liste	*/
-static t_lexer *transform_tabs_into_nodes(char **split)
+static t_lexer	*transform_tabs_into_nodes(char **split)
 {
-	t_lexer *res;
+	t_lexer	*res;
 	t_lexer	*node;
 	int		i;
 
@@ -80,9 +80,9 @@ static char	**put_spaces_again(char **tab)
 }
 
 /*	Remet les espaces mais dans un tableau	*/
-static char *replace_non_writable_spaces(char *tab)
+static char	*replace_non_writable_spaces(char *tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!tab)
@@ -96,10 +96,10 @@ static char *replace_non_writable_spaces(char *tab)
 	return (tab);
 }
 
-int quotes_closed(char *line)
+int	quotes_closed(char *line)
 {
-	int	i;
-	char quote_type;
+	int		i;
+	char	quote_type;
 
 	i = 0;
 	quote_type = 0;

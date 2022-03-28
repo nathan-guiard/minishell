@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:49:47 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/22 14:01:32 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:19:49 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 /*	Insert la liset en ENTIER to_insert apres le maillon after_this_one
 	de la liste alst													*/
-void	ft_lexerinsert(t_lexer **alst, t_lexer *to_insert, t_lexer *after_this_one)
+void	ft_lexerinsert(t_lexer **alst, t_lexer *to_insert,
+			t_lexer *after_this_one)
 {
-	t_lexer *buff;
+	t_lexer	*buff;
 	t_lexer	*following;
 
 	if (!alst || !(*alst))
@@ -34,7 +35,7 @@ void	ft_lexerinsert(t_lexer **alst, t_lexer *to_insert, t_lexer *after_this_one)
 			following = buff->next;
 			buff->next = to_insert;
 			ft_lexerlast(to_insert)->next = following;
-			break;
+			break ;
 		}
 		buff = buff->next;
 	}

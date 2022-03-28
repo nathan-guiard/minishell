@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:36:24 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 09:50:26 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:37:09 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 	tableaux, et free le tableau de base. 
 	Dans notre cas le premier element c'est la
 	commande									*/
-char **remove_command_name(char **args)
+char	**remove_command_name(char **args)
 {
-	char **res;
-	int	len;
-	int i;
+	char	**res;
+	int		len;
+	int		i;
 
 	len = 0;
 	i = 1;

@@ -6,21 +6,21 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:27:17 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/24 09:47:05 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:25:18 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_a_valid_space(char *line, int breakpoint);
-char replace_special_onechar(char truc);
-int is_a_valid_special_char(char *line, int breakpoint);
-int	is_a_valid_dollar(char *line, int breakpoint);
+int		is_a_valid_space(char *line, int breakpoint);
+char	replace_special_onechar(char truc);
+int		is_a_valid_special_char(char *line, int breakpoint);
+int		is_a_valid_dollar(char *line, int breakpoint);
 
 /*	Retourne la meme ligne sauf que les caracteres speciaux
 	genre < ou | sont remplaces si ils ne sont pas
 	dans des quotes											*/
-char *replace_special_char(char *line)
+char	*replace_special_char(char *line)
 {
 	char	*res;
 	int		i;
@@ -45,10 +45,10 @@ char *replace_special_char(char *line)
 }
 
 /*	Retourne la macro VALID_<char> en fonction de char	*/
-char replace_special_onechar(char truc)
+char	replace_special_onechar(char truc)
 {
-	t_symbol res;
-	char omega_fraude[2];
+	t_symbol	res;
+	char		omega_fraude[2];
 
 	if (truc == ' ')
 		return (VALID_SPACE);
@@ -58,7 +58,7 @@ char replace_special_onechar(char truc)
 	omega_fraude[1] = '\0';
 	res = get_symbol(omega_fraude);
 	if (res == sb_pipe)
-		return VALID_PIPE;
+		return (VALID_PIPE);
 	if (res == red_in)
 		return (VALID_REDIN);
 	if (res == red_out)
@@ -66,8 +66,7 @@ char replace_special_onechar(char truc)
 	return (truc);
 }
 
-
-int is_a_valid_special_char(char *line, int breakpoint)
+int	is_a_valid_special_char(char *line, int breakpoint)
 {
 	int		i;
 	char	quote_type;
@@ -77,7 +76,7 @@ int is_a_valid_special_char(char *line, int breakpoint)
 		return (TRUE);
 	if (get_onechar_symbol(line + breakpoint) == string
 		|| line[breakpoint] == '$' || line[breakpoint] == ' ')
-		return FALSE;
+		return (FALSE);
 	i = 0;
 	quote_type = 0;
 	while (line[i] != '\0' && i <= breakpoint)
@@ -106,7 +105,7 @@ int	is_a_valid_space(char *line, int breakpoint)
 	if (breakpoint == 0 && line[0] == ' ')
 		return (FALSE);
 	if (line[breakpoint] != ' ')
-		return FALSE;
+		return (FALSE);
 	while (line[i] != '\0' && i <= breakpoint)
 	{
 		if (line[i] == '\'' || line[i] == '\"')
@@ -133,7 +132,7 @@ int	is_a_valid_dollar(char *line, int breakpoint)
 	if (breakpoint == 0 && line[0] == '$')
 		return (TRUE);
 	if (line[breakpoint] != '$')
-		return FALSE;
+		return (FALSE);
 	while (line[i] != '\0' && i <= breakpoint)
 	{
 		if (line[i] == '\'')

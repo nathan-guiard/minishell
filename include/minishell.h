@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/27 15:07:31 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:18:51 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,50 +38,48 @@
 /*	Nombre de builtin qu'on a												*/
 # define BUILTIN_NB	8
 /*	Pointer sur fonction de type "void(char **)", aka nos builtins			*/
-typedef void (*builtin_fnc)(char **);
-typedef	char **t_doubletab;
+typedef void	(*t_builtin_fnc)(char **);
+typedef char	**t_doubletab;
 
 extern t_list	*g_env;
 
 /*	Built-in	*/
 
-void	echo(char **args);
-void	cd(char **args);
-void	pwd(char **args);
-void	clear(char **args);
-void	ft_exit_builtin(char **args);
-void	ft_env(char **args);
-void	export(char **args);
-void	unset(char **args);
-void	ft_exit(int exit_value, char **args);
+void		echo(char **args);
+void		cd(char **args);
+void		pwd(char **args);
+void		clear(char **args);
+void		ft_exit_builtin(char **args);
+void		ft_env(char **args);
+void		export(char **args);
+void		unset(char **args);
+void		ft_exit(int exit_value, char **args);
 
 /*	Utils	*/
 
-void	free_tabtab(char **tab);
-void	catch_signals(void);
-char	*prompt(void);
-char	*get_prompt_text(void);
+void		free_tabtab(char **tab);
+void		catch_signals(void);
+char		*prompt(void);
+char		*get_prompt_text(void);
+void		free_parstab(t_parstab tab);
 
 /*	Exec	*/
-int		builtin(char **command);
-int		exec_simple_command(char **command, char **env);
+int			builtin(char **command);
+int			exec_simple_command(char **command, char **env);
 
 /*	Parsing	*/
 
-t_parstab full_parsing(char *line);
+t_parstab	full_parsing(char *line);
 
-char	**remove_command_name(char **);
-int		is_a_builtin(char *cmd_name);
-char 	**get_builtin_tab_name(void);
-void 	*get_builtin_fnc(char *cmd_name);
-char 	*exec_path(char *cmd_name);
-char 	*replace_variables(char *line);
+char		**remove_command_name(char **command);
+int			is_a_builtin(char *cmd_name);
+char		**get_builtin_tab_name(void);
+void		*get_builtin_fnc(char *cmd_name);
+char		*exec_path(char *cmd_name);
+char		*replace_variables(char *line);
 t_symbol	get_symbol(char *content);
-char	*translate_symbol(t_symbol symbol);
+char		*translate_symbol(t_symbol symbol);
 t_parstab	rename_strings(t_parstab tab);
-char	*ft_getenv(char *name);
-
-t_list *test(char *line);
-void	free_parstab(t_parstab tab);
+char		*ft_getenv(char *name);
 
 #endif

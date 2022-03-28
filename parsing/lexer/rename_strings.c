@@ -6,13 +6,13 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 11:17:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 10:36:14 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:39:08 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_symbol get_redir_symbol(t_symbol symbol);
+static t_symbol	get_redir_symbol(t_symbol symbol);
 int				is_a_redirection(t_symbol symbol);
 t_parstab		rename_red_files(t_parstab tab);
 t_parstab		first_string_is_command(t_parstab tab);
@@ -52,7 +52,7 @@ t_parstab	rename_red_files(t_parstab tab)
 {
 	t_lexer		*buff;
 	t_symbol	last;
-	int i;
+	int			i;
 
 	i = 0;
 	while (tab[i])

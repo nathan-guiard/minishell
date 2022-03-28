@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 09:38:58 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 16:05:34 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:28:44 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static void	*get_fnc_tab(void);
 
 /*	Renvoie une fonction "void(char **)" qui est un de nos builtin
 	en fonction de cmd_name													*/
-void *get_builtin_fnc(char *cmd_name)
+void	*get_builtin_fnc(char *cmd_name)
 {
-	builtin_fnc *fnc_tab;
-	char		**name_tab;
-	int			i;
+	t_builtin_fnc	*fnc_tab;
+	char			**name_tab;
+	int				i;
 
 	name_tab = get_builtin_tab_name();
 	fnc_tab = get_fnc_tab();
@@ -38,9 +38,9 @@ void *get_builtin_fnc(char *cmd_name)
 
 static void	*get_fnc_tab(void)
 {
-	builtin_fnc	*tab;
+	t_builtin_fnc	*tab;
 
-	tab = malloc(sizeof(builtin_fnc) * (BUILTIN_NB + 1));
+	tab = malloc(sizeof(t_builtin_fnc) * (BUILTIN_NB + 1));
 	tab[0] = echo;
 	tab[1] = ft_exit_builtin;
 	tab[2] = clear;

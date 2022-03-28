@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:16:54 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 09:50:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:38:05 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 /*	Remplace les variables par leur valeur dans l'environnement
 	Retour la ligne changee ou alors retourne S_ERR/S_MERR en cas d'erreur	*/
-char *replace_variables(char *line)
+char	*replace_variables(char *line)
 {
 	int	i;
-	int ret;
+	int	ret;
 
 	ret = 0;
 	i = 0;
@@ -52,7 +52,7 @@ char *replace_variables(char *line)
 
 /*	Prend la premiere partie avant et apres la variable qu'on veut changer
 	puis prend la valeur de la varaible dans l'env et join le tout			*/
-char *replace_variable_by_content(char *line, int start_var)
+char	*replace_variable_by_content(char *line, int start_var)
 {
 	int		end_var;
 	char	*res;
@@ -80,13 +80,14 @@ char *replace_variable_by_content(char *line, int start_var)
 	start_var de la chaine line												*/
 char	*only_content(char *line, int start_var)
 {
-	char *to_free;
+	char	*to_free;
 	char	*sub;
 	char	*no_brackets;
 
 	if (line[start_var] == '{')
 		start_var++;
-	sub = ft_substr(line, start_var + 1, where_is_end_var(line, start_var) - start_var - 1);
+	sub = ft_substr(line, start_var + 1,
+			where_is_end_var(line, start_var) - start_var - 1);
 	to_free = line;
 	no_brackets = remove_brackets(sub);
 	line = getenv(no_brackets);//a remplacer par ft_getenv, flemme prcq je fais des tests.
@@ -98,7 +99,7 @@ char	*only_content(char *line, int start_var)
 }
 
 /*	Join ce qu'il y a avant et apres la variable inexistante	*/
-char *replace_variable_by_nothing(char *line, int start_var)
+char	*replace_variable_by_nothing(char *line, int start_var)
 {
 	int		end_var;
 	char	*res;

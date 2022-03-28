@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:03:53 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 09:44:21 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:28:12 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	is_a_symbol_sep(t_symbol symbol)
 	return (FALSE);
 }
 
+/*	A supprimer a la fin puisque c que du testing	*/
 char	*translate_symbol(t_symbol symbol)
 {
 	if (symbol == string)

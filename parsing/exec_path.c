@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 12:00:25 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 12:43:03 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:28:21 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*	Renvoie le path vers l'executable correspondant a cmd_name
 	Si cmd_name n'existe dans aucun path, retourne NULL			*/
-char *exec_path(char *cmd_name)
+char	*exec_path(char *cmd_name)
 {
 	char	**path_tab;
 	char	*full_path;

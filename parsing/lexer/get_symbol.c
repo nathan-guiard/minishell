@@ -6,11 +6,11 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:47:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 09:40:48 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:23:24 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
 
 t_symbol	get_onechar_symbol(char *line);
 t_symbol	get_onechar_symbol_replaced(char *line);

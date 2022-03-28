@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 07:16:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/15 09:50:08 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:32:41 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@ void	catch_sigint(int sig, siginfo_t *truc, void *context);
 void	catch_sigquit(int sig, siginfo_t *truc, void *context);
 void	catch_sigstop(int sig, siginfo_t *truc, void *context);
 
-
 void	catch_signals(void)
 {
-	struct sigaction sigint;
-	struct sigaction sigquit;
+	struct sigaction	sigint;
+	struct sigaction	sigquit;
 
 	sigint.sa_sigaction = catch_sigint;
 	sigint.sa_flags = SA_RESTART;

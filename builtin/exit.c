@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:32:04 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/10 11:48:21 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/03/28 11:15:09 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	exit_with_args(char **args);
 static int	has_only_digit(char *s);
- 
+
 /*	exit avec exit_value, si il y a des args alors
 	reproduit le comportement de bash				*/
 void	ft_exit(int exit_value, char **args)
@@ -29,7 +29,7 @@ void	ft_exit(int exit_value, char **args)
 }
 
 /*	Exit en mode ligne de commande, prototype void(char **) pour le tableau de
-	pointeur sur fonctions														*/
+	pointeur sur fonctions													*/
 void	ft_exit_builtin(char **args)
 {
 	ft_putstr_fd("exit\n", 1);
@@ -40,8 +40,8 @@ void	ft_exit_builtin(char **args)
 	Je me tate a laisser les exit de STDOUT			*/
 static void	exit_with_args(char **args)
 {
-	int i;
-	int atoi;
+	int	i;
+	int	atoi;
 
 	i = 0;
 	while (args[i])
@@ -66,7 +66,7 @@ static void	exit_with_args(char **args)
 /* Check si il y a que des nombres dans une string	*/
 static int	has_only_digit(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])
