@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:08:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 12:26:50 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 13:09:11 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_export_nothing(void);
 void	real_export(char **args);
+int		where_is_equal_sign(char *str);
+int		is_a_valid_export(char *str);
 
 void	export(char **args)
 {
@@ -42,13 +44,57 @@ void	real_export(char **args)
 {
 	int		i;
 	t_list	*node;
+	int		ret;
 
 	i = 1;
 	while (args[i])
 	{
-		node = ft_lstnew(ft_strdup(args[i]));
-		ft_lstadd_back(&g_env, node);
-		printf("exported %s\n", args[i]);
+		ret = is_a_valid_export(args[i]);
+		if (ret == TRUE)
+		{
+			node = ft_lstnew(ft_strdup(args[i]));
+			ft_lstadd_back(&g_env, node);
+		}
+		else if (ret == NONE)
+		{
+			node = ft_lstnew(ft_strjoin(args[i], "="));
+			ft_lstadd_back(&g_env, node);
+		}
+		else if (ret == FALSE)
+			printf("export: `%s': not a valid identifier\n", args[i]);
 		i++;
 	}
+}
+
+int	is_a_valid_export(char *str)
+{
+	char	*sub;
+	int		equal;
+
+	equal = where_is_equal_sign(str);
+	if (equal == NONE)
+		return (NONE);
+	if (equal == 0)
+		return (FALSE);
+	sub = ft_substr(str, 0, equal);
+	if (!sub)
+		return (M_ERR);
+	if (ft_strchr(sub, '\'') == NULL && ft_strchr(sub, '\"') == NULL
+		&& ft_strchr(sub, '$') == NULL && ft_strchr(sub, '=') == NULL)
+		return (TRUE);
+	return (FALSE);
+}
+
+int	where_is_equal_sign(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '=')
+			return (i);
+		i++;
+	}
+	return (NONE);
 }

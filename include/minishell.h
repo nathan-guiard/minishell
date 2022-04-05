@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 10:48:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 12:55:20 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define TRUE 		1
 # define FALSE 		-42
 # define ERR		-420
+# define NONE		-142
 # define M_ERR		-90
 # define P_ERR		-54
 /*	Strings a strcmp avec le resultat si jamais on a des erreurs			*/
