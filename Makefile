@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/28 16:05:10 by nguiard          ###   ########.fr        #
+#    Updated: 2022/04/05 10:51:25 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,13 +59,15 @@ SRC =	srcs/main.c										\
 		parsing/env/ft_getenv.c							\
 		parsing/env/turn_env_into_list.c				\
 		parsing/env/get_env_node.c						\
-#		parsing/env/turn_env_into_tab.c					\
+		parsing/env/turn_env_into_tab.c					\
 		
 SHELL := /bin/zsh
 
-CFLAGS = -g -lreadline -fsanitize=address -Wall -Werror -Wextra
+ADD_FLAGS = -g #-fsanitize=address
 
-CFLAGS_OBJ = -g -fsanitize=address -Wall -Werror -Wextra
+CFLAGS = -lreadline -Wall -Werror -Wextra ${ADD_FLAGS}
+
+CFLAGS_OBJ =  -Wall -Werror -Wextra ${ADD_FLAGS}
 
 OBJ = ${SRC:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 16:41:02 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 10:57:41 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ int main(int argc, char **argv, char **env)
 	char		*line;
 	t_parstab	tab;
 	int			i = 0;
-//	char **dtab;
 
 	(void)argc;
 	(void)argv;
 	(void)env;
 
-	//catch_signals();
+	catch_signals();
 	turn_env_into_list(env);
 	while (1)
 	{
