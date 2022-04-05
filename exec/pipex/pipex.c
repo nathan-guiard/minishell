@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:49:37 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 17:32:28 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 17:40:25 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	mon_pipex_eclate(t_parstab tab)
 				printf("%s\n", merde[j]);
 				j++;
 			}
+			printf("[[%s]]\n", api_heredoc_delimiter(tab[i]));
 			free_tabtab(merde);
 			free_tabtab(test);
 			i++;
