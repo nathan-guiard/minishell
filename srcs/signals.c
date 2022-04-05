@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 07:16:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 11:25:32 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 12:35:54 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,20 @@ void	catch_sigint(int sig, siginfo_t *truc, void *context)
 	(void)sig;
 	(void)truc;
 	(void)context;
-	printf("%s\n", text);
-	rl_replace_line("", 0);
+	write(1, "\n", 1);
+	rl_replace_line("", 1);
+	rl_on_new_line();
+	rl_redisplay();
 	free(text);
 }
 
+//pas bon
 void	catch_sigquit(int sig, siginfo_t *truc, void *context)
 {
 	(void)sig;
 	(void)truc;
 	(void)context;
+	write(1, "\033[2K\r", 5);
+	rl_on_new_line();
+	rl_redisplay();
 }
