@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/04/05 12:22:21 by nguiard          ###   ########.fr        #
+#    Updated: 2022/04/05 13:34:34 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,11 @@ SRC =	srcs/main.c										\
 		parsing/lexer/rename_strings.c					\
 		parsing/lexer/remaining_strings_are_arguments.c	\
 		parsing/lexer/replace_quotes.c					\
+		parsing/env/ft_getenv.c							\
+		parsing/env/turn_env_into_list.c				\
+		parsing/env/get_env_node.c						\
+		parsing/env/turn_env_into_tab.c					\
+		parsing/env/set_ret_value.c						\
 		parsing/errors/check_error_full_string.c		\
 		parsing/parsing_main.c							\
 		parsing_api/api_last_red_out.c					\
@@ -56,10 +61,6 @@ SRC =	srcs/main.c										\
 		list/ft_lexerprint.c							\
 		exec/builtin.c									\
 		exec/exec_simple_command.c						\
-		parsing/env/ft_getenv.c							\
-		parsing/env/turn_env_into_list.c				\
-		parsing/env/get_env_node.c						\
-		parsing/env/turn_env_into_tab.c					\
 		
 SHELL := /bin/zsh
 

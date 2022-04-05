@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:08:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 13:09:11 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 13:41:33 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ int	is_a_valid_export(char *str)
 		return (M_ERR);
 	if (ft_strchr(sub, '\'') == NULL && ft_strchr(sub, '\"') == NULL
 		&& ft_strchr(sub, '$') == NULL && ft_strchr(sub, '=') == NULL)
-		return (TRUE);
-	return (FALSE);
+		return (free(sub), TRUE);
+	return (free(sub), FALSE);
 }
 
 int	where_is_equal_sign(char *str)

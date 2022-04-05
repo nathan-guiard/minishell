@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env_node.c                                     :+:      :+:    :+:   */
+/*   set_ret_value.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 09:59:14 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 13:40:29 by nguiard          ###   ########.fr       */
+/*   Created: 2022/04/05 13:26:44 by nguiard           #+#    #+#             */
+/*   Updated: 2022/04/05 13:38:55 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list	*get_env_node(char *name)
+/*	export $? avec la valeur de i
+	i est en unsigned char car les returns sont max 256 takapteeee	*/
+void	set_ret_value(unsigned char i)
 {
-	t_list	*tmp;
-	char	*cmp;
-	char	*with_equal;
+	char	*number;
+	char	**args;
 
-	tmp = g_env;
-	if (!tmp)
-		return (NULL);
-	while (tmp)
-	{
-		with_equal = ft_strjoin(tmp->content, "=");
-		cmp = ft_substr(with_equal, 0, ft_strlen(with_equal));
-		if (ft_strcmp(name, cmp) == -61)
-			return (free(cmp), free(with_equal), tmp);
-		free(cmp);
-		free(with_equal);
-		tmp = tmp->next;
-	}
-	return (NULL);
+	args = ft_calloc(3, sizeof(char *));
+	number = ft_itoa(i);
+	args[0] = ft_strdup("export");
+	args[1] = ft_strjoin("?=", number);
+	args[2] = NULL;
+	export(args);
+	free(number);
+	free_tabtab(args);
 }

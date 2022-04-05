@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 12:55:20 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 13:35:15 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ t_list		*get_env_node(char *name);
 
 /*	env	*/
 char		**turn_env_into_tab(void);
+void		set_ret_value(unsigned char i);
 
 #endif
