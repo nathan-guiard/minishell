@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/04/05 13:34:34 by nguiard          ###   ########.fr        #
+#    Updated: 2022/04/05 14:09:02 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRC =	srcs/main.c										\
 		parsing_api/api_last_red_out.c					\
 		parsing_api/api_last_red_in.c					\
 		parsing_api/api_get_command_tab.c				\
+		parsing_api/api_every_red_in.c					\
 		list/ft_lexeradd_back.c							\
 		list/ft_lexeradd_front.c						\
 		list/ft_lexerclear.c							\
@@ -61,6 +62,7 @@ SRC =	srcs/main.c										\
 		list/ft_lexerprint.c							\
 		exec/builtin.c									\
 		exec/exec_simple_command.c						\
+		exec/pipex/pipex.c								\
 		
 SHELL := /bin/zsh
 

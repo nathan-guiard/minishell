@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 13:35:15 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 13:52:10 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void		turn_env_into_list(char **env);
 /*	Exec	*/
 int			builtin(char **command);
 int			exec_simple_command(char **command, char **env);
+void		pipex(t_parstab	parsing);
 
 /*	Parsing	*/
 
