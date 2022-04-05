@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 13:52:39 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 17:18:24 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main(int argc, char **argv, char **env)
 			if (line[0] != '\0')
 			{	
 				tab = full_parsing(line);
+				//add_history(ft_strdup(line));
 				pipex(tab);
 			}
 			else

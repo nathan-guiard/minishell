@@ -37,8 +37,7 @@ tt le mode:
 
 
 Nathan:
-mettre $? = 0 dans l'env direct
-faire tout les truc d'env
+les trucs splittes se mettent a la fin de la liste c un probleme
 
 si une liste n'as pas de commande -> rien faire (/usr/bin/true)
 

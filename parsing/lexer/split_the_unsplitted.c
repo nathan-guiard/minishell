@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:18 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:27:17 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 17:21:28 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,11 @@ static void	devide_the_node(t_lexer **list, void *to_be_splitted)
 			ft_lexerdelone(buff, free);
 			buff = to_insert;
 		}
-		before = buff;
-		buff = buff->next;
+		else
+		{
+			before = buff;
+			buff = buff->next;
+		}
 	}
 }
 
