@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:49:37 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 14:20:53 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 17:32:28 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	mon_pipex_eclate(t_parstab tab)
 			}
 			char **merde;
 			j = 0;
-			printf("every red_in:\n");
-			merde = api_every_red_in(tab[i]);
+			printf("every red_out:\n");
+			merde = api_every_red_out(tab[i]);
 			while (merde[j])
 			{
 				printf("%s\n", merde[j]);
