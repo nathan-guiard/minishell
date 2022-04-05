@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:00:39 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 14:11:07 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 14:19:45 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char **api_every_red_in(t_lexer *list)
 	res = ft_calloc(sizeof(char *), (count + 1));
 	if (!res)
 		return (NULL);
+	buff = list;
 	while (buff)
 	{
 		if (buff->symbol == red_in_file)

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:18:06 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 12:00:40 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/05 14:14:00 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 char	*api_last_red_out(t_lexer *list);
 char	*api_last_red_in(t_lexer *list);
 char	**api_get_command_tab(t_lexer *list);
+char	**api_every_red_in(t_lexer *list);
 
 #endif
