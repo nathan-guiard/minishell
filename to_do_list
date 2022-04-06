@@ -37,8 +37,7 @@ tt le mode:
 
 
 Nathan:
-Je dois changer la detection de $ pour que le delimiteur du heredoc le capte pas
-	if (le 2 derniers chars de la ligne == '<') -> ne pas changer en VALID_DOLLAR
+faire le echo -nnnn -n e
 
 si une liste n'as pas de commande -> rien faire (/usr/bin/true)
 
