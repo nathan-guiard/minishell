@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:00:39 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 14:19:45 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:25:59 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	nb_of_red_in(t_lexer *list);
 
 /*	Renvoie un tableau de tableaux avec tous les fichiers de redirections in.
 	A FREE																	  */
-char **api_every_red_in(t_lexer *list)
+char	**api_every_red_in(t_lexer *list)
 {
 	int		count;
 	char	**res;

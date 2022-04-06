@@ -6,16 +6,16 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 15:54:53 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 16:08:11 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:24:50 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char *replace_quotes(char *line)
+char	*replace_quotes(char *line)
 {
-	int quote_type;
-	int i;
+	int	quote_type;
+	int	i;
 
 	i = 0;
 	quote_type = 0;

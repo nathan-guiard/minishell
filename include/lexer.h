@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 16:03:58 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:17:18 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int			check_error_full_string(t_lexer *list);
 t_parstab	split_the_pipes(t_lexer *list, int pipe_nb);
 t_parstab	remaining_strings_are_arguments(t_parstab tab);
 int			symbol_change(char *line, int start);
-char 		*replace_quotes(char *line);
+char		*replace_quotes(char *line);
+
 #endif

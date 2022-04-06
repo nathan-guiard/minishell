@@ -6,13 +6,13 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:43:31 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 14:54:52 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:26:41 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int how_long(t_lexer *list);
+static int	how_long(t_lexer *list);
 
 /*	Donne le tableau de tableau "commande" pour execve
 	il faut le FREE /!\									*/
@@ -31,7 +31,7 @@ char	**api_full_command(t_lexer *list)
 	if (!res)
 		return (NULL);
 	buff = list;
-	while(buff)
+	while (buff)
 	{
 		if (buff->symbol == command || buff->symbol == argument)
 		{
@@ -43,7 +43,7 @@ char	**api_full_command(t_lexer *list)
 	return (res);
 }
 
-static int how_long(t_lexer *list)
+static int	how_long(t_lexer *list)
 {
 	t_lexer	*buff;
 	int		res;

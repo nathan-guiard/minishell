@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:59:57 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:58:33 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:26:08 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ t_lexer	*get_all_args(t_lexer *list)
 	while (buff)
 	{
 		if (buff->symbol == command || buff->symbol == argument)
-			ft_lexeradd_back(&res, ft_lexernew(ft_strdup(buff->content), buff->symbol));
+			ft_lexeradd_back(&res,
+				ft_lexernew(ft_strdup(buff->content), buff->symbol));
 		buff = buff->next;
 	}
 	return (res);

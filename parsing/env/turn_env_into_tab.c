@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:06:56 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 10:46:33 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:18:49 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**turn_env_into_tab(void)
 		}
 		res[i] = line;
 		i++;
-		buff = buff->next;	
+		buff = buff->next;
 	}
 	res[len] = NULL;
 	return (res);

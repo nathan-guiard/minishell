@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 08:48:34 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 15:02:18 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:18:05 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,13 @@ char	**get_builtin_tab_name(void)
 	if (!builtin_tab)
 		return (NULL);
 	builtin_tab[0] = ft_strdup("echo");
-	if (!builtin_tab[0])
-		return (free_tabtab(builtin_tab), NULL);
 	builtin_tab[1] = ft_strdup("exit");
-	if (!builtin_tab[1])
-		return (free_tabtab(builtin_tab), NULL);
 	builtin_tab[2] = ft_strdup("clear");
-	if (!builtin_tab[2])
-		return (free_tabtab(builtin_tab), NULL);
 	builtin_tab[3] = ft_strdup("cd");
-	if (!builtin_tab[3])
-		return (free_tabtab(builtin_tab), NULL);
 	builtin_tab[4] = ft_strdup("pwd");
-	if (!builtin_tab[4])
-		return (free_tabtab(builtin_tab), NULL);
 	builtin_tab[5] = ft_strdup("env");
-	if (!builtin_tab[5])
-		return (free_tabtab(builtin_tab), NULL);
 	builtin_tab[6] = ft_strdup("export");
-	if (!builtin_tab[6])
-		return (free_tabtab(builtin_tab), NULL);
 	builtin_tab[7] = ft_strdup("unset");
-	if (!builtin_tab[7])
-		return (free_tabtab(builtin_tab), NULL);
 	builtin_tab[BUILTIN_NB] = NULL;
 	return (builtin_tab);
 }

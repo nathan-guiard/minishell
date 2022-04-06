@@ -6,16 +6,16 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 16:00:23 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:27:11 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list 		*g_env = NULL;
+t_list		*g_env = NULL;
 static void	the_loop(void);
 
-int main(int argc, char **argv, char **env)
+int	main(int argc, char **argv, char **env)
 {
 	(void)argv;
 	if (argc != 1)
@@ -29,34 +29,29 @@ int main(int argc, char **argv, char **env)
 	set_ret_value(0);
 	the_loop();
 	ft_exit_builtin(NULL);
-	return(0);
+	return (0);
 }
 
 static void	the_loop(void)
 {
 	char		*line;
-	//t_parstab	tab;
+	t_parstab	tab;
 
 	while (1)
 	{
 		line = prompt();
 		if (line)
 		{
-			char **truc = ft_split(line, ' ');
-			if (ft_strcmp("echo", truc[0]) == 0)
-				echo(truc);
-			free_tabtab(truc);
-			free(line);
-			//if (line[0] != '\0')
-			//{	
-			//	add_history(line);
-			//	tab = full_parsing(line);
-			//	pipex(tab);
-			//}
-			//else
-			//	free(line);
+			if (line[0] != '\0')
+			{	
+				add_history(line);
+				tab = full_parsing(line);
+				pipex(tab);
+			}
+			else
+				free(line);
 		}
 		else
-			break;
+			break ;
 	}
 }

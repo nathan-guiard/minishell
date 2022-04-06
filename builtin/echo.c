@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:44:24 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 16:13:46 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:26:51 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_a_nonl_option(char *str);
 
-/*	Echo, -n implemente, pas de gestion de $*/
+/*	Echo, -n implemente	*/
 void	echo(char **args)
 {
 	int	i;

@@ -6,11 +6,13 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:03:53 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:28:12 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:28:14 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*first_test(t_symbol symbol);
 
 int	is_a_sep(char c)
 {
@@ -49,6 +51,30 @@ int	is_a_symbol_sep(t_symbol symbol)
 /*	A supprimer a la fin puisque c que du testing	*/
 char	*translate_symbol(t_symbol symbol)
 {
+	char	*test;
+
+	test = first_test(symbol);
+	if (test)
+		return (test);
+	if (symbol == quote)
+		return (ft_strdup("quote"));
+	if (symbol == sb_pipe)
+		return (ft_strdup("sb_pipe"));
+	if (symbol == delimiter)
+		return (ft_strdup("delimiter"));
+	if (symbol == red_in_file)
+		return (ft_strdup("red_in_file"));
+	if (symbol == red_out_file)
+		return (ft_strdup("red_out_file"));
+	if (symbol == append_file)
+		return (ft_strdup("append_file"));
+	if (symbol == nothing)
+		return (ft_strdup("nothing"));
+	return (ft_strdup("symbol not found"));
+}
+
+char	*first_test(t_symbol symbol)
+{
 	if (symbol == string)
 		return (ft_strdup("string"));
 	if (symbol == red_in)
@@ -69,19 +95,5 @@ char	*translate_symbol(t_symbol symbol)
 		return (ft_strdup("argument"));
 	if (symbol == d_quote)
 		return (ft_strdup("d_quote"));
-	if (symbol == quote)
-		return (ft_strdup("quote"));
-	if (symbol == sb_pipe)
-		return (ft_strdup("sb_pipe"));
-	if (symbol == delimiter)
-		return (ft_strdup("delimiter"));
-	if (symbol == red_in_file)
-		return (ft_strdup("red_in_file"));
-	if (symbol == red_out_file)
-		return (ft_strdup("red_out_file"));
-	if (symbol == append_file)
-		return (ft_strdup("append_file"));
-	if (symbol == nothing)
-		return (ft_strdup("nothing"));
-	return (ft_strdup("symbol not found"));
+	return (NULL);
 }
