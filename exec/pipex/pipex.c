@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:49:37 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 15:14:20 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 15:45:02 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,18 @@ void	mon_pipex_eclate(t_parstab tab)
 			set_layout(C_BLUE, C_RESET, C_ITALIC);
 			set_layout(C_BLUE, C_RESET, C_BOLD);
 			ft_lexerprint(tab[i]);
+			
 			set_layout_printf(C_RESET, C_RESET, C_RESET);
 			set_layout_printf(C_HYELLOW, C_RESET, C_ITALIC);
+			int j = 0;
+			char **truc = api_full_command(tab[i]);
+			while (truc && truc[j])
+			{
+				printf("%s\n", truc[j]);
+				j++;
+			}
+			if (truc)
+				free_tabtab(truc);
 			i++;
 		}
 		i = 0;
