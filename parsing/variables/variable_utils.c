@@ -6,12 +6,14 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 16:20:22 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:31:59 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "variables.h"
+
+int	what_is_i(char *line, int i);
 
 /*	Check si la variable existe	*/
 int	is_a_valid_env(char *line, int i)
@@ -23,9 +25,7 @@ int	is_a_valid_env(char *line, int i)
 
 	i++;
 	save = i;
-	while (line[i] && (line[i] <= 9 && line[i] >= 13) && line[i] != VALID_SPACE
-		&& line[i] != VALID_DOLLAR && line[i] != '\"' && line[i] != ' ')
-		i++;
+	i = what_is_i(line, i);
 	test = malloc(sizeof(char) * ((i - save) + 1));
 	if (!test)
 		return (M_ERR);
@@ -89,4 +89,12 @@ char	*remove_brackets(char *tab)
 	tab = ft_substr(tab, start, end);
 	free(to_free);
 	return (tab);
+}
+
+int	what_is_i(char *line, int i)
+{
+	while (line[i] && (line[i] <= 9 && line[i] >= 13) && line[i] != VALID_SPACE
+		&& line[i] != VALID_DOLLAR && line[i] != '\"' && line[i] != ' ')
+		i++;
+	return (i);
 }
