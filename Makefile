@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/04/06 14:54:01 by nguiard          ###   ########.fr        #
+#    Updated: 2022/04/06 15:09:39 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC =	srcs/main.c										\
 		parsing/lexer/rename_strings.c					\
 		parsing/lexer/remaining_strings_are_arguments.c	\
 		parsing/lexer/replace_quotes.c					\
+		parsing/lexer/replace_dollar.c					\
 		parsing/env/ft_getenv.c							\
 		parsing/env/turn_env_into_list.c				\
 		parsing/env/get_env_node.c						\
