@@ -37,7 +37,6 @@ tt le mode:
 
 
 Nathan:
-faire le echo -nnnn -n e
 
 si une liste n'as pas de commande -> rien faire (/usr/bin/true)
 

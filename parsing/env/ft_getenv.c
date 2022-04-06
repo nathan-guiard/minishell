@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:41:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 16:18:28 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:56:37 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_getenv(char *name)
 	int		ret;
 	char	*env_line;
 
-	if (!name)
+	if (!name || name[0] == '\0')
 		return (NULL);
 	ret = is_name_in_env(name);
 	if (ret == FALSE)
