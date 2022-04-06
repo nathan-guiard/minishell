@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:03:25 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 15:21:14 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 15:27:03 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,10 @@ int	is_a_valid_dollar(char *line, int breakpoint)
 int	is_a_delimiter(char *line, int breakpoint)
 {
 	breakpoint--;
-	printf("[%c] (%d)\n", line[breakpoint], breakpoint);
 	while (line[breakpoint] == ' ' && breakpoint != 0)
 		breakpoint--;
-	printf("%d\n", breakpoint);
 	if (breakpoint == 0)
 		return (FALSE);
-	printf("%d %d %d\n",breakpoint, line[breakpoint], line[breakpoint - 1]);
 	if (line[breakpoint] == '<' && line[breakpoint - 1] == '<')
 		return (TRUE);
 	return (FALSE);

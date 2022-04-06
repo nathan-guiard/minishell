@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/04/06 15:09:39 by nguiard          ###   ########.fr        #
+#    Updated: 2022/04/06 15:26:18 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,13 +105,13 @@ a:=0
 	@echo -n "\033[2;0fCompilation de l'objet" ${nb} "terminee\033[0m\n"
 	$(eval nb=$(shell echo $$(($(nb)+1))))
 
-all: ${NAME}
-
-${NAME}: rm_log ${OBJ}
+${NAME}: ${OBJ}
 	@make -C libft
 	@${CC} ${INCLUDE} ${OBJ} ${LIBFT} ${CFLAGS} -o ${NAME} 2>>error.log
 	@echo "\033[1;92m\033[6;0fminishell pret!\033[0m\033[?25h"
 	@cat error.log 2>/dev/null
+
+all: ${NAME}
 
 clean:
 	@rm -f ${OBJ}
