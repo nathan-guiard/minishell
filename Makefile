@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/04/05 17:40:12 by nguiard          ###   ########.fr        #
+#    Updated: 2022/04/06 14:54:01 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC =	srcs/main.c										\
 		parsing_api/api_every_red_in.c					\
 		parsing_api/api_every_red_out.c					\
 		parsing_api/api_heredoc_delimiter.c				\
+		parsing_api/api_full_command.c					\
 		list/ft_lexeradd_back.c							\
 		list/ft_lexeradd_front.c						\
 		list/ft_lexerclear.c							\

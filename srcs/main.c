@@ -6,26 +6,37 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 17:18:24 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/04/06 14:58:58 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list *g_env = NULL;
+t_list 		*g_env = NULL;
+static void	the_loop(void);
 
 int main(int argc, char **argv, char **env)
 {
-	char		*line;
-	t_parstab	tab;
-	//char **dtab;
-	
-	(void)argc;
 	(void)argv;
-
+	if (argc != 1)
+	{
+		set_layout(C_RED, C_RESET, C_BOLD);
+		ft_putendl_fd("Your arguments won't do anything", 2);
+		set_layout(C_RESET, C_RESET, C_RESET);
+	}
 	catch_signals();
 	turn_env_into_list(env);
 	set_ret_value(0);
+	the_loop();
+	ft_exit_builtin(NULL);
+	return(0);
+}
+
+static void	the_loop(void)
+{
+	char		*line;
+	t_parstab	tab;
+
 	while (1)
 	{
 		line = prompt();
@@ -33,8 +44,8 @@ int main(int argc, char **argv, char **env)
 		{
 			if (line[0] != '\0')
 			{	
+				add_history(line);
 				tab = full_parsing(line);
-				//add_history(ft_strdup(line));
 				pipex(tab);
 			}
 			else
@@ -43,6 +54,4 @@ int main(int argc, char **argv, char **env)
 		else
 			break;
 	}
-	ft_exit_builtin(NULL);
-	return(0);
 }

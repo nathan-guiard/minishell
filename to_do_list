@@ -37,7 +37,8 @@ tt le mode:
 
 
 Nathan:
-les trucs splittes se mettent a la fin de la liste c un probleme
+Je dois changer la detection de $ pour que le delimiteur du heredoc le capte pas
+	if (le 2 derniers chars de la ligne == '<') -> ne pas changer en VALID_DOLLAR
 
 si une liste n'as pas de commande -> rien faire (/usr/bin/true)
 
