@@ -1,40 +1,14 @@
 A faire:
 
-- Faire un historique
-	? peut etre add_hsitory
-
 - Lancer des executables EXEC
 	avec execve
-
-- Ne pas laisser des guillemets non fermes PARSING
-
-- Gerer les single et double quotes PARSING
 
 - Redirections <, >, <<, >> EXEC
 	> faire un write(fd, etc)
 	le reste aucne idee
 
-- Pipes EXEC
-	fork()
-
-- Builtin EXEC
-	export: ajouter a la liste env
-	env: print de tout env
-	unset: pop de env
-
-Debut du prog: export $? = 0
-
 - Interception de signal EXEC
-	ctrl-C SIGINT: Je sais pas mais on met $? a 1 (si on doit implementer $?)
-	ctrl-D (?): On apelle la meme fonction que pour exit avec exit(1)
 	ctrl-\ (?): Rien, pour l'instant ca fait crash readline
-
-
-tt le mode:
-	pas de quote dans export genre TEST"'" ca marche pas
-	si env -i ./minishell: faire une list vide mais surtout
-		pas seg, ce qu'il se passe actuellement.
-
 
 Nathan:
 
