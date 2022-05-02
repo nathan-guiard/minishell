@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:16:54 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/02 12:13:46 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/02 14:42:08 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ char	*change_the_variable(char *line, int *i)
 	int	ret;
 
 	ret = is_a_valid_env(line, *i);
+	printf("%d\n\n", ret);
 	if (ret == M_ERR)
 		return (S_MERR);
 	else if (ret == TRUE)

@@ -6,13 +6,14 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:03:25 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 16:25:05 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/02 14:57:38 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_a_delimiter(char *line, int breakpoint);
+int			is_a_delimiter(char *line, int breakpoint);
+static int	is_lonely(char *line, int i);
 
 int	is_a_valid_dollar(char *line, int breakpoint)
 {
@@ -21,9 +22,9 @@ int	is_a_valid_dollar(char *line, int breakpoint)
 
 	i = 0;
 	quote_type = 0;
-	if (breakpoint == 0 && line[0] == '$')
-		return (TRUE);
 	if (line[breakpoint] != '$')
+		return (FALSE);
+	if (is_lonely(line, breakpoint) == TRUE)
 		return (FALSE);
 	while (line[i] != '\0' && i <= breakpoint)
 	{
@@ -49,6 +50,14 @@ int	is_a_delimiter(char *line, int breakpoint)
 	if (breakpoint == 0)
 		return (FALSE);
 	if (line[breakpoint] == '<' && line[breakpoint - 1] == '<')
+		return (TRUE);
+	return (FALSE);
+}
+
+static int	is_lonely(char *line, int i)
+{
+	if (line[i + 1] == '\0' || is_a_delimiter(line, i + 1) == TRUE
+		|| line[i + 1] == ' ')
 		return (TRUE);
 	return (FALSE);
 }

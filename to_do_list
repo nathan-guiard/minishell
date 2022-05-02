@@ -11,4 +11,7 @@ si une liste n'as pas de commande -> rien faire (/usr/bin/true)
 
 .nfs: unlink sans close
 
-faire le $ tout seul: a ne pas remplace
+faire genre $USER<Makefile
+
+a la fin faire des protections de malloc et changer les S_ERR
+	NULL prcq je suis pas sur que ce soit une bonne idee

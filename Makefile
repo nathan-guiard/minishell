@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/05/02 09:47:15 by nguiard          ###   ########.fr        #
+#    Updated: 2022/05/02 14:24:09 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ SRC =	srcs/main.c										\
 		
 SHELL := /bin/zsh
 
-ADD_FLAGS = -g -O3 #-fsanitize=address
+ADD_FLAGS = -g  #-fsanitize=address
 
 CFLAGS = -lreadline -Wall -Werror -Wextra ${ADD_FLAGS}
 

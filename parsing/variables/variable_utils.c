@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/02 12:14:14 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/02 14:48:55 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	is_a_valid_env(char *line, int i)
 	test[j] = '\0';
 	test = remove_brackets(test);
 	ptr = ft_getenv(test);
+	printf("%s\n%s | %d\n", test, test + i, i);
 	free(test);
 	if (ptr && ft_strcmp(ptr, S_ERR) != 0)
 		return (free(ptr), TRUE);
@@ -51,19 +52,19 @@ int	where_is_end_var(char *line, int start_var)
 	char	search;
 
 	i = start_var;
+	search = ' ';
 	if (line[i + 1] == '{')
 	{
 		i++;
 		search = '}';
 	}
-	else
-		search = ' ';
 	i++;
 	while (line[i] != search && line[i])
 	{
 		if (line[i] == '\f' || line[i] == '\t' || line[i] == '\n'
 			|| line[i] == '\r' || line[i] == '\v' || line[i] == VALID_DOLLAR
-			|| line[i] == VALID_DQUOTE)
+			|| line[i] == VALID_DQUOTE || line[i] == '$'
+			|| line[i] == '<' || line[i] == '>' || line[i] == '|')
 			break ;
 		i++;
 	}
@@ -94,9 +95,9 @@ char	*remove_brackets(char *tab)
 int	what_is_i(char *line, int i)
 {
 	while (line[i] && !(line[i] <= 9 && line[i] >= 13) && line[i] != VALID_SPACE
-		&& line[i] != VALID_DOLLAR && line[i] != '\"' && line[i] != ' ')
-		{
+		&& line[i] != VALID_DOLLAR && line[i] != '\"' && line[i] != ' '
+		&& line[i] != '$' && line[i] != VALID_REDOUT
+		&& line[i] != VALID_REDIN && line[i] != VALID_PIPE)
 			i++;
-		}
 	return (i);
 }
