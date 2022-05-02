@@ -7,13 +7,6 @@ A faire:
 	> faire un write(fd, etc)
 	le reste aucne idee
 
-- Interception de signal EXEC
-	ctrl-\ (?): Rien, pour l'instant ca fait crash readline
-
-Nathan:
-
 si une liste n'as pas de commande -> rien faire (/usr/bin/true)
-
-probleme:	le super makefile relink :'(
 
 .nfs: unlink sans close

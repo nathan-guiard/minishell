@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/04/06 16:00:33 by nguiard          ###   ########.fr        #
+#    Updated: 2022/05/02 09:47:15 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ SRC =	srcs/main.c										\
 		
 SHELL := /bin/zsh
 
-ADD_FLAGS = -g #-fsanitize=address
+ADD_FLAGS = -g -O3 #-fsanitize=address
 
 CFLAGS = -lreadline -Wall -Werror -Wextra ${ADD_FLAGS}
 
@@ -107,7 +107,7 @@ a:=0
 	$(eval nb=$(shell echo $$(($(nb)+1))))
 
 ${NAME}: ${OBJ}
-	@make -C libft
+	@make -s -C libft
 	@${CC} ${INCLUDE} ${OBJ} ${LIBFT} ${CFLAGS} -o ${NAME} 2>>error.log
 	@echo "\033[1;92m\033[6;0fminishell pret!\033[0m\033[?25h"
 	@cat error.log 2>/dev/null
@@ -121,6 +121,11 @@ clean:
 fclean:
 	@rm -f ${OBJ} ${NAME}
 	@echo "fclean ok!"
+
+ultraclean:
+	@rm -rf ${OBJ} ${NAME}
+	@make fclean -C libft 1>/dev/null
+	@echo "ultraclean ok!"
 
 re: fclean all
 

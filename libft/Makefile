@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 03:13:28 by nguiard           #+#    #+#              #
-#    Updated: 2022/03/28 14:30:59 by nguiard          ###   ########.fr        #
+#    Updated: 2022/05/02 09:46:49 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ SRC =  ft_isalpha.c 		\
 	ft_strrm_index.c		\
 
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -O3
 
 OBJ = ${SRC:.c=.o}
 
