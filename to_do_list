@@ -10,3 +10,5 @@ A faire:
 si une liste n'as pas de commande -> rien faire (/usr/bin/true)
 
 .nfs: unlink sans close
+
+faire le $ tout seul: a ne pas remplace
