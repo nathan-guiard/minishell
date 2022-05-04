@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 13:00:32 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:15:39 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:12:06 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	exec_simple_command(char **command, char **env)
 	path = exec_path(command[0]);
 	if (!path)
 		return (FALSE);
-	if (ft_strcmp(path, S_ERR) == 0)
-		return (ERR);
 	pid = fork();
 	if (pid == 0)
 		execve(path, command, env);

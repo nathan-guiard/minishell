@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:08:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 16:26:47 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:17:52 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	is_a_valid_export(char *str)
 		return (FALSE);
 	sub = ft_substr(str, 0, equal);
 	if (!sub)
-		return (M_ERR);
+		return (FALSE);
 	if (ft_strchr(sub, '\'') == NULL && ft_strchr(sub, '\"') == NULL
 		&& ft_strchr(sub, '$') == NULL && ft_strchr(sub, '=') == NULL)
 		return (free(sub), TRUE);

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 08:48:34 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 16:18:05 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:21:57 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_a_builtin(char *cmd_name)
 		return (FALSE);
 	builtin_tab_name = get_builtin_tab_name();
 	if (!builtin_tab_name)
-		return (M_ERR);
+		return (ft_putstr_fd(MERR_STR, 2), FALSE);
 	while (builtin_tab_name[i])
 	{
 		if (ft_strcmp(builtin_tab_name[i], cmd_name) == 0)

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 07:16:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 10:15:27 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:20:13 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void	catch_sigint(int sig, siginfo_t *truc, void *context)
 	rl_replace_line("", 1);
 	rl_on_new_line();
 	rl_redisplay();
+	set_ret_value(130);
 }
 
 static void	catch_sigquit(int sig, siginfo_t *truc, void *context)

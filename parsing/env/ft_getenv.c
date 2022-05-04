@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:41:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 16:56:37 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:12:26 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ char	*ft_getenv(char *name)
 	env_line = get_env_line(name);
 	if (!env_line)
 		return (NULL);
-	if (ft_strcmp(env_line, S_ERR) == 0)
-		return (S_ERR);
 	env_line = cut_env_name(env_line);
 	return (env_line);
 }
@@ -62,7 +60,7 @@ char	*get_env_line(char *name)
 
 	tmp = g_env;
 	if (!tmp)
-		return (S_ERR);
+		return (NULL);
 	while (tmp)
 	{
 		cmp = ft_substr((char *)tmp->content, 0, ft_strlen(name));

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 10:52:33 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:23:14 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_a_valid_env(char *line, int i)
 	i = what_is_i(line, i);
 	test = malloc(sizeof(char) * ((i - save) + 1));
 	if (!test)
-		return (M_ERR);
+		return (ft_putstr_fd(MERR_STR, 2), FALSE);
 	j = 0;
 	while (save + j < i)
 	{
@@ -40,7 +40,7 @@ int	is_a_valid_env(char *line, int i)
 	ptr = ft_getenv(test);
 	printf("%s\n%s | %d\n", test, test + i, i);
 	free(test);
-	if (ptr && ft_strcmp(ptr, S_ERR) != 0)
+	if (ptr)
 		return (free(ptr), TRUE);
 	return (free(ptr), FALSE);
 }
@@ -69,7 +69,7 @@ int	where_is_end_var(char *line, int start_var)
 		i++;
 	}
 	if (search == '}' && line[i] != search)
-		return (P_ERR);
+		return ();
 	if (search == '}')
 		return (i + 1);
 	return (i);

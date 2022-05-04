@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:16:54 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 10:54:45 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:15:12 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 char	*change_the_variable(char *line, int *i);
 
 /*	Remplace les variables par leur valeur dans l'environnement
-	Retour la ligne changee ou alors retourne S_ERR/S_MERR en cas d'erreur	*/
+	Retour la ligne changee ou alors retourne NULL en cas d'erreur	*/
 char	*replace_variables(char *line)
 {
 	int	i;
@@ -126,10 +126,7 @@ char	*change_the_variable(char *line, int *i)
 	int	ret;
 
 	ret = is_a_valid_env(line, *i);
-	printf("%d\n\n", ret);
-	if (ret == M_ERR)
-		return (S_MERR);
-	else if (ret == TRUE)
+	if (ret == TRUE)
 	{
 		line = replace_variable_by_content(line, *i);
 		if (!line)

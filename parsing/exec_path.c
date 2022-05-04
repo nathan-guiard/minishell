@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 12:00:25 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 12:23:47 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:11:49 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*exec_path(char *cmd_name)
 	i = 0;
 	path_tab = ft_split(getenv("PATH"), ':');
 	if (!path_tab)
-		return (S_ERR);
+		return (ft_putstr_fd(MERR_STR, 2), NULL);
 	while (path_tab[i])
 	{
 		cmd_name_with_slash = ft_strjoin("/", cmd_name);
