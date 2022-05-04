@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 11:17:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 15:30:16 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:03:26 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_parstab	rename_strings(t_parstab tab)
 	int	i;
 
 	i = 0;
+	if (!tab)
+		return (NULL);
 	tab = rename_red_files(tab);
 	while (tab[i])
 	{

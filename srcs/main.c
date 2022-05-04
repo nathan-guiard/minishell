@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 16:27:11 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 09:59:24 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,7 @@ static void	the_loop(void);
 int	main(int argc, char **argv, char **env)
 {
 	(void)argv;
-	if (argc != 1)
-	{
-		set_layout(C_RED, C_RESET, C_BOLD);
-		ft_putendl_fd("Your arguments won't do anything", 2);
-		set_layout(C_RESET, C_RESET, C_RESET);
-	}
+	(void)argc;
 	catch_signals();
 	turn_env_into_list(env);
 	set_ret_value(0);
@@ -46,7 +41,8 @@ static void	the_loop(void)
 			{	
 				add_history(line);
 				tab = full_parsing(line);
-				pipex(tab);
+				if (tab)
+					pipex(tab);
 			}
 			else
 				free(line);
