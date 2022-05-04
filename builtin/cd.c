@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:42:03 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 12:22:48 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 16:59:45 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	cd(char **args)
 {
 	char	*home;
 
-	home = getenv("HOME");
+	home = ft_getenv("HOME");
 	if (!args)
 		return ;
 	if (args[0] == NULL || args[0][0] == '~' )

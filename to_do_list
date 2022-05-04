@@ -20,10 +20,4 @@ si une liste n'as pas de commande -> rien faire (/usr/bin/true)
 
 Nathan:
 
-faire genre $USER<Makefile
-
-a la fin faire des protections de malloc et changer les S_ERR
-	NULL prcq je suis pas sur que ce soit une bonne idee
-
-Ecrire si c'est une erreur de malloc ou une erreur de parsing
-	DANS le parsing, puis renvoyer NULL. Comme ca c plus propre
+rien lol

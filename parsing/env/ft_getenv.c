@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:41:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 11:12:26 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 17:16:55 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,15 @@ char	*ft_getenv(char *name)
 int	is_name_in_env(char *name)
 {
 	t_list	*tmp;
+	char	*to_cmp;
 
 	tmp = g_env;
 	if (!tmp)
 		return (ERR);
-	while (tmp->next != NULL)
+	while (tmp)
 	{
-		if (ft_strncmp(name, tmp->content, ft_strlen(name)) == 0)
+		to_cmp = tmp->content;
+		if (ft_strncmp(name, to_cmp, ft_strlen(name)) == 0)
 			return (TRUE);
 		tmp = tmp->next;
 	}
