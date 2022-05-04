@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 16:20:16 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 16:49:21 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static int	if_check(char c)
 		|| c == '\r' || c == '\v' || c == VALID_DOLLAR
 		|| c == VALID_DQUOTE || c == '$'
 		|| c == VALID_REDIN || c == VALID_REDOUT
-		|| c == VALID_PIPE)
+		|| c == VALID_PIPE || c == VALID_APPEND || c == VALID_HEREDOC)
 		return (TRUE);
 	return (FALSE);
 }

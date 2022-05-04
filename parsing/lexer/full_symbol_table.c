@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:06:50 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 11:37:02 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 16:51:39 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ t_lexer	*full_symbol_table(char *line)
 	quote_handling(&res);
 	split_the_unsplitted(&res);
 	if (check_error_full_string(res) == TRUE)
-		return (ft_lexerclear(&res, free), NULL);
+		return (ft_lexerclear(&res, free),
+			ft_putstr_fd("Syntax error.\n", 2), NULL);
 	return (res);
 }
 
