@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:17:27 by nguiard           #+#    #+#             */
-/*   Updated: 2021/11/30 14:57:58 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:46:34 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	buffer = s;
 	while (i < n)
 	{
-		buffer[i] = c;
+		buffer[i] = (char)c;
 		i++;
 	}
 	return (s);

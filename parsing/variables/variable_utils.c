@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 11:23:14 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 12:55:50 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	where_is_end_var(char *line, int start_var)
 		i++;
 	}
 	if (search == '}' && line[i] != search)
-		return ();
+		return (FALSE);
 	if (search == '}')
 		return (i + 1);
 	return (i);
