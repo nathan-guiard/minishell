@@ -6,14 +6,15 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 12:55:50 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 16:20:16 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "variables.h"
 
-int	what_is_i(char *line, int i);
+int			what_is_i(char *line, int i);
+static int	if_check(char c);
 
 /*	Check si la variable existe	*/
 int	is_a_valid_env(char *line, int i)
@@ -38,7 +39,6 @@ int	is_a_valid_env(char *line, int i)
 	test[j] = '\0';
 	test = remove_brackets(test);
 	ptr = ft_getenv(test);
-	printf("%s\n%s | %d\n", test, test + i, i);
 	free(test);
 	if (ptr)
 		return (free(ptr), TRUE);
@@ -61,15 +61,12 @@ int	where_is_end_var(char *line, int start_var)
 	i++;
 	while (line[i] != search && line[i])
 	{
-		if (line[i] == '\f' || line[i] == '\t' || line[i] == '\n'
-			|| line[i] == '\r' || line[i] == '\v' || line[i] == VALID_DOLLAR
-			|| line[i] == VALID_DQUOTE || line[i] == '$'
-			|| line[i] == '<' || line[i] == '>' || line[i] == '|')
+		if (if_check(line[i]) == TRUE)
 			break ;
 		i++;
 	}
 	if (search == '}' && line[i] != search)
-		return (FALSE);
+		return (start_var);
 	if (search == '}')
 		return (i + 1);
 	return (i);
@@ -102,4 +99,15 @@ int	what_is_i(char *line, int i)
 		&& line[i] != VALID_REDIN && line[i] != VALID_PIPE)
 			i++;
 	return (i);
+}
+
+static int	if_check(char c)
+{
+	if (c == '\f' || c == '\t' || c == '\n'
+		|| c == '\r' || c == '\v' || c == VALID_DOLLAR
+		|| c == VALID_DQUOTE || c == '$'
+		|| c == VALID_REDIN || c == VALID_REDOUT
+		|| c == VALID_PIPE)
+		return (TRUE);
+	return (FALSE);
 }

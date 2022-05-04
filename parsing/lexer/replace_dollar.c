@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:03:25 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/02 14:57:38 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 14:23:57 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	is_a_valid_dollar(char *line, int breakpoint)
 
 int	is_a_delimiter(char *line, int breakpoint)
 {
+	if (breakpoint == 0)
+		return (FALSE);
 	breakpoint--;
 	while (line[breakpoint] == ' ' && breakpoint != 0)
 		breakpoint--;
