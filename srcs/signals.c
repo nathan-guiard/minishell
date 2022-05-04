@@ -6,15 +6,14 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 07:16:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 12:35:54 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:15:27 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	catch_sigint(int sig, siginfo_t *truc, void *context);
-void	catch_sigquit(int sig, siginfo_t *truc, void *context);
-void	catch_sigstop(int sig, siginfo_t *truc, void *context);
+static void	catch_sigint(int sig, siginfo_t *truc, void *context);
+static void	catch_sigquit(int sig, siginfo_t *truc, void *context);
 
 void	catch_signals(void)
 {
@@ -29,11 +28,8 @@ void	catch_signals(void)
 	sigaction(SIGQUIT, &sigquit, NULL);
 }
 
-void	catch_sigint(int sig, siginfo_t *truc, void *context)
+static void	catch_sigint(int sig, siginfo_t *truc, void *context)
 {
-	char	*text;
-
-	text = get_prompt_text();
 	(void)sig;
 	(void)truc;
 	(void)context;
@@ -41,11 +37,9 @@ void	catch_sigint(int sig, siginfo_t *truc, void *context)
 	rl_replace_line("", 1);
 	rl_on_new_line();
 	rl_redisplay();
-	free(text);
 }
 
-//pas bon
-void	catch_sigquit(int sig, siginfo_t *truc, void *context)
+static void	catch_sigquit(int sig, siginfo_t *truc, void *context)
 {
 	(void)sig;
 	(void)truc;

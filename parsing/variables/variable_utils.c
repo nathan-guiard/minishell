@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/02 14:48:55 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:52:33 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,18 @@ int	where_is_end_var(char *line, int start_var)
 /*	Enleve les {} d'une chaine (*variable shell dans notre cas)	*/
 char	*remove_brackets(char *tab)
 {
-	int		start;
 	int		end;
 	char	*to_free;
 
+	if (!tab)
+		return (NULL);
 	if (tab[0] != '{')
 		return (tab);
-	start = 1;
 	end = ft_strlen(tab) - 2;
 	to_free = tab;
-	tab = ft_substr(tab, start, end);
+	tab = ft_substr(tab, 1, end);
+	if (!tab)
+		return (ft_putstr_fd(MERR_STR, 2), free(to_free), NULL);
 	free(to_free);
 	return (tab);
 }

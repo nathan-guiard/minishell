@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:06:50 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/02 14:51:10 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:01:53 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 static t_lexer	*transform_tabs_into_nodes(char **split);
 static char		*replace_non_writable_spaces(char *tab);
 static char		**put_spaces_again(char **tab);
-int				quotes_closed(char *line);
+static int		quotes_closed(char *line);
 
 /*	Transforme la ligne en une liste "symbol table"
-	Gere bien cahr speciaux dans ou hors des quotes
+	Gere bien char speciaux dans ou hors des quotes
 	Check pas les pipes	(division)					*/
 t_lexer	*full_symbol_table(char *line)
 {
@@ -26,21 +26,24 @@ t_lexer	*full_symbol_table(char *line)
 	t_lexer	*res;
 
 	if (quotes_closed(line) == FALSE)
-		return (NULL);
+		return (ft_putstr_fd("Parsing error", 2), NULL);
 	line = replace_quotes(line);
 	line = replace_special_char(line);
+	if (!line)
+		return (NULL);
 	line = replace_variables(line);
+	if (!line)
+		return (NULL);
 	splitted = ft_split(line, ' ');
+	if (!splitted)
+		return (ft_putstr_fd(MERR_STR, 2), free(line), NULL);
 	free(line);
 	splitted = put_spaces_again(splitted);
 	res = transform_tabs_into_nodes(splitted);
 	quote_handling(&res);
 	split_the_unsplitted(&res);
 	if (check_error_full_string(res) == TRUE)
-	{
-		ft_lexerclear(&res, free);
-		return (NULL);
-	}
+		return (ft_lexerclear(&res, free), NULL);
 	return (res);
 }
 
@@ -70,8 +73,6 @@ static char	**put_spaces_again(char **tab)
 	int	i;
 
 	i = 0;
-	if (!tab)
-		return (NULL);
 	while (tab[i])
 	{
 		tab[i] = replace_non_writable_spaces(tab[i]);
@@ -97,7 +98,7 @@ static char	*replace_non_writable_spaces(char *tab)
 	return (tab);
 }
 
-int	quotes_closed(char *line)
+static int	quotes_closed(char *line)
 {
 	int		i;
 	char	quote_type;

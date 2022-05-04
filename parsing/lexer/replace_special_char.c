@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:27:17 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 15:03:38 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:49:35 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*replace_special_char(char *line)
 	i = 0;
 	res = malloc(sizeof(char) * (ft_strlen(line) + 1));
 	if (!res)
-		return (NULL);
+		return (ft_putstr_fd(MERR_STR, 2), free(line), NULL);
 	while (line[i])
 	{
 		if (is_a_valid_special_char(line, i) == TRUE)

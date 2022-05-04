@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/05 13:52:10 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:49:59 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 /*	Pointer sur fonction de type "void(char **)", aka nos builtins			*/
 typedef void	(*t_builtin_fnc)(char **);
 typedef char	**t_doubletab;
+
+# define MERR_STR "Malloc error.\n"
 
 extern t_list	*g_env;
 
@@ -87,6 +89,7 @@ char		*ft_getenv(char *name);
 t_list		*get_env_node(char *name);
 
 /*	env	*/
+
 char		**turn_env_into_tab(void);
 void		set_ret_value(unsigned char i);
 

@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:16:54 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/02 14:42:08 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:54:45 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ char	*replace_variables(char *line)
 	while (line[i] != '\0')
 	{
 		if (line[i] == VALID_DOLLAR)
+		{
 			line = change_the_variable(line, &i);
+			if (!line)
+				return (NULL);
+		}
 		if ((size_t)i < ft_strlen(line))
 			i++;
 	}
@@ -44,19 +48,20 @@ char	*replace_variable_by_content(char *line, int start_var)
 	end_var = where_is_end_var(line, start_var);
 	part_one = ft_substr(line, 0, start_var);
 	if (!part_one)
-		return (S_ERR);
+		return (ft_putstr_fd(MERR_STR, 2), free(line), NULL);
 	part_two = ft_substr(line, end_var, INT_MAX);
+	if (!part_two)
+		return (ft_putstr_fd(MERR_STR, 2), free(line), free(part_one)
+			, NULL);
 	line = only_content(line, start_var);
 	res = join(part_one, line);
 	if (!res)
-		return (S_ERR);
+		return (ft_putstr_fd(MERR_STR, 2), NULL);
 	res = join(res, part_two);
 	if (!res)
-		return (S_ERR);
-	if (part_two)
-		free(part_two);
-	if (line)
-		free(line);
+		return (ft_putstr_fd(MERR_STR, 2), NULL);
+	free(part_two);
+	free(line);
 	return (res);
 }
 
@@ -68,15 +73,20 @@ char	*only_content(char *line, int start_var)
 	char	*sub;
 	char	*no_brackets;
 
+	if (!line)
+		return (NULL);
 	if (line[start_var] == '{')
 		start_var++;
 	sub = ft_substr(line, start_var + 1,
 			where_is_end_var(line, start_var) - start_var - 1);
+	if (!sub)
+		return (ft_putstr_fd(MERR_STR, 2), NULL);
 	to_free = line;
 	no_brackets = remove_brackets(sub);
+	if (!no_brackets)
+		return (NULL);
 	line = ft_getenv(no_brackets);
-	if (to_free)
-		free(to_free);
+	free(to_free);
 	if (ft_strcmp(sub, no_brackets) == 0)
 		free(sub);
 	return (line);
@@ -93,11 +103,19 @@ char	*replace_variable_by_nothing(char *line, int start_var)
 
 	end_var = where_is_end_var(line, start_var);
 	part_one = ft_substr(line, 0, start_var);
+	if (!part_one)
+		return (ft_putstr_fd(MERR_STR, 2), free(line), NULL);
 	part_one = join(part_one, "\022");
 	if (!part_one)
-		return (S_ERR);
+		return (ft_putstr_fd(MERR_STR, 2), free(line), NULL);
 	part_two = ft_substr(line, end_var, INT_MAX);
+	if (!part_two)
+		return (ft_putstr_fd(MERR_STR, 2), free(line), free(part_one)
+			, NULL);
 	res = join(part_one, part_two);
+	if (!res)
+		return (ft_putstr_fd(MERR_STR, 2), free(line), free(part_two)
+			, NULL);
 	free(part_two);
 	free(line);
 	return (res);
@@ -114,15 +132,15 @@ char	*change_the_variable(char *line, int *i)
 	else if (ret == TRUE)
 	{
 		line = replace_variable_by_content(line, *i);
-		if (ft_strcmp(S_ERR, line) == 0)
-			return (S_ERR);
+		if (!line)
+			return (NULL);
 		*i = 0;
 	}
 	else if (ret == FALSE)
 	{
 		line = replace_variable_by_nothing(line, *i);
-		if (ft_strcmp(S_ERR, line) == 0)
-			return (S_ERR);
+		if (!line)
+			return (NULL);
 		*i = 0;
 	}
 	return (line);
