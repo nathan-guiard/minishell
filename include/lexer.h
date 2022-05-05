@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/02 11:26:46 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/05 16:51:17 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,15 @@ typedef struct s_lexer
 	char			*content;
 	struct s_lexer	*next;
 }	t_lexer;
+
+typedef struct s_exec
+{
+	char	**cmd;
+	char	**envp;
+	int		pip[2];
+	int		fd_in;
+	int		fd_out;
+}	t_exec;
 
 # define VALID_PIPE			'\033'
 # define VALID_SPACE		'\030'

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
+#    By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/05/04 16:29:36 by nguiard          ###   ########.fr        #
+#    Updated: 2022/05/05 16:57:28 by tgeorgin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ SRC =	srcs/main.c										\
 		exec/builtin.c									\
 		exec/exec_simple_command.c						\
 		exec/pipex/pipex.c								\
+		exec/pipex/utils_pipex.c						\
 		
 SHELL := /bin/zsh
 

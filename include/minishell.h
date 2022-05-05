@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 11:16:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/05 16:55:12 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@
 # include <signal.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
+# define READ		0
+# define WRITE		1
 # define TRUE 		1
 # define FALSE 		-42
 # define ERR		-420
@@ -64,7 +69,12 @@ void		turn_env_into_list(char **env);
 /*	Exec	*/
 int			builtin(char **command);
 int			exec_simple_command(char **command, char **env);
-void		pipex(t_parstab	parsing);
+void		pipex(t_parstab	parsing, char **envp);
+int			open_files(t_symbol sb, t_lexer *ls);
+void		open_all_red_out(t_lexer *buff);
+void		exec_cmd(t_parstab tab, t_exec *ex, int i);
+t_exec		init_struct_exec(t_lexer *ls, char **env);
+char		*prep_path(char *cmd, char **envp);
 
 /*	Parsing	*/
 

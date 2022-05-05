@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 14:21:16 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/05 16:56:40 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 t_list		*g_env = NULL;
-static void	the_loop(void);
+static void	the_loop(char **env);
 
 int	main(int argc, char **argv, char **env)
 {
@@ -22,12 +22,12 @@ int	main(int argc, char **argv, char **env)
 	catch_signals();
 	turn_env_into_list(env);
 	set_ret_value(0);
-	the_loop();
+	the_loop(env);
 	ft_exit_builtin(NULL);
 	return (0);
 }
 
-static void	the_loop(void)
+static void	the_loop(char **env)
 {
 	char		*line;
 	t_parstab	tab;
@@ -42,7 +42,7 @@ static void	the_loop(void)
 				add_history(line);
 				tab = full_parsing(line);
 				if (tab)
-					pipex(tab);
+					pipex(tab, env);
 			}
 			else
 				free(line);
