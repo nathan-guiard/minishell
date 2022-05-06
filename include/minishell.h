@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/05 16:55:12 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/06 18:41:55 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void		open_all_red_out(t_lexer *buff);
 void		exec_cmd(t_parstab tab, t_exec *ex, int i);
 t_exec		init_struct_exec(t_lexer *ls, char **env);
 char		*prep_path(char *cmd, char **envp);
+int			exec_builtin(char **cmd, t_parstab tab, int i);
+
 
 /*	Parsing	*/
 

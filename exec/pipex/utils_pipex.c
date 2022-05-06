@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:48:58 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/05 17:07:59 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/06 19:27:02 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,26 @@ void	open_all_red_out(t_lexer *buff)
 void	redirect(t_parstab tab, t_exec *ex, int i)
 {
 	close(ex->pip[READ]);
-	if (ex->fd_in != -1 && ex->fd_in != -2)
+	if (ex->fd_in != -1 && ex->fd_in != STDIN_FILENO)
 	{
 		dup2(ex->fd_in, STDIN_FILENO);
 		close(ex->fd_in);
 	}
-	else if (ex->fd_in == -2 && i > 0)
+	/*else if (ex->fd_in == -2 && i > 0)
 	{
 		dup2(ex->pip[READ], STDIN_FILENO);
-	}
-	if (ex->fd_out != -1 && ex->fd_out != -2)
+		ft_putstr_fd("yeahh", 0);
+	}*/
+	if (ex->fd_out != -1 && ex->fd_out != STDOUT_FILENO)
 	{
 		dup2(ex->fd_out, STDOUT_FILENO);
 		close(ex->fd_out);
 	}
-	else if (ex->fd_out == -2 && tab[i + 1] != NULL)
+	else if (ex->fd_out == STDOUT_FILENO && tab[i + 1] != NULL)
 	{
 		dup2(ex->pip[WRITE], STDOUT_FILENO);
 	}
+	close(ex->pip[WRITE]);
 }
 
 void	child_process(t_parstab tab, t_exec *ex, int i)
@@ -68,13 +70,13 @@ void	child_process(t_parstab tab, t_exec *ex, int i)
 
 	cmd = api_full_command(tab[i]);
 	path = prep_path(cmd[0], ex->envp);
-	/*if (is_a_builtin(cmd[0]))
+	if (is_a_builtin(cmd[0]) == 1)
 	{
-		ft_putstr_fd("builtin connard", 0);
-		//redirect()
-		//exec_builtin_w_pipe()
-	}*/
-	if (path)
+		redirect(tab, ex, i);
+		if (exec_builtin(cmd, tab, i) == FALSE)
+			printf("paasss bon");
+	}
+	else if (path)
 	{
 		redirect(tab, ex, i);
 		if (execve(path, cmd, ex->envp) == -1)
@@ -86,7 +88,15 @@ void	child_process(t_parstab tab, t_exec *ex, int i)
 	//free tout ce merdier si possible
 }
 
-//void	parent_process()
+void	parent_process(t_exec *ex)
+{
+	//close(ex->pip[WRITE]);
+	if (ex->fd_in > STDIN_FILENO)
+		close(ex->fd_in);
+/*	if (ex->fd_in == STDIN_FILENO)
+		ex->fd_in = ex->pip[READ];
+	dup2(ex->pip[READ], STDIN_FILENO);*/
+}
 
 void	exec_cmd(t_parstab tab, t_exec *ex, int i)
 {
@@ -99,8 +109,8 @@ void	exec_cmd(t_parstab tab, t_exec *ex, int i)
 	{
 		child_process(tab, ex, i);
 	}
-	/*else
-		printf("parent procc\n");
-		parent_process();*/
-	waitpid(pid1, NULL, 0);
+	else
+		parent_process(ex);
+	//waitpid(pid1, NULL, 0);
+//	printf("parent procc\n");
 }

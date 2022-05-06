@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:49:37 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/05 17:11:44 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/06 19:20:34 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	mon_pipex_eclate(t_parstab parsing);
 t_exec	init_struct_exec(t_lexer *ls, char **env)
 {
 	t_exec	ex;
-
+	
 	if (pipe(ex.pip) == -1)
 		ft_putstr_fd("pipe error", 0);
 	ex.envp = env;
@@ -25,9 +25,9 @@ t_exec	init_struct_exec(t_lexer *ls, char **env)
 	if (api_last_red_in(ls) != NULL)
 		ex.fd_in = open(api_last_red_in(ls), O_RDONLY);
 	else
-		ex.fd_in = -2;
+		ex.fd_in = STDIN_FILENO;
 	if (api_last_red_out(ls) == NULL)
-		ex.fd_out = -2;
+		ex.fd_out = STDOUT_FILENO;
 	else if (api_last_red_out(ls) != NULL)
 		ex.fd_out = open(api_last_red_out(ls), O_WRONLY | O_CREAT | O_TRUNC);
 	return (ex);
@@ -52,14 +52,24 @@ char	*prep_path(char *cmd, char **envp)
 		free(part_path);
 		if (access(path, F_OK) == 0)
 		{
-			//free_tab(paths);
+			free_tabtab(paths);
 			return (path);
 		}
 		free(path);
 		i++;
 	}
-	//free_tab(paths);
+	free_tabtab(paths);
 	return (NULL);
+}
+
+void	wait_datas(void)
+{
+	int pid1;
+
+	pid1 = waitpid(0, NULL , 0);
+	if (pid1 != 0)
+		ft_putstr_fd("", 0);
+	return ;
 }
 
 //	a remplacer par le vrai pipex
@@ -77,10 +87,6 @@ void	pipex(t_parstab	parsing, char **envp)
 		i++;
 	}
 	i = 0;
-	//if (parsing[i + 1] == NULL && is_a_builtin(buff->content))
-	//	i = 0;
-		//exec__builtin_alone
-	//else
 	if (1)
 	{
 		while (parsing[i])
@@ -89,11 +95,12 @@ void	pipex(t_parstab	parsing, char **envp)
 			exec_cmd(parsing, &ex, i);
 			i++;
 		}
+		wait_datas();
 	}
 }
 
 //	pour faire mes tests
-void	mon_pipex_eclate(t_parstab tab)
+/*void	mon_pipex_eclate(t_parstab tab)
 {
 	int	i;
 
@@ -110,4 +117,4 @@ void	mon_pipex_eclate(t_parstab tab)
 		i++;
 	}
 	free_parstab(tab);
-}
+}*/
