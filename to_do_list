@@ -11,13 +11,6 @@ si une liste n'as pas de commande -> rien faire (/usr/bin/true)
 
 .nfs: unlink sans close
 
+Nathan: le ^C marche bizzarement
 
-
-
-
-
-
-
-Nathan:
-
-rien lol
+il faut un ctrl D par commande entree (wtf?)

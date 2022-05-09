@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 16:49:21 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/09 10:24:52 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	what_is_i(char *line, int i)
 	while (line[i] && !(line[i] <= 9 && line[i] >= 13) && line[i] != VALID_SPACE
 		&& line[i] != VALID_DOLLAR && line[i] != '\"' && line[i] != ' '
 		&& line[i] != '$' && line[i] != VALID_REDOUT
-		&& line[i] != VALID_REDIN && line[i] != VALID_PIPE)
+		&& line[i] != VALID_REDIN && line[i] != VALID_PIPE && line[i] != '=')
 			i++;
 	return (i);
 }
@@ -107,7 +107,8 @@ static int	if_check(char c)
 		|| c == '\r' || c == '\v' || c == VALID_DOLLAR
 		|| c == VALID_DQUOTE || c == '$'
 		|| c == VALID_REDIN || c == VALID_REDOUT
-		|| c == VALID_PIPE || c == VALID_APPEND || c == VALID_HEREDOC)
+		|| c == VALID_PIPE || c == VALID_APPEND || c == VALID_HEREDOC
+		|| c == '=')
 		return (TRUE);
 	return (FALSE);
 }
