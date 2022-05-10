@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
+#    By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/05/09 10:30:03 by nguiard          ###   ########.fr        #
+#    Updated: 2022/05/10 22:08:07 by tgeorgin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRC =	srcs/main.c										\
 		parsing_api/api_heredoc_delimiter.c				\
 		parsing_api/api_full_command.c					\
 		parsing_api/api_command_name.c					\
+		parsing_api/api_get_symb.c						\
 		list/ft_lexeradd_back.c							\
 		list/ft_lexeradd_front.c						\
 		list/ft_lexerclear.c							\
@@ -73,7 +74,7 @@ SRC =	srcs/main.c										\
 		
 SHELL := /bin/zsh
 
-ADD_FLAGS = -g -fsanitize=address
+ADD_FLAGS = -g #-fsanitize=address
 
 CFLAGS = -lreadline -Wall -Werror -Wextra ${ADD_FLAGS}
 

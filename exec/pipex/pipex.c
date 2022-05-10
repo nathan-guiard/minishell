@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:49:37 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/06 19:20:34 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/10 22:10:00 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,27 @@ void	mon_pipex_eclate(t_parstab parsing);
 
 t_exec	init_struct_exec(t_lexer *ls, char **env)
 {
-	t_exec	ex;
-	
-	if (pipe(ex.pip) == -1)
-		ft_putstr_fd("pipe error", 0);
+	t_exec		ex;
+	t_symbol	symbout;
+
 	ex.envp = env;
 	ex.cmd = api_full_command(ls);
 	if (api_last_red_in(ls) != NULL)
-		ex.fd_in = open(api_last_red_in(ls), O_RDONLY);
+			ex.fd_in = open(api_last_red_in(ls), O_RDONLY);
 	else
-		ex.fd_in = STDIN_FILENO;
+			ex.fd_in = STDIN_FILENO;
 	if (api_last_red_out(ls) == NULL)
 		ex.fd_out = STDOUT_FILENO;
 	else if (api_last_red_out(ls) != NULL)
-		ex.fd_out = open(api_last_red_out(ls), O_WRONLY | O_CREAT | O_TRUNC);
+	{
+		symbout = api_get_symb(ls);
+		if (symbout == red_out)
+			ex.fd_out = open(api_last_red_out(ls), O_WRONLY | O_CREAT
+					| O_TRUNC);
+		else if (symbout == append)
+			ex.fd_out = open(api_last_red_out(ls), O_WRONLY | O_CREAT
+				| O_APPEND);
+	}
 	return (ex);
 }
 
@@ -62,22 +69,12 @@ char	*prep_path(char *cmd, char **envp)
 	return (NULL);
 }
 
-void	wait_datas(void)
-{
-	int pid1;
-
-	pid1 = waitpid(0, NULL , 0);
-	if (pid1 != 0)
-		ft_putstr_fd("", 0);
-	return ;
-}
-
-//	a remplacer par le vrai pipex
 void	pipex(t_parstab	parsing, char **envp)
 {
 	int		i;
 	t_lexer	*buff;
 	t_exec	ex;
+	int		pip[2];
 
 	i = 0;
 	while (parsing[i])
@@ -91,11 +88,13 @@ void	pipex(t_parstab	parsing, char **envp)
 	{
 		while (parsing[i])
 		{
+			if (pipe(pip) == -1)
+				return ;
 			ex = init_struct_exec(parsing[i], envp);
-			exec_cmd(parsing, &ex, i);
+			exec_cmd(parsing, &ex, i, pip);
 			i++;
 		}
-		wait_datas();
+		close(0);
 	}
 }
 

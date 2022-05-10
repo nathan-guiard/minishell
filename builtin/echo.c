@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:44:24 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/06 17:46:43 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:38:18 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	echo(char **args)
 	int	i;
 	int	has_a_nonl_option;
 
-	i = 1;
+	i = 0;
 	has_a_nonl_option = 0;
 	if (!args)
 		return ;
@@ -31,13 +31,12 @@ void	echo(char **args)
 	}
 	while (is_a_nonl_option(args[i]) == TRUE)
 		i++;
-	if (i != 1)
+	if (i == 1)
 		has_a_nonl_option = 1;
 	while (args[i])
 	{
-		if (!(i == 1 || has_a_nonl_option == 1))
-			printf(" ");
 		printf("%s", args[i]);
+		printf(" ");
 		i++;
 	}
 	if (has_a_nonl_option != 1)

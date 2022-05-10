@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/05 17:26:07 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/10 20:43:11 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	the_loop(char **env)
 	char		*line;
 	t_parstab	tab;
 
+	(void)env;
 	while (1)
 	{
 		line = prompt();

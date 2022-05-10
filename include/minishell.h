@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/06 18:41:55 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/10 22:07:19 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ int			exec_simple_command(char **command, char **env);
 void		pipex(t_parstab	parsing, char **envp);
 int			open_files(t_symbol sb, t_lexer *ls);
 void		open_all_red_out(t_lexer *buff);
-void		exec_cmd(t_parstab tab, t_exec *ex, int i);
+void		exec_cmd(t_parstab tab, t_exec *ex, int i, int *pip);
 t_exec		init_struct_exec(t_lexer *ls, char **env);
 char		*prep_path(char *cmd, char **envp);
-int			exec_builtin(char **cmd, t_parstab tab, int i);
+int			exec_builtin(char *cmd, t_parstab tab, int i);
+void		redirect(t_parstab tab, t_exec *ex, int i, int *pip);
 
 
 /*	Parsing	*/

@@ -51,25 +51,25 @@ char	**args_tab(t_parstab tab, int i)
 	return (args);
 }
 
-int	exec_builtin(char **cmd, t_parstab tab, int i)
+int	exec_builtin(char *cmd, t_parstab tab, int i)
 {
 	char	**args;
 	
 	args = args_tab(tab, i);
 	//printf("%s %s", args[0], args[1]);
-	if (ft_strcmp(cmd[0], "pwd") == 0)
+	if (ft_strcmp(cmd, "pwd") == 0)
 		pwd(args);
-	else if (ft_strcmp(cmd[0], "env") == 0)
+	else if (ft_strcmp(cmd, "env") == 0)
 		ft_env(args);
-	else if (ft_strcmp(cmd[0], "echo") == 0)
-		echo(cmd);
-	else if (ft_strcmp(cmd[0], "export") == 0)
+	else if (ft_strcmp(cmd, "echo") == 0)
+		echo(args);
+	else if (ft_strcmp(cmd, "export") == 0)
 		export(args);
-	else if (ft_strcmp(cmd[0], "cd") == 0)
+	else if (ft_strcmp(cmd, "cd") == 0)
 		cd(args);
-	else if (ft_strcmp(cmd[0], "unset") == 0)
+	else if (ft_strcmp(cmd, "unset") == 0)
 		unset(args);
-	else if (ft_strcmp(cmd[0], "exit") == 0)
+	else if (ft_strcmp(cmd, "exit") == 0)
 		ft_exit_builtin(args);
 	return (TRUE);
 }

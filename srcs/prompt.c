@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:22 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 11:15:47 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/10 19:52:52 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,13 @@ char	*prompt(void)
 {
 	char	*res;
 	char	*prompt_text;
+	int		fd1;
+	int		fd2;
 
+	fd1 = dup(STDIN_FILENO);
+	fd2 = dup(STDOUT_FILENO);
+	dup2(fd1, STDOUT_FILENO);
+	dup2(fd2, STDOUT_FILENO);
 	prompt_text = get_prompt_text();
 	if (prompt_text == NULL)
 		prompt_text = get_full_prompt(ft_strdup("somewhere"));

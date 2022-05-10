@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utils_pipex.c                                      :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:48:58 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/06 19:27:02 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:46:44 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,20 @@ void	open_all_red_out(t_lexer *buff)
 {
 	while (buff)
 	{
-		if (buff->symbol == red_out)
-			open_files(red_out, buff);
+		if (buff->symbol == red_out || buff->symbol == append)
+			open_files(buff->symbol, buff);
 		buff = buff->next;
 	}
 }
 
-void	redirect(t_parstab tab, t_exec *ex, int i)
+void	redirect(t_parstab tab, t_exec *ex, int i, int *pip)
 {
-	close(ex->pip[READ]);
+	close(pip[READ]);
 	if (ex->fd_in != -1 && ex->fd_in != STDIN_FILENO)
 	{
 		dup2(ex->fd_in, STDIN_FILENO);
 		close(ex->fd_in);
 	}
-	/*else if (ex->fd_in == -2 && i > 0)
-	{
-		dup2(ex->pip[READ], STDIN_FILENO);
-		ft_putstr_fd("yeahh", 0);
-	}*/
 	if (ex->fd_out != -1 && ex->fd_out != STDOUT_FILENO)
 	{
 		dup2(ex->fd_out, STDOUT_FILENO);
@@ -58,13 +53,19 @@ void	redirect(t_parstab tab, t_exec *ex, int i)
 	}
 	else if (ex->fd_out == STDOUT_FILENO && tab[i + 1] != NULL)
 	{
-		dup2(ex->pip[WRITE], STDOUT_FILENO);
+		dup2(pip[WRITE], STDOUT_FILENO);
 	}
-	close(ex->pip[WRITE]);
+	else if (tab[i + 1] == NULL)
+	{
+		dup2(1, 1);
+		//close(pip[READ]);
+		dup2(0, 0);
+	}
 }
 
-void	child_process(t_parstab tab, t_exec *ex, int i)
+void	child_process(t_parstab tab, t_exec *ex, int i, int *pip)
 {
+	int		pid1;
 	char	*path;
 	char	**cmd;
 
@@ -72,45 +73,37 @@ void	child_process(t_parstab tab, t_exec *ex, int i)
 	path = prep_path(cmd[0], ex->envp);
 	if (is_a_builtin(cmd[0]) == 1)
 	{
-		redirect(tab, ex, i);
-		if (exec_builtin(cmd, tab, i) == FALSE)
+		redirect(tab, ex, i, pip);
+		if (exec_builtin(cmd[0], tab, i) == FALSE)
 			printf("paasss bon");
 	}
-	else if (path)
-	{
-		redirect(tab, ex, i);
-		if (execve(path, cmd, ex->envp) == -1)
-			ft_putstr_fd("command nf", 0);
-	}
 	else
-		printf("command not found : %s\n", cmd[0]);
-	return ;
-	//free tout ce merdier si possible
+	{
+		pid1 = fork();
+		if (pid1 < 0)
+			return ;
+		if (pid1 == 0)
+		{
+			redirect(tab, ex, i, pip);
+			if (execve(path, cmd, ex->envp) == -1)
+			{
+				printf("command not found : %s\n", cmd[0]);
+				exit(0);
+			}
+		}
+		else
+		{
+			close(pip[WRITE]);
+			dup2(pip[READ], STDIN_FILENO);
+			waitpid(pid1, NULL, 0);
+		}
+	}
 }
 
-void	parent_process(t_exec *ex)
+void	exec_cmd(t_parstab tab, t_exec *ex, int i, int *pip)
 {
-	//close(ex->pip[WRITE]);
-	if (ex->fd_in > STDIN_FILENO)
-		close(ex->fd_in);
-/*	if (ex->fd_in == STDIN_FILENO)
-		ex->fd_in = ex->pip[READ];
-	dup2(ex->pip[READ], STDIN_FILENO);*/
-}
-
-void	exec_cmd(t_parstab tab, t_exec *ex, int i)
-{
-	int		pid1;
-
-	pid1 = fork();
-	if (pid1 < 0)
-		return ;
-	else if (pid1 == 0)
-	{
-		child_process(tab, ex, i);
-	}
-	else
-		parent_process(ex);
+	child_process(tab, ex, i, pip);
+	//ex->fd_in = pip[READ];
+	//close(pip[READ]);
 	//waitpid(pid1, NULL, 0);
-//	printf("parent procc\n");
 }
