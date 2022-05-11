@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:48:58 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/11 18:12:24 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/11 19:43:46 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	open_files(t_symbol sb, t_lexer *ls)
 
 	file = 0;
 	if (sb == red_in)
-		file = open(ls->next->content, O_RDONLY);
+		file = open(ls->next->content, O_RDONLY, 0777);
 	else if (sb == red_out)
-		file = open(ls->next->content, O_WRONLY | O_CREAT | O_TRUNC);
+		file = open(ls->next->content, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	else if (sb == append)
-		file = open(ls->next->content, O_WRONLY | O_CREAT | O_APPEND);
+		file = open(ls->next->content, O_WRONLY | O_CREAT | O_APPEND, 0777);
 	else
 		return (file);
 	return (file);

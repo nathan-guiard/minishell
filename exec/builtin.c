@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 12:45:05 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:29:09 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/11 20:21:45 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,36 @@ int	builtin(char **command)
 	}
 	else
 		return (FALSE);
+}
+
+void	redirect_built_alone(t_exec *ex)
+{
+	if (ex->fd_in != -1 && ex->fd_in != STDIN_FILENO)
+	{
+		dup2(ex->fd_in, STDIN_FILENO);
+		close(ex->fd_in);
+	}
+	if (ex->fd_out != -1 && ex->fd_out != STDOUT_FILENO)
+	{
+		dup2(ex->fd_out, STDOUT_FILENO);
+		close(ex->fd_out);
+	}
+}
+
+void	closefd_builts_alone(t_exec *ex)
+{
+	if (ex->fd_in > STDIN_FILENO)
+		close(ex->fd_in);
+	if (ex->fd_out > STDOUT_FILENO)
+		close(1);
+}
+
+void	exec_builtin_alone(char *cmd, t_parstab tab, int i, char **env)
+{
+	t_exec ex;
+	
+	ex = init_struct_exec(tab[i], env);
+	redirect_built_alone(&ex);
+	exec_builtin(cmd, tab, i);
+	closefd_builts_alone(&ex);
 }

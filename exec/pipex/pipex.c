@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:49:37 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/11 18:00:42 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/11 20:44:43 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_exec	init_struct_exec(t_lexer *ls, char **env)
 	ex.envp = env;
 	ex.cmd = api_full_command(ls);
 	if (api_last_red_in(ls) != NULL)
-			ex.fd_in = open(api_last_red_in(ls), O_RDONLY);
+		ex.fd_in = open(api_last_red_in(ls), O_RDONLY, 0777);
 	else
-			ex.fd_in = STDIN_FILENO;
+		ex.fd_in = STDIN_FILENO;
 	if (api_last_red_out(ls) == NULL)
 		ex.fd_out = STDOUT_FILENO;
 	else if (api_last_red_out(ls) != NULL)
@@ -32,10 +32,10 @@ t_exec	init_struct_exec(t_lexer *ls, char **env)
 		symbout = api_get_symb(ls);
 		if (symbout == red_out)
 			ex.fd_out = open(api_last_red_out(ls), O_WRONLY | O_CREAT
-					| O_TRUNC);
+					| O_TRUNC, 0777);
 		else if (symbout == append)
 			ex.fd_out = open(api_last_red_out(ls), O_WRONLY | O_CREAT
-					| O_APPEND);
+					| O_APPEND, 0777);
 	}
 	return (ex);
 }
@@ -76,7 +76,7 @@ void	pipex(t_parstab	parsing, char **envp)
 	}
 	i = 0;
 	if (parsing[i + 1] == NULL && (is_a_builtin(api_command_name(parsing[i])) == 1))
-		exec_builtin(api_command_name(parsing[i]), parsing, i);
+		exec_builtin_alone(api_command_name(parsing[i]), parsing, i, envp);
 	else
 	{
 		while (parsing[i])
@@ -84,7 +84,8 @@ void	pipex(t_parstab	parsing, char **envp)
 			if (pipe(pip) == -1)
 				return ;
 			ex = init_struct_exec(parsing[i], envp);
-			exec_cmd(parsing, &ex, i, pip);
+			if (check_fd(&ex) == 0)
+				exec_cmd(parsing, &ex, i, pip);
 			i++;
 		}
 		wait_all(parsing);

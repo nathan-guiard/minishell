@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/11 18:07:25 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/11 20:44:06 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int			exec_builtin(char *cmd, t_parstab tab, int i);
 void		redirect(t_parstab tab, t_exec *ex, int i, int *pip);
 int			exec_builtin_pipe(t_exec *ex, char *cmd, int i, t_parstab tab);
 void		cmd_nf(char *cmd);
+void		exec_builtin_alone(char *cmd, t_parstab tab, int i, char **env);
+int			check_fd(t_exec *ex);
 
 /*	Parsing	*/
 
