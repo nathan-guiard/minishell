@@ -6,7 +6,7 @@
 #    By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/05/10 22:08:07 by tgeorgin         ###   ########.fr        #
+#    Updated: 2022/05/11 18:07:41 by tgeorgin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,8 @@ SRC =	srcs/main.c										\
 		exec/pipex/pipex.c								\
 		exec/pipex/utils_pipex.c						\
 		exec/pipex/exec_builtins.c						\
+		exec/pipex/get_path.c							\
+		exec/pipex/cmd_nf.c								\
 		
 SHELL := /bin/zsh
 

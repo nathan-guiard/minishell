@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:49:37 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/10 22:10:00 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/11 18:00:42 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,38 +35,29 @@ t_exec	init_struct_exec(t_lexer *ls, char **env)
 					| O_TRUNC);
 		else if (symbout == append)
 			ex.fd_out = open(api_last_red_out(ls), O_WRONLY | O_CREAT
-				| O_APPEND);
+					| O_APPEND);
 	}
 	return (ex);
 }
 
-char	*prep_path(char *cmd, char **envp)
+void	wait_all(t_parstab tab)
 {
-	char	**paths;
-	char	*path;
+	int		status;
+	int		pid;
 	int		i;
-	char	*part_path;
 
 	i = 0;
-	while (ft_strnstr(envp[i], "PATH", 4) == 0)
-		i++;
-	paths = ft_split(envp[i] + 5, ':');
-	i = 0;
-	while (paths[i] && cmd != NULL)
+	while (tab[i])
 	{
-		part_path = ft_strjoin(paths[i], "/");
-		path = ft_strjoin(part_path, cmd);
-		free(part_path);
-		if (access(path, F_OK) == 0)
-		{
-			free_tabtab(paths);
-			return (path);
-		}
-		free(path);
+		pid = waitpid(0, &status, 0);
+		if (pid == 0)
+			continue ;
+		/*if (tmp->infos.fd_out > STDOUT_FILENO)
+			close(tmp->infos.fd_out);
+		if (tmp->infos.fd_in > STDIN_FILENO)
+			close(tmp->infos.fd_in);*/
 		i++;
 	}
-	free_tabtab(paths);
-	return (NULL);
 }
 
 void	pipex(t_parstab	parsing, char **envp)
@@ -84,7 +75,9 @@ void	pipex(t_parstab	parsing, char **envp)
 		i++;
 	}
 	i = 0;
-	if (1)
+	if (parsing[i + 1] == NULL && (is_a_builtin(api_command_name(parsing[i])) == 1))
+		exec_builtin(api_command_name(parsing[i]), parsing, i);
+	else
 	{
 		while (parsing[i])
 		{
@@ -94,6 +87,7 @@ void	pipex(t_parstab	parsing, char **envp)
 			exec_cmd(parsing, &ex, i, pip);
 			i++;
 		}
+		wait_all(parsing);
 		close(0);
 	}
 }

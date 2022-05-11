@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_builtins.c                                         :+:      :+:    :+:   */
+/*   exec_builtins.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:22:12 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/05 18:29:51 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/11 18:02:03 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	how_long_args(t_lexer *list)
 
 char	**args_tab(t_parstab tab, int i)
 {
-	t_lexer *ls;
+	t_lexer	*ls;
 	char	**args;
 	int		j;
 	int		len;
@@ -54,9 +54,8 @@ char	**args_tab(t_parstab tab, int i)
 int	exec_builtin(char *cmd, t_parstab tab, int i)
 {
 	char	**args;
-	
+
 	args = args_tab(tab, i);
-	//printf("%s %s", args[0], args[1]);
 	if (ft_strcmp(cmd, "pwd") == 0)
 		pwd(args);
 	else if (ft_strcmp(cmd, "env") == 0)
@@ -72,4 +71,22 @@ int	exec_builtin(char *cmd, t_parstab tab, int i)
 	else if (ft_strcmp(cmd, "exit") == 0)
 		ft_exit_builtin(args);
 	return (TRUE);
+}
+
+int	exec_builtin_pipe(t_exec *ex, char *cmd, int i, t_parstab tab)
+{
+	int	tmp_fd_out;
+
+	if (ex->fd_out > STDOUT_FILENO)
+	{
+		tmp_fd_out = dup(STDOUT_FILENO);
+		dup2(ex->fd_out, STDOUT_FILENO);
+	}
+	exec_builtin(cmd, tab, i);
+	if (ex->fd_out > STDOUT_FILENO)
+	{
+		dup2(tmp_fd_out, STDOUT_FILENO);
+		close(tmp_fd_out);
+	}
+	return (0);
 }
