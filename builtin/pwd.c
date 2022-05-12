@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:54:20 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/05 19:14:50 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:29:36 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	pwd(char **args)
 			return ;
 		}
 		printf("%s\n", path);
+		free(path);
 	}
 	else
 		ft_putstr_fd("pwd: too many arguments\n", 2);

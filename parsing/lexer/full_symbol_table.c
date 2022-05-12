@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   full_symbol_table.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:06:50 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 16:51:39 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/12 17:33:08 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_lexer	*full_symbol_table(char *line)
 	t_lexer	*res;
 
 	if (quotes_closed(line) == FALSE)
-		return (ft_putstr_fd("Parsing error", 2), NULL);
+		return (ft_putstr_fd("Parsing error\n", 2), NULL);
 	line = replace_quotes(line);
 	line = replace_special_char(line);
 	if (!line)

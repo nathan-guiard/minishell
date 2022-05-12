@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 12:45:05 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/11 20:21:45 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:36:35 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	closefd_builts_alone(t_exec *ex)
 
 void	exec_builtin_alone(char *cmd, t_parstab tab, int i, char **env)
 {
-	t_exec ex;
-	
+	t_exec	ex;
+
 	ex = init_struct_exec(tab[i], env);
 	redirect_built_alone(&ex);
 	exec_builtin(cmd, tab, i);

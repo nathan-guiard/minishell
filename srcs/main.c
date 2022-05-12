@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/10 20:43:11 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/12 17:32:38 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ static void	the_loop(char **env)
 				add_history(line);
 				tab = full_parsing(line);
 				if (tab)
+				{
 					pipex(tab, env);
-				free_parstab(tab);
+					free_parstab(tab);
+				}
 			}
 			else
 				free(line);

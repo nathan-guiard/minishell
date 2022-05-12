@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:22:12 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/11 18:02:03 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:40:13 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,28 @@ int	exec_builtin(char *cmd, t_parstab tab, int i)
 		unset(args);
 	else if (ft_strcmp(cmd, "exit") == 0)
 		ft_exit_builtin(args);
+	free_tabtab(args);
 	return (TRUE);
 }
 
-int	exec_builtin_pipe(t_exec *ex, char *cmd, int i, t_parstab tab)
+int	exec_builtin_pipe(t_exec *ex, int i, t_parstab tab, int *pip)
 {
-	int	tmp_fd_out;
+	int		tmp_fd_out;
+	char	**cmd;
 
+	cmd = api_full_command(tab[i]);
+	redirect(tab, ex, i, pip);
 	if (ex->fd_out > STDOUT_FILENO)
 	{
 		tmp_fd_out = dup(STDOUT_FILENO);
 		dup2(ex->fd_out, STDOUT_FILENO);
 	}
-	exec_builtin(cmd, tab, i);
+	exec_builtin(cmd[0], tab, i);
 	if (ex->fd_out > STDOUT_FILENO)
 	{
 		dup2(tmp_fd_out, STDOUT_FILENO);
 		close(tmp_fd_out);
 	}
+	exit(0);
 	return (0);
 }

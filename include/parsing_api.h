@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:18:06 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/10 21:58:24 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/12 19:30:12 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ char		*api_heredoc_delimiter(t_lexer *list);
 char		**api_full_command(t_lexer *list);
 char		*api_command_name(t_lexer *list);
 t_symbol	api_get_symb(t_lexer *list);
-
+t_symbol	api_get_symbin(t_lexer *list);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/05/11 18:07:41 by tgeorgin         ###   ########.fr        #
+#    Updated: 2022/05/12 20:34:47 by tgeorgin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRC =	srcs/main.c										\
 		parsing_api/api_full_command.c					\
 		parsing_api/api_command_name.c					\
 		parsing_api/api_get_symb.c						\
+		parsing_api/api_get_symbin.c					\
 		list/ft_lexeradd_back.c							\
 		list/ft_lexeradd_front.c						\
 		list/ft_lexerclear.c							\
@@ -73,10 +74,11 @@ SRC =	srcs/main.c										\
 		exec/pipex/exec_builtins.c						\
 		exec/pipex/get_path.c							\
 		exec/pipex/cmd_nf.c								\
+		exec/pipex/heredoc.c							\
 		
 SHELL := /bin/zsh
 
-ADD_FLAGS = -g #-fsanitize=address
+ADD_FLAGS = -g -fsanitize=address
 
 CFLAGS = -lreadline -Wall -Werror -Wextra ${ADD_FLAGS}
 

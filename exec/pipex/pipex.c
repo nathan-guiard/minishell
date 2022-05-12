@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:49:37 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/11 20:44:43 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:30:38 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,17 @@ t_exec	init_struct_exec(t_lexer *ls, char **env)
 {
 	t_exec		ex;
 	t_symbol	symbout;
+	t_symbol	symbin;
 
 	ex.envp = env;
-	ex.cmd = api_full_command(ls);
 	if (api_last_red_in(ls) != NULL)
-		ex.fd_in = open(api_last_red_in(ls), O_RDONLY, 0777);
+	{
+		symbin = api_get_symbin(ls);
+		if (symbin == red_out)
+			ex.fd_in = open(api_last_red_in(ls), O_RDONLY, 0777);
+		else if (symbin == heredoc)
+			ex.fd_in = heredoc;
+	}
 	else
 		ex.fd_in = STDIN_FILENO;
 	if (api_last_red_out(ls) == NULL)
@@ -31,16 +37,16 @@ t_exec	init_struct_exec(t_lexer *ls, char **env)
 	{
 		symbout = api_get_symb(ls);
 		if (symbout == red_out)
-			ex.fd_out = open(api_last_red_out(ls), O_WRONLY | O_CREAT
-					| O_TRUNC, 0777);
+			ex.fd_out = open(api_last_red_out(ls), O_RDWR | O_CREAT
+					| O_TRUNC, S_IRWXU);
 		else if (symbout == append)
-			ex.fd_out = open(api_last_red_out(ls), O_WRONLY | O_CREAT
-					| O_APPEND, 0777);
+			ex.fd_out = open(api_last_red_out(ls), O_RDWR | O_CREAT
+					| O_APPEND, S_IRWXU);
 	}
 	return (ex);
 }
 
-void	wait_all(t_parstab tab)
+void	wait_all(t_parstab tab, t_exec *ex)
 {
 	int		status;
 	int		pid;
@@ -52,10 +58,10 @@ void	wait_all(t_parstab tab)
 		pid = waitpid(0, &status, 0);
 		if (pid == 0)
 			continue ;
-		/*if (tmp->infos.fd_out > STDOUT_FILENO)
-			close(tmp->infos.fd_out);
-		if (tmp->infos.fd_in > STDIN_FILENO)
-			close(tmp->infos.fd_in);*/
+		if (ex->fd_out > STDOUT_FILENO)
+			close(ex->fd_out);
+		if (ex->fd_in > STDIN_FILENO)
+			close(ex->fd_in);
 		i++;
 	}
 }
@@ -63,19 +69,13 @@ void	wait_all(t_parstab tab)
 void	pipex(t_parstab	parsing, char **envp)
 {
 	int		i;
-	t_lexer	*buff;
 	t_exec	ex;
 	int		pip[2];
 
+	open_all_red_out(parsing);
 	i = 0;
-	while (parsing[i])
-	{
-		buff = parsing[i];
-		open_all_red_out(buff);
-		i++;
-	}
-	i = 0;
-	if (parsing[i + 1] == NULL && (is_a_builtin(api_command_name(parsing[i])) == 1))
+	if (parsing[i + 1] == NULL
+		&& (is_a_builtin(api_command_name(parsing[i])) == 1))
 		exec_builtin_alone(api_command_name(parsing[i]), parsing, i, envp);
 	else
 	{
@@ -88,7 +88,7 @@ void	pipex(t_parstab	parsing, char **envp)
 				exec_cmd(parsing, &ex, i, pip);
 			i++;
 		}
-		wait_all(parsing);
+		wait_all(parsing, &ex);
 		close(0);
 	}
 }

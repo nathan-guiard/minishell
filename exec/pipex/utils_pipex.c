@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:48:58 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/11 19:43:46 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:39:16 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,22 @@ int	open_files(t_symbol sb, t_lexer *ls)
 	return (file);
 }
 
-void	open_all_red_out(t_lexer *buff)
+void	open_all_red_out(t_parstab tab)
 {
-	while (buff)
+	int		i;
+	t_lexer	*buff;
+
+	i = 0;
+	while (tab[i])
 	{
-		if (buff->symbol == red_out || buff->symbol == append)
-			open_files(buff->symbol, buff);
+		buff = tab[i];
+		while (buff)
+		{
+			if (buff->symbol == red_out || buff->symbol == append)
+				open_files(buff->symbol, buff);
 		buff = buff->next;
+		}
+		i++;
 	}
 }
 
@@ -66,16 +75,10 @@ void	child_process(t_parstab tab, t_exec *ex, int i, int *pip)
 	cmd = api_full_command(tab[i]);
 	path = prep_path(cmd[0], ex->envp);
 	pid1 = fork();
-	if (pid1 < 0)
-		return ;
 	if (pid1 == 0)
 	{
 		if (is_a_builtin(cmd[0]) == 1)
-		{
-			redirect(tab, ex, i, pip);
-			exec_builtin_pipe(ex, cmd[0], i, tab);
-			exit(0);
-		}
+			exec_builtin_pipe(ex, i, tab, pip);
 		else
 		{
 			redirect(tab, ex, i, pip);
@@ -87,10 +90,16 @@ void	child_process(t_parstab tab, t_exec *ex, int i, int *pip)
 	{
 		close(pip[WRITE]);
 		dup2(pip[READ], STDIN_FILENO);
+		close(pip[READ]);
 	}
+	free_tabtab(cmd);
+	free(path);
 }
 
 void	exec_cmd(t_parstab tab, t_exec *ex, int i, int *pip)
 {
-	child_process(tab, ex, i, pip);
+	if (ex->fd_in == heredoc)
+		heredoc_par(tab, i);
+	else
+		child_process(tab, ex, i, pip);
 }

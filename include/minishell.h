@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/11 20:44:06 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:23:20 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,17 @@ int			builtin(char **command);
 int			exec_simple_command(char **command, char **env);
 void		pipex(t_parstab	parsing, char **envp);
 int			open_files(t_symbol sb, t_lexer *ls);
-void		open_all_red_out(t_lexer *buff);
+void		open_all_red_out(t_parstab tab);
 void		exec_cmd(t_parstab tab, t_exec *ex, int i, int *pip);
 t_exec		init_struct_exec(t_lexer *ls, char **env);
 char		*prep_path(char *cmd, char **envp);
 int			exec_builtin(char *cmd, t_parstab tab, int i);
 void		redirect(t_parstab tab, t_exec *ex, int i, int *pip);
-int			exec_builtin_pipe(t_exec *ex, char *cmd, int i, t_parstab tab);
+int			exec_builtin_pipe(t_exec *ex, int i, t_parstab tab, int *pip);
 void		cmd_nf(char *cmd);
 void		exec_builtin_alone(char *cmd, t_parstab tab, int i, char **env);
 int			check_fd(t_exec *ex);
+int			heredoc_par(t_parstab tab, int i);
 
 /*	Parsing	*/
 

@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_nf.c                                           :+:      :+:    :+:   */
+/*   api_get_symbin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 18:04:36 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/12 16:24:29 by tgeorgin         ###   ########.fr       */
+/*   Created: 2022/05/12 19:28:07 by tgeorgin          #+#    #+#             */
+/*   Updated: 2022/05/12 19:29:00 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	cmd_nf(char *cmd)
+t_symbol	api_get_symbin(t_lexer *list)
 {
-	ft_putstr_fd("command not found : ", 2);
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd("\n", STDERR_FILENO);
-	set_ret_value(127);
-	exit(127);
-}
+	t_lexer		*buff;
+	t_symbol	symb;
 
-int	check_fd(t_exec *ex)
-{
-	if (ex->fd_in == -1)
+	buff = list;
+	while (buff)
 	{
-		ft_putstr_fd("le fichier n'existe pas\n", 2);
-		return (1);
+		if ((buff->symbol == red_in || buff->symbol == heredoc) && buff->next)
+			symb = buff->symbol;
+		buff = buff->next;
 	}
-	if (ex->fd_out == -1)
-	{
-		ft_putstr_fd("Erreur d'open\n", 2);
-		return (1);
-	}
-	return (0);
+	return (symb);
 }
