@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:48:58 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/12 20:39:16 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:40:25 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,14 @@ int	open_files(t_symbol sb, t_lexer *ls)
 
 	file = 0;
 	if (sb == red_in)
-		file = open(ls->next->content, O_RDONLY, 0777);
+		file = open(ls->next->content, O_RDONLY, 0644);
 	else if (sb == red_out)
-		file = open(ls->next->content, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		file = open(ls->next->content, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	else if (sb == append)
-		file = open(ls->next->content, O_WRONLY | O_CREAT | O_APPEND, 0777);
+		file = open(ls->next->content, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	else
 		return (file);
 	return (file);
-}
-
-void	open_all_red_out(t_parstab tab)
-{
-	int		i;
-	t_lexer	*buff;
-
-	i = 0;
-	while (tab[i])
-	{
-		buff = tab[i];
-		while (buff)
-		{
-			if (buff->symbol == red_out || buff->symbol == append)
-				open_files(buff->symbol, buff);
-		buff = buff->next;
-		}
-		i++;
-	}
 }
 
 void	redirect(t_parstab tab, t_exec *ex, int i, int *pip)
@@ -66,6 +47,8 @@ void	redirect(t_parstab tab, t_exec *ex, int i, int *pip)
 	}
 }
 
+
+
 void	child_process(t_parstab tab, t_exec *ex, int i, int *pip)
 {
 	int		pid1;
@@ -74,6 +57,7 @@ void	child_process(t_parstab tab, t_exec *ex, int i, int *pip)
 
 	cmd = api_full_command(tab[i]);
 	path = prep_path(cmd[0], ex->envp);
+	restore_default_sig();
 	pid1 = fork();
 	if (pid1 == 0)
 	{
