@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:30:49 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/13 16:30:24 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:58:08 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static void	heredoc_parent_proc(int *pipe_fds)
 {
 	wait(NULL);
 	close(pipe_fds[WRITE]);
+	dup2(pipe_fds[READ], STDIN_FILENO);
 }
 
 int	heredoc_par(t_parstab tab, int i)
