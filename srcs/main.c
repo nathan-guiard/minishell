@@ -6,14 +6,14 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 15:57:05 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/13 17:10:32 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 t_list		*g_env = NULL;
-static void	the_loop(char **env);
+static void	the_loop(void);
 
 int	main(int argc, char **argv, char **env)
 {
@@ -22,17 +22,17 @@ int	main(int argc, char **argv, char **env)
 	catch_signals();
 	turn_env_into_list(env);
 	set_ret_value(0);
-	the_loop(env);
+	the_loop();
 	ft_exit_builtin(NULL);
 	return (0);
 }
 
-static void	the_loop(char **env)
+static void	the_loop()
 {
 	char		*line;
 	t_parstab	tab;
+	char		**env;
 
-	(void)env;
 	while (1)
 	{
 		line = prompt();
@@ -44,8 +44,10 @@ static void	the_loop(char **env)
 				tab = full_parsing(line);
 				if (tab)
 				{
+					env = turn_env_into_tab();
 					pipex(tab, env);
 					free_parstab(tab);
+					free_tabtab(env);
 				}
 			}
 			else
