@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:04:36 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/13 17:41:08 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:50:59 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	cmd_nf(char *cmd)
 
 int	check_fd(t_exec *ex, t_parstab tab, int i)
 {
-	t_lexer *buff;
+	t_lexer	*buff;
 	char	*cmd;
 
 	buff = tab[i];
@@ -45,6 +45,5 @@ int	check_fd(t_exec *ex, t_parstab tab, int i)
 		ft_putstr_fd("Erreur d'open\n", 2);
 		return (1);
 	}
-	
 	return (0);
 }
