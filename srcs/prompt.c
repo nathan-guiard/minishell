@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:22 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/10 19:52:52 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 14:19:35 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,12 @@ static char	*get_full_prompt(char *only_dir)
 {
 	char	*res;
 
-	res = ft_strjoin("\033[0m\033[1;37m[\033[0mminishell: \033[32m", only_dir);
+	res = ft_strjoin("\001\033[0m\002" "\001\033[1;37m\002"
+			"[" "\001\033[0m\002" "minishell: " "\001\033[32m\002", only_dir);
 	if (!res)
 		return (free(only_dir), NULL);
 	free(only_dir);
-	res = join(res, "\033[1;37m]\033[0m ");
+	res = join(res, "\001\033[1;37m\002" "]" "\001\033[0m\002 ");
 	return (res);
 }
 

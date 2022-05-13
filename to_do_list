@@ -1,16 +1,11 @@
-A faire:
-
-- Lancer des executables EXEC
-	avec execve
-
-- Redirections <, >, <<, >> EXEC
-	> faire un write(fd, etc)
-	le reste aucne idee
-
 si une liste n'as pas de commande -> rien faire (/usr/bin/true)
 
-.nfs: unlink sans close
+$[variable inconnue] crash -> segv at 0x0
 
-Nathan: le ^C marche bizzarement
+le $? est pas gere. et quand une commande se finit avec un ^C (genre cat)
+il y a 2 $? dont une qui est $?=0 et un autre $?=130
 
-il faut un ctrl D par commande entree (wtf?)
+dans les builtins on passe un char ** sans le nom du builtin dedans
+je l'avais pas imgaine comme ca au debut donc ca fonctionne pas
+
+Nathan: Le ^C proc quand meme dans les autres programmes (bad)
