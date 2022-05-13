@@ -6,38 +6,62 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:08:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 14:56:14 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/13 16:22:03 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_export_nothing(void);
-void	real_export(char **args);
-int		where_is_equal_sign(char *str);
-int		is_a_valid_export(char *str);
+void		real_export(char **args);
+int			where_is_equal_sign(char *str);
+int			is_a_valid_export(char *str);
+static char	**only_variable_name(char **args);
 
 void	export(char **args)
 {
-	if (!args || !args[1])
-	{
-		ft_export_nothing();
-		return ;
-	}
-	unset(args);
-	real_export(args);
-}
-
-void	ft_export_nothing(void)
-{
+	char	**only_variable;
 	t_list	*buff;
 
 	buff = g_env;
-	while (buff)
+	if (!args || !args[1])
 	{
-		printf("declare -x %s\n", (char *)buff->content);
-		buff = buff->next;
+		while (buff)
+		{
+			printf("declare -x %s\n", (char *)buff->content);
+			buff = buff->next;
+		}
+		return ;
 	}
+	only_variable = only_variable_name(args);
+	unset(only_variable);
+	free_tabtab(only_variable);
+	real_export(args);
+}
+
+static char	**only_variable_name(char **args)
+{
+	char	**res;
+	int		i;
+	int		equal;
+
+	i = 0;
+	while (args[i])
+		i++;
+	res = ft_calloc(sizeof(char *), i + 1);
+	if (!res)
+		return (ft_putstr_fd(MERR_STR, 2), NULL);
+	i = 0;
+	while (args[i])
+	{
+		equal = where_is_equal_sign(args[i]);
+		if (equal == NONE || equal == 0)
+			res[i] = ft_strdup(args[i]);
+		else
+			res[i] = ft_substr(args[i], 0, equal);
+		i++;
+	}
+	res[i] = NULL;
+	return (res);
 }
 
 void	real_export(char **args)
@@ -55,11 +79,11 @@ void	real_export(char **args)
 			node = ft_lstnew(ft_strdup(args[i]));
 			ft_lstadd_back(&g_env, node);
 		}
-		else if (ret == NONE)
-		{
-			node = ft_lstnew(ft_strjoin(args[i], "="));
-			ft_lstadd_back(&g_env, node);
-		}
+		//else if (ret == NONE)
+		//{
+		//	node = ft_lstnew(ft_strjoin(args[i], "="));
+		//	ft_lstadd_back(&g_env, node);
+		//}
 		else if (ret == FALSE)
 			printf("export: `%s': not a valid identifier\n", args[i]);
 		i++;
