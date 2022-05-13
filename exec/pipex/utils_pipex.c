@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:48:58 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/13 15:40:25 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:25:35 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,13 @@ void	redirect(t_parstab tab, t_exec *ex, int i, int *pip)
 	}
 }
 
-
+void	parent_proc(int *pip)
+{
+	close(pip[WRITE]);
+	dup2(pip[READ], STDIN_FILENO);
+	close(pip[READ]);
+	catch_signals();
+}
 
 void	child_process(t_parstab tab, t_exec *ex, int i, int *pip)
 {
@@ -71,11 +77,7 @@ void	child_process(t_parstab tab, t_exec *ex, int i, int *pip)
 		}
 	}
 	else
-	{
-		close(pip[WRITE]);
-		dup2(pip[READ], STDIN_FILENO);
-		close(pip[READ]);
-	}
+		parent_proc(pip);
 	free_tabtab(cmd);
 	free(path);
 }

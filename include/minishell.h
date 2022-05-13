@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 15:32:59 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/13 16:46:17 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void		redirect(t_parstab tab, t_exec *ex, int i, int *pip);
 int			exec_builtin_pipe(t_exec *ex, int i, t_parstab tab, int *pip);
 void		cmd_nf(char *cmd);
 void		exec_builtin_alone(char *cmd, t_parstab tab, int i, char **env);
-int			check_fd(t_exec *ex);
+int			check_fd(t_exec *ex, t_parstab tab, int i);
 int			heredoc_par(t_parstab tab, int i);
 
 /*	Parsing	*/

@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:30:49 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/12 20:09:35 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:30:24 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	*get_line_in_submode(char *line, char *delimiter, char *str)
 	if (str == NULL)
 		return (ft_strdup("\n"));
 	str = ft_strjoin(str, "\n");
-	//free(line);
+	free(line);
 	return (str);
 }
 
@@ -56,7 +56,6 @@ static char	*heredoc_child_proc(int *pipe_fds, t_lexer *ls)
 {
 	char	*buffer;
 
-	(void)pipe_fds;
 	close(pipe_fds[READ]);
 	buffer = stock_buffer(ls);
 	write(pipe_fds[WRITE], buffer, ft_strlen(buffer) + 1);
@@ -78,9 +77,6 @@ int	heredoc_par(t_parstab tab, int i)
 
 	if (pipe(pipe_fds) == -1)
 		return (1);
-	signal(SIGINT, SIG_IGN);
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGPIPE, SIG_IGN);
 	pid = fork();
 	if (pid == -1)
 		return (1);

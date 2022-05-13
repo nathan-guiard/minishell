@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:04:36 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/12 16:24:29 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:41:08 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,30 @@ void	cmd_nf(char *cmd)
 	exit(127);
 }
 
-int	check_fd(t_exec *ex)
+int	check_fd(t_exec *ex, t_parstab tab, int i)
 {
-	if (ex->fd_in == -1)
+	t_lexer *buff;
+	char	*cmd;
+
+	buff = tab[i];
+	cmd = api_command_name(buff);
+	if (buff->symbol == red_out || buff->symbol == append)
+		return (1);
+	else if (ex->fd_in == -1)
 	{
 		ft_putstr_fd("le fichier n'existe pas\n", 2);
 		return (1);
+	}
+	else if (ex->fd_in > STDIN_FILENO)
+	{
+		if (cmd == NULL)
+			return (1);
 	}
 	if (ex->fd_out == -1)
 	{
 		ft_putstr_fd("Erreur d'open\n", 2);
 		return (1);
 	}
+	
 	return (0);
 }
