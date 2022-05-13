@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:44:24 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 15:30:34 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:06:08 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,9 @@ void	echo(char **args)
 	i = 1;
 	has_a_nonl_option = 0;
 	if (!args)
-		return ;
+		return (set_ret_value(0));
 	if (args[0] == NULL)
-	{
-		ft_putstr_fd("\n", 1);
-		return ;
-	}
+		return (ft_putstr_fd("\n", 1), set_ret_value(0));
 	while (is_a_nonl_option(args[i]) == TRUE)
 		i++;
 	if (i == 2)
@@ -42,6 +39,7 @@ void	echo(char **args)
 	}
 	if (has_a_nonl_option != 1)
 		ft_putstr_fd("\n", 1);
+	set_ret_value(0);
 }
 
 int	is_a_nonl_option(char *str)

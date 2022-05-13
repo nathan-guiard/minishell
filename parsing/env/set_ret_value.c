@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:26:44 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 16:19:12 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/13 17:48:12 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	set_ret_value(unsigned char i)
 	char	**args;
 
 	args = ft_calloc(3, sizeof(char *));
+	if (!args)
+		return (ft_putstr_fd(MERR_STR, 2));
 	number = ft_itoa(i);
+	if (!number)
+		return (free(args), ft_putstr_fd(MERR_STR, 2));
 	args[0] = ft_strdup("export");
 	args[1] = ft_strjoin("?=", number);
 	args[2] = NULL;

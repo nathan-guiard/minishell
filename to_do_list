@@ -1,6 +1,4 @@
-set_ret value avec &status
-
 $[variable inconnue] crash -> segv at 0x0
 set_ret_value(0) quand on a pas de commande dans la liste
 
-Nathan: Le ^C proc quand meme dans les autres programmes (bad)
+Nathan: Le ^C proc qua meme dans les autres programmes (bad)
