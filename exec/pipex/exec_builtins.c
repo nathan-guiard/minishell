@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:22:12 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/12 20:40:13 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:29:32 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ char	**args_tab(t_parstab tab, int i)
 
 	len = how_long_args(tab[i]);
 	ls = tab[i];
-	j = 0;
-	args = ft_calloc(sizeof(char *), (len + 1));
+	j = 1;
+	args = ft_calloc(sizeof(char *), (len + 2));
+	args[0] = ft_strdup("oui");
 	while (ls)
 	{
 		if (ls->symbol == argument)

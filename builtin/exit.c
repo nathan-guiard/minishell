@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:32:04 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/10 22:10:20 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:33:19 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	has_only_digit(char *s);
 	reproduit le comportement de bash				*/
 void	ft_exit(int exit_value, char **args)
 {
-	if (args && args[0] != NULL)
+	if (args && args[1] != NULL)
 		exit_with_args(args);
 	else
 	{
@@ -44,7 +44,7 @@ static void	exit_with_args(char **args)
 	int	i;
 	int	atoi;
 
-	i = 0;
+	i = 1;
 	while (args[i])
 		i++;
 	if (i > 2)

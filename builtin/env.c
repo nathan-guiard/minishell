@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:07:30 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/06 17:43:32 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:32:47 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_env(char **args)
 
 	if (!g_env)
 		return ;
-	if (args == NULL || args[0] == NULL)
+	if (args == NULL || args[1] == NULL)
 	{
 		buff = g_env;
 		while (buff->next != NULL)
