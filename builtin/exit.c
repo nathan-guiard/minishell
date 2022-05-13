@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:32:04 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 17:53:42 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/13 18:46:54 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,11 @@ static void	exit_with_args(char **args)
 		i++;
 	if (i > 2)
 	{
-		//ft_putstr_fd("exit\n", 2);
 		ft_putstr_fd("exit: too many arguments\n", 2);
 		return ;
 	}
 	if (has_only_digit(args[0]) == FALSE)
 	{
-		//ft_putstr_fd("exit\n", 2);
 		ft_putstr_fd("exit: numeric argument required\n", 2);
 		exit(2);
 	}

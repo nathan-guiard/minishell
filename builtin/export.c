@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:08:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 18:40:33 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/13 18:47:06 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	export(char **args)
 	unset(only_variable);
 	free_tabtab(only_variable);
 	real_export(args);
-	//set_ret_value(0);
 }
 
 static char	**only_variable_name(char **args)
