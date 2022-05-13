@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:49:37 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 16:46:46 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:47:47 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_exec	init_struct_exec(t_lexer *ls, char **env)
 		if (symbin == red_in)
 			ex.fd_in = open(api_last_red_in(ls), O_RDONLY, 644);
 		else if (symbin == heredoc)
-			ex.fd_in = heredoc;
+			ex.fd_in = -2;
 	}
 	else
 		ex.fd_in = STDIN_FILENO;

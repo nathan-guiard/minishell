@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 09:38:58 by nguiard           #+#    #+#             */
-/*   Updated: 2022/03/28 11:28:44 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/13 16:31:12 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,10 @@ static void	*get_fnc_tab(void)
 	tab = malloc(sizeof(t_builtin_fnc) * (BUILTIN_NB + 1));
 	tab[0] = echo;
 	tab[1] = ft_exit_builtin;
-	tab[2] = clear;
-	tab[3] = cd;
-	tab[4] = pwd;
-	tab[5] = ft_env;
-	tab[6] = export;
-	tab[7] = unset;
+	tab[2] = cd;
+	tab[3] = pwd;
+	tab[4] = ft_env;
+	tab[5] = export;
+	tab[6] = unset;
 	return (tab);
 }

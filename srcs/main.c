@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/12 17:32:38 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:41:35 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static void	pars_and_pipe(char *line);
 t_list		*g_env = NULL;
-static void	the_loop(char **env);
+static void	the_loop(void);
 
 int	main(int argc, char **argv, char **env)
 {
@@ -22,36 +23,42 @@ int	main(int argc, char **argv, char **env)
 	catch_signals();
 	turn_env_into_list(env);
 	set_ret_value(0);
-	the_loop(env);
+	the_loop();
 	ft_exit_builtin(NULL);
 	return (0);
 }
 
-static void	the_loop(char **env)
+static void	the_loop(void)
 {
 	char		*line;
-	t_parstab	tab;
 
-	(void)env;
 	while (1)
 	{
 		line = prompt();
 		if (line)
 		{
 			if (line[0] != '\0')
-			{	
-				add_history(line);
-				tab = full_parsing(line);
-				if (tab)
-				{
-					pipex(tab, env);
-					free_parstab(tab);
-				}
-			}
+				pars_and_pipe(line);
 			else
 				free(line);
 		}
 		else
 			break ;
+	}
+}
+
+static void	pars_and_pipe(char *line)
+{
+	t_parstab	tab;
+	char		**env;
+
+	add_history(line);
+	tab = full_parsing(line);
+	if (tab)
+	{
+		env = turn_env_into_tab();
+		pipex(tab, env);
+		free_parstab(tab);
+		free_tabtab(env);
 	}
 }

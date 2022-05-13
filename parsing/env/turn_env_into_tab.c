@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:06:56 by nguiard           #+#    #+#             */
-/*   Updated: 2022/04/06 16:18:49 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/13 15:52:56 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**turn_env_into_tab(void)
 		line = ft_strdup(buff->content);
 		if (!line)
 		{
-			printf("malloc() error");
+			ft_putstr_fd(MERR_STR, 2);
 			return (NULL);
 		}
 		res[i] = line;

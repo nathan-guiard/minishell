@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 16:46:17 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:44:24 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define ALONE		4103
 
 /*	Nombre de builtin qu'on a												*/
-# define BUILTIN_NB	8
+# define BUILTIN_NB	7
 
 /*	Pointer sur fonction de type "void(char **)", aka nos builtins			*/
 typedef void	(*t_builtin_fnc)(char **);

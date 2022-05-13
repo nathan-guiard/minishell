@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:48:58 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/13 17:25:35 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:47:36 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	child_process(t_parstab tab, t_exec *ex, int i, int *pip)
 
 void	exec_cmd(t_parstab tab, t_exec *ex, int i, int *pip)
 {
-	if (ex->fd_in == heredoc)
+	if (ex->fd_in == -2)
 		heredoc_par(tab, i);
 	else
 		child_process(tab, ex, i, pip);
