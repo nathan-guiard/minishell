@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:42:03 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 15:24:54 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:28:57 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	cd(char **args)
 	if (!args)
 		return ;
 	home = ft_getenv("HOME");
-	if (args[1] == NULL || args[1][0] == '~' )
+	if (args[1] == NULL || args[1][0] == '~')
 		chdir(home);
 	else
 		chdir(args[1]);
 	free(home);
+	set_ret_value(0);
 }

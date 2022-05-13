@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:03:04 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/11 18:02:22 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:22:49 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ char	*prep_path(char *cmd, char**envp)
 	char	**path_tab;
 	char	*path;
 
+	if (!cmd)
+		return (NULL);
 	if (ft_strchr(cmd, '/'))
 		return (ft_strdup(cmd));
 	i = get_right_index(envp);

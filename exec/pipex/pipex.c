@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:49:37 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 17:47:47 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:26:58 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	wait_all(t_parstab tab, t_exec *ex)
 	while (tab[i])
 	{
 		pid = waitpid(0, &status, 0);
-		set_ret_value((int)status);
+		set_ret_value((int)WEXITSTATUS(status));
 		if (pid == 0)
 			continue ;
 		if (ex->fd_out > STDOUT_FILENO)

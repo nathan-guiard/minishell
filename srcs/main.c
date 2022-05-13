@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 17:41:35 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/13 18:08:53 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,6 @@ static void	pars_and_pipe(char *line)
 		free_parstab(tab);
 		free_tabtab(env);
 	}
+	else
+		set_ret_value(2);
 }
