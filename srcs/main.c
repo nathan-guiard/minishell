@@ -6,12 +6,13 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 17:10:32 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/13 17:41:35 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static void	pars_and_pipe(char *line);
 t_list		*g_env = NULL;
 static void	the_loop(void);
 
@@ -27,11 +28,9 @@ int	main(int argc, char **argv, char **env)
 	return (0);
 }
 
-static void	the_loop()
+static void	the_loop(void)
 {
 	char		*line;
-	t_parstab	tab;
-	char		**env;
 
 	while (1)
 	{
@@ -39,21 +38,27 @@ static void	the_loop()
 		if (line)
 		{
 			if (line[0] != '\0')
-			{	
-				add_history(line);
-				tab = full_parsing(line);
-				if (tab)
-				{
-					env = turn_env_into_tab();
-					pipex(tab, env);
-					free_parstab(tab);
-					free_tabtab(env);
-				}
-			}
+				pars_and_pipe(line);
 			else
 				free(line);
 		}
 		else
 			break ;
+	}
+}
+
+static void	pars_and_pipe(char *line)
+{
+	t_parstab	tab;
+	char		**env;
+
+	add_history(line);
+	tab = full_parsing(line);
+	if (tab)
+	{
+		env = turn_env_into_tab();
+		pipex(tab, env);
+		free_parstab(tab);
+		free_tabtab(env);
 	}
 }
