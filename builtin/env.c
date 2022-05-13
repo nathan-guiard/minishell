@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:07:30 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/06 17:43:32 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:51:13 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,4 @@ void	ft_env(char **args)
 		}
 		printf("%s\n", (char *)buff->content);
 	}
-	else
-		printf("too much args\n");
 }
