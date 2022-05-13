@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+         #
+#    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/05/12 20:34:47 by tgeorgin         ###   ########.fr        #
+#    Updated: 2022/05/13 16:30:13 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ SRC =	srcs/main.c										\
 		builtin/cd.c									\
 		builtin/pwd.c									\
 		builtin/exit.c									\
-		builtin/clear.c									\
 		builtin/env.c									\
 		builtin/export.c								\
 		builtin/unset.c									\

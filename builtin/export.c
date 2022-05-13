@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:08:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 16:22:03 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/13 16:27:55 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,12 @@ void	real_export(char **args)
 			node = ft_lstnew(ft_strdup(args[i]));
 			ft_lstadd_back(&g_env, node);
 		}
-		//else if (ret == NONE)
-		//{
-		//	node = ft_lstnew(ft_strjoin(args[i], "="));
-		//	ft_lstadd_back(&g_env, node);
-		//}
 		else if (ret == FALSE)
-			printf("export: `%s': not a valid identifier\n", args[i]);
+		{
+			ft_putstr_fd("export: `", 2);
+			ft_putstr_fd(args[i], 2);
+			ft_putstr_fd("': not a valid identifier\n", 2);
+		}
 		i++;
 	}
 }
