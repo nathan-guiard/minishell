@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/12 20:23:20 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:32:59 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void		ft_exit(int exit_value, char **args);
 
 void		free_tabtab(char **tab);
 void		catch_signals(void);
+void		restore_default_sig(void);
 char		*prompt(void);
 char		*get_prompt_text(void);
 void		free_parstab(t_parstab tab);
