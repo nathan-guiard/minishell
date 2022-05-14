@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/09 10:24:52 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 14:36:42 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	*remove_brackets(char *tab)
 int	what_is_i(char *line, int i)
 {
 	while (line[i] && !(line[i] <= 9 && line[i] >= 13) && line[i] != VALID_SPACE
-		&& line[i] != VALID_DOLLAR && line[i] != '\"' && line[i] != ' '
+		&& line[i] != VALID_DOLLAR && line[i] != VALID_DQUOTE && line[i] != ' '
 		&& line[i] != '$' && line[i] != VALID_REDOUT
 		&& line[i] != VALID_REDIN && line[i] != VALID_PIPE && line[i] != '=')
 			i++;

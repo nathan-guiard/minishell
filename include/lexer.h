@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:07:43 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/12 20:30:52 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:46:14 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_exec
 }	t_exec;
 
 # define VALID_PIPE			'\033'
-# define VALID_SPACE		'\030'
+# define VALID_SPACE		-32
 # define VALID_REDIN		5
 # define VALID_REDOUT		6
 # define VALID_APPEND		7
