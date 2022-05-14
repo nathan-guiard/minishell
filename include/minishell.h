@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 18:27:59 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 18:33:16 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ char		*get_prompt_text(void);
 void		free_parstab(t_parstab tab);
 void		turn_env_into_list(char **env);
 void		signals_heredoc(void);
-void		handle_heredoc(int	signum);
+void		handle_heredoc(int signum);
 void		heredoc_sig(void);
-
+void		print_exp_err(char *str);
 
 /*	Exec	*/
 int			builtin(char **command);

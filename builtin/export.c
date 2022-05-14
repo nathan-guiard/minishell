@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:08:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 15:46:26 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 18:31:55 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,7 @@ void	real_export(char **args)
 			ft_lstadd_back(&g_env, node);
 		}
 		else if (ret == FALSE)
-		{
-			ft_putstr_fd("export: `", 2);
-			ft_putstr_fd(args[i], 2);
-			ft_putstr_fd("': not a valid identifier\n", 2);
-		}
+			print_exp_err(args[i]);
 		i++;
 	}
 }

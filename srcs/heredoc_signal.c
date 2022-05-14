@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:05:56 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 18:28:39 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 18:32:52 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		catch_sigquit(int sig, siginfo_t *truc, void *context);
 static void	heredoc_sigint(int sig, siginfo_t *truc, void *context);
-
 
 void	heredoc_sig(void)
 {

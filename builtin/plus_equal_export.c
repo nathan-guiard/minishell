@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:11:15 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 16:08:20 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 18:33:23 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static char	*without_plus(char *str)
 	res[j] = 0;
 	return (res);
 }
-
 
 void	unset_plus_equal(char *str)
 {

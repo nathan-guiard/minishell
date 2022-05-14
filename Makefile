@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+         #
+#    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/05/14 18:10:35 by tgeorgin         ###   ########.fr        #
+#    Updated: 2022/05/14 18:33:56 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,11 +78,9 @@ SRC =	srcs/main.c										\
 		
 SHELL := /bin/zsh
 
-ADD_FLAGS = -g -fsanitize=address
+CFLAGS = -lreadline -Wall -Werror -Wextra
 
-CFLAGS = -lreadline -Wall -Werror -Wextra ${ADD_FLAGS}
-
-CFLAGS_OBJ = -Wall -Werror -Wextra ${ADD_FLAGS}
+CFLAGS_OBJ = -Wall -Werror -Wextra
 
 OBJ = ${SRC:.c=.o}
 

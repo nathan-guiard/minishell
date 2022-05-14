@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 07:16:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 18:22:32 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 18:30:11 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	restore_default_sig(void)
 	sigaction(SIGQUIT, &sigquit, NULL);
 	signal(SIGTSTP, SIG_DFL);
 }
-
 
 void	end_signals(void)
 {
