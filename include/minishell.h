@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 17:49:39 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:23:08 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@
 typedef void	(*t_builtin_fnc)(char **);
 typedef char	**t_doubletab;
 
-# define MERR_STR "Malloc error.\n"
+# define MERR_STR 	"Malloc error.\n"
+# define HERDOC_ERR	" delimited by end-of-file (wanted `EOF')'\n"
 
 extern t_list	*g_env;
 
@@ -83,6 +84,7 @@ void		cmd_nf(char *cmd);
 void		exec_builtin_alone(char *cmd, t_parstab tab, int i, char **env);
 int			check_fd(t_exec *ex, t_parstab tab, int i);
 int			heredoc_par(t_parstab tab, int i);
+int			heredoc_err(char *delimiter, char *line, int i);
 
 /*	Parsing	*/
 

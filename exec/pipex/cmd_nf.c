@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_nf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:04:36 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/13 17:50:59 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:25:16 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,18 @@ int	check_fd(t_exec *ex, t_parstab tab, int i)
 		return (1);
 	}
 	return (0);
+}
+
+int	heredoc_err(char *delimiter, char *line, int i)
+{
+	if (!line)
+	{
+		ft_putstr_fd("'warning: here-document at line ", STDERR_FILENO);
+		ft_putnbr_fd(i, STDERR_FILENO);
+		ft_putstr_fd(HERDOC_ERR, STDERR_FILENO);
+		return (TRUE);
+	}
+	if (ft_strncmp(line, delimiter, ft_strlen(delimiter)) == 0)
+		return (TRUE);
+	return (FALSE);
 }

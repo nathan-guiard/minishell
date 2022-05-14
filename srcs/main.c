@@ -6,14 +6,14 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 18:08:53 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 14:27:12 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	pars_and_pipe(char *line);
 t_list		*g_env = NULL;
+static void	pars_and_pipe(char *line);
 static void	the_loop(void);
 
 int	main(int argc, char **argv, char **env)
@@ -32,7 +32,7 @@ static void	the_loop(void)
 {
 	char		*line;
 
-	while (1)
+	while (42)
 	{
 		line = prompt();
 		if (line)

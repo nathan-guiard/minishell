@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:30:49 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/13 18:58:08 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:23:36 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 static char	*get_line_in_submode(char *line, char *delimiter, char *str)
 {
+	int	i;
+
+	i = 1;
 	while (line)
 	{
 		free(line);
 		line = readline("> ");
-		if (!line)
-		{
-			ft_putchar_fd('\n', STDERR_FILENO);
-			break ;
-		}
-		if (ft_strncmp(line, delimiter, ft_strlen(delimiter)) == 0)
+		if (heredoc_err(delimiter, line, i) == TRUE)
 			break ;
 		if (!str)
 			str = ft_strdup(line);
 		else
 		{
-			str = ft_strjoin(str, "\n");
-			str = ft_strjoin(str, line);
-		}	
+			str = join(str, "\n");
+			str = join(str, line);
+		}
+		i++;
 	}
 	if (str == NULL)
 		return (ft_strdup("\n"));
-	str = ft_strjoin(str, "\n");
+	str = join(str, "\n");
 	free(line);
 	return (str);
 }
