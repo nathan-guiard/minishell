@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 14:36:42 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 14:49:09 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	is_a_valid_env(char *line, int i)
 		j++;
 	}
 	test[j] = '\0';
-	test = remove_brackets(test);
 	ptr = ft_getenv(test);
 	free(test);
 	if (ptr)
