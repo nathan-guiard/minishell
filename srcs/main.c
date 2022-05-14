@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:28:51 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 16:48:15 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 18:23:27 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	the_loop(void)
 
 	while (42)
 	{
+		catch_signals();
 		line = prompt();
 		if (line)
 		{

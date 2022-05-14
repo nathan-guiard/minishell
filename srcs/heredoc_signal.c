@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_signal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:05:56 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 18:09:16 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:28:39 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		catch_sigquit(int sig, siginfo_t *truc, void *context);
 static void	heredoc_sigint(int sig, siginfo_t *truc, void *context);
+
 
 void	heredoc_sig(void)
 {
@@ -30,6 +31,7 @@ static void	heredoc_sigint(int sig, siginfo_t *truc, void *context)
 	(void)sig;
 	(void)truc;
 	(void)context;
+	write(1, "\n", 1);
 	set_ret_value(130);
 	exit(130);
 }

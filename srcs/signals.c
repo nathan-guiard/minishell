@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 07:16:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 18:09:18 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:22:32 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,3 @@ void	catch_sigquit(int sig, siginfo_t *truc, void *context)
 	rl_on_new_line();
 	rl_redisplay();
 }
-<<<<<<< HEAD
-=======
-
-void	signals_heredoc(void)
-{
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, handle_heredoc);
-}
->>>>>>> e6139bf756d8533fbf2d92e6f71ea389fe1791c8

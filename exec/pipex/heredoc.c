@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:30:49 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/14 18:09:05 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:27:49 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	heredoc_par(t_parstab tab, int i)
 
 	if (pipe(pipe_fds) == -1)
 		return (1);
+	end_signals();
 	pid = fork();
 	if (pid == -1)
 		return (1);
