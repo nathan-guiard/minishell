@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 14:23:08 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 15:20:22 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ char		*prompt(void);
 char		*get_prompt_text(void);
 void		free_parstab(t_parstab tab);
 void		turn_env_into_list(char **env);
+void		signals_heredoc(void);
+void		handle_heredoc(int	signum);
 
 /*	Exec	*/
 int			builtin(char **command);

@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 07:16:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 14:54:44 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 15:19:34 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,10 @@ static void	catch_sigquit(int sig, siginfo_t *truc, void *context)
 	write(1, "\033[2K\r", 5);
 	rl_on_new_line();
 	rl_redisplay();
+}
+
+void	signals_heredoc(void)
+{
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, handle_heredoc);
 }
