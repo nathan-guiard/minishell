@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 14:23:08 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 15:14:57 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef char	**t_doubletab;
 extern t_list	*g_env;
 
 /*	Built-in	*/
-
 void		echo(char **args);
 void		cd(char **args);
 void		pwd(char **args);
@@ -55,11 +54,11 @@ void		clear(char **args);
 void		ft_exit_builtin(char **args);
 void		ft_env(char **args);
 void		export(char **args);
+char		*plus_equal_export(char *str);
 void		unset(char **args);
 void		ft_exit(int exit_value, char **args);
 
 /*	Utils	*/
-
 void		free_tabtab(char **tab);
 void		catch_signals(void);
 void		restore_default_sig(void);
@@ -87,9 +86,7 @@ int			heredoc_par(t_parstab tab, int i);
 int			heredoc_err(char *delimiter, char *line, int i);
 
 /*	Parsing	*/
-
 t_parstab	full_parsing(char *line);
-
 char		**remove_command_name(char **command);
 int			is_a_builtin(char *cmd_name);
 char		**get_builtin_tab_name(void);
@@ -103,7 +100,6 @@ char		*ft_getenv(char *name);
 t_list		*get_env_node(char *name);
 
 /*	env	*/
-
 char		**turn_env_into_tab(void);
 void		set_ret_value(unsigned char i);
 
