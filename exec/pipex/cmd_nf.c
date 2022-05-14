@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_nf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:04:36 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/14 14:25:16 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 14:43:27 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	check_fd(t_exec *ex, t_parstab tab, int i)
 		return (1);
 	else if (ex->fd_in == -1)
 	{
-		ft_putstr_fd("le fichier n'existe pas\n", 2);
+		ft_putstr_fd(api_last_red_in(tab[i]), 2);
+		ft_putstr_fd(" : no such file or directory\n", 2);
 		return (1);
 	}
 	else if (ex->fd_in > STDIN_FILENO)
@@ -42,7 +43,7 @@ int	check_fd(t_exec *ex, t_parstab tab, int i)
 	}
 	if (ex->fd_out == -1)
 	{
-		ft_putstr_fd("Erreur d'open\n", 2);
+		ft_putstr_fd("Error : open return -1\n", 2);
 		return (1);
 	}
 	return (0);
@@ -57,7 +58,7 @@ int	heredoc_err(char *delimiter, char *line, int i)
 		ft_putstr_fd(HERDOC_ERR, STDERR_FILENO);
 		return (TRUE);
 	}
-	if (ft_strncmp(line, delimiter, ft_strlen(delimiter)) == 0)
+	if (ft_strcmp(line, delimiter) == 0)
 		return (TRUE);
 	return (FALSE);
 }

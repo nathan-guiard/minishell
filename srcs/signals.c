@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 07:16:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 19:42:26 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 14:54:44 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	catch_sigint(int sig, siginfo_t *truc, void *context);
 static void	catch_sigquit(int sig, siginfo_t *truc, void *context);
-
 
 void	restore_default_sig(void)
 {
@@ -27,7 +26,7 @@ void	restore_default_sig(void)
 	sigaction(SIGQUIT, &sigquit, NULL);
 }
 
-void	catch_signals()
+void	catch_signals(void)
 {
 	struct sigaction	sigint;
 	struct sigaction	sigquit;
