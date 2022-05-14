@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 14:49:09 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 17:53:12 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,8 @@ int	where_is_end_var(char *line, int start_var)
 	int		i;
 	char	search;
 
-	i = start_var;
+	i = start_var + 1;
 	search = ' ';
-	if (line[i + 1] == '{')
-	{
-		i++;
-		search = '}';
-	}
-	i++;
 	while (line[i] != search && line[i])
 	{
 		if (if_check(line[i]) == TRUE)
@@ -79,8 +73,6 @@ char	*remove_brackets(char *tab)
 
 	if (!tab)
 		return (NULL);
-	if (tab[0] != '{')
-		return (tab);
 	end = ft_strlen(tab) - 2;
 	to_free = tab;
 	tab = ft_substr(tab, 1, end);

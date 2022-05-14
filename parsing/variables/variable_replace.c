@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:16:54 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 11:15:12 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 17:52:52 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ char	*only_content(char *line, int start_var)
 
 	if (!line)
 		return (NULL);
-	if (line[start_var] == '{')
-		start_var++;
 	sub = ft_substr(line, start_var + 1,
 			where_is_end_var(line, start_var) - start_var - 1);
 	if (!sub)
