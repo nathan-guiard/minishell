@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:48:58 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/14 17:45:42 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:08:55 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	parent_proc(int *pip)
 	close(pip[WRITE]);
 	dup2(pip[READ], STDIN_FILENO);
 	close(pip[READ]);
-	catch_signals();
 }
 
 void	child_process(t_parstab tab, t_exec *ex, int i, int *pip)
@@ -63,10 +62,11 @@ void	child_process(t_parstab tab, t_exec *ex, int i, int *pip)
 
 	cmd = api_full_command(tab[i]);
 	path = prep_path(cmd[0], ex->envp);
-	restore_default_sig();
+	end_signals();
 	pid1 = fork();
 	if (pid1 == 0)
 	{
+		restore_default_sig();
 		if (is_a_builtin(cmd[0]) == 1)
 			exec_builtin_pipe(ex, i, tab, pip);
 		else

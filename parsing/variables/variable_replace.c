@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:16:54 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/04 11:15:12 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 17:59:41 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,17 @@ char	*only_content(char *line, int start_var)
 {
 	char	*to_free;
 	char	*sub;
-	char	*no_brackets;
 
 	if (!line)
 		return (NULL);
-	if (line[start_var] == '{')
-		start_var++;
 	sub = ft_substr(line, start_var + 1,
 			where_is_end_var(line, start_var) - start_var - 1);
 	if (!sub)
 		return (ft_putstr_fd(MERR_STR, 2), NULL);
 	to_free = line;
-	no_brackets = remove_brackets(sub);
-	if (!no_brackets)
-		return (NULL);
-	line = ft_getenv(no_brackets);
+	line = ft_getenv(sub);
 	free(to_free);
-	if (ft_strcmp(sub, no_brackets) == 0)
-		free(sub);
+	free(sub);
 	return (line);
 }
 

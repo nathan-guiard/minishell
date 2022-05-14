@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 17:56:13 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:09:13 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
 typedef void	(*t_builtin_fnc)(char **);
 typedef char	**t_doubletab;
 
-# define MERR_STR 	"Malloc error.\n"
-# define HERDOC_ERR	" delimited by end-of-file (wanted `EOF')'\n"
+# define MERR_STR 		"Malloc error.\n"
+# define HERDOC_ERR1	" delimited by end-of-file (wanted `"
 
 extern t_list	*g_env;
 
@@ -60,6 +60,7 @@ void		ft_exit(int exit_value, char **args);
 
 /*	Utils	*/
 void		free_tabtab(char **tab);
+void		end_signals(void);
 void		catch_signals(void);
 void		restore_default_sig(void);
 char		*prompt(void);
@@ -102,6 +103,7 @@ char		*translate_symbol(t_symbol symbol);
 t_parstab	rename_strings(t_parstab tab);
 char		*ft_getenv(char *name);
 t_list		*get_env_node(char *name);
+int			where_is_equal_sign(char *str);
 
 /*	env	*/
 char		**turn_env_into_tab(void);

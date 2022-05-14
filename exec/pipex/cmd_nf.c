@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:04:36 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/14 17:49:56 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:09:02 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ int	heredoc_err(char *delimiter, char *line, int i)
 {
 	if (!line)
 	{
-		ft_putstr_fd("'warning: here-document at line ", STDERR_FILENO);
+		ft_putstr_fd("warning: here-document at line ", STDERR_FILENO);
 		ft_putnbr_fd(i, STDERR_FILENO);
-		ft_putstr_fd(HERDOC_ERR, STDERR_FILENO);
+		ft_putstr_fd(HERDOC_ERR1, STDERR_FILENO);
+		ft_putstr_fd(delimiter, 2);
+		ft_putstr_fd("')\n", 2);
 		return (TRUE);
 	}
 	if (ft_strcmp(line, delimiter) == 0)

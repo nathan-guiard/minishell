@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:09:01 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 14:49:09 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 18:00:28 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,8 @@ int	where_is_end_var(char *line, int start_var)
 	int		i;
 	char	search;
 
-	i = start_var;
+	i = start_var + 1;
 	search = ' ';
-	if (line[i + 1] == '{')
-	{
-		i++;
-		search = '}';
-	}
-	i++;
 	while (line[i] != search && line[i])
 	{
 		if (if_check(line[i]) == TRUE)
@@ -71,30 +65,11 @@ int	where_is_end_var(char *line, int start_var)
 	return (i);
 }
 
-/*	Enleve les {} d'une chaine (*variable shell dans notre cas)	*/
-char	*remove_brackets(char *tab)
-{
-	int		end;
-	char	*to_free;
-
-	if (!tab)
-		return (NULL);
-	if (tab[0] != '{')
-		return (tab);
-	end = ft_strlen(tab) - 2;
-	to_free = tab;
-	tab = ft_substr(tab, 1, end);
-	if (!tab)
-		return (ft_putstr_fd(MERR_STR, 2), free(to_free), NULL);
-	free(to_free);
-	return (tab);
-}
-
 int	what_is_i(char *line, int i)
 {
 	while (line[i] && !(line[i] <= 9 && line[i] >= 13) && line[i] != VALID_SPACE
 		&& line[i] != VALID_DOLLAR && line[i] != VALID_DQUOTE && line[i] != ' '
-		&& line[i] != '$' && line[i] != VALID_REDOUT
+		&& line[i] != '$' && line[i] != VALID_REDOUT && line[i] != '\''
 		&& line[i] != VALID_REDIN && line[i] != VALID_PIPE && line[i] != '=')
 			i++;
 	return (i);
@@ -104,7 +79,7 @@ static int	if_check(char c)
 {
 	if (c == '\f' || c == '\t' || c == '\n'
 		|| c == '\r' || c == '\v' || c == VALID_DOLLAR
-		|| c == VALID_DQUOTE || c == '$'
+		|| c == VALID_DQUOTE || c == '$' || c == '\''
 		|| c == VALID_REDIN || c == VALID_REDOUT
 		|| c == VALID_PIPE || c == VALID_APPEND || c == VALID_HEREDOC
 		|| c == '=')

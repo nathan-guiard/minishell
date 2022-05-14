@@ -6,14 +6,13 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:08:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 15:10:23 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 15:46:26 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 void		real_export(char **args);
-int			where_is_equal_sign(char *str);
 int			is_a_valid_export(char *str);
 static char	**only_variable_name(char **args);
 
@@ -74,7 +73,8 @@ void	real_export(char **args)
 	while (args[i])
 	{
 		ret = is_a_valid_export(args[i]);
-		if (ft_strnstr(args[i], "+=", INT_MAX) != NULL && ret == TRUE)
+		if (ft_strnstr(args[i], "+=", INT_MAX) != NULL
+			&& ret == TRUE)
 		{
 			node = ft_lstnew(plus_equal_export(args[i]));
 			ft_lstadd_back(&g_env, node);
@@ -102,7 +102,7 @@ int	is_a_valid_export(char *str)
 	equal = where_is_equal_sign(str);
 	if (equal == NONE)
 		return (NONE);
-	if (equal == 0)
+	if (equal == 0 || (equal == 1 && str[0] == '+'))
 		return (FALSE);
 	sub = ft_substr(str, 0, equal);
 	if (!sub)
