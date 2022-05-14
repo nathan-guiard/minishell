@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:08:45 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 19:30:39 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 15:10:23 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,12 @@ void	real_export(char **args)
 	while (args[i])
 	{
 		ret = is_a_valid_export(args[i]);
-		if (ret == TRUE)
+		if (ft_strnstr(args[i], "+=", INT_MAX) != NULL && ret == TRUE)
+		{
+			node = ft_lstnew(plus_equal_export(args[i]));
+			ft_lstadd_back(&g_env, node);
+		}
+		else if (ret == TRUE)
 		{
 			node = ft_lstnew(ft_strdup(args[i]));
 			ft_lstadd_back(&g_env, node);

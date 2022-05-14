@@ -6,14 +6,14 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 07:16:16 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 15:19:34 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 15:36:38 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static void	catch_sigint(int sig, siginfo_t *truc, void *context);
-static void	catch_sigquit(int sig, siginfo_t *truc, void *context);
+void		catch_sigquit(int sig, siginfo_t *truc, void *context);
 
 void	restore_default_sig(void)
 {
@@ -51,7 +51,7 @@ static void	catch_sigint(int sig, siginfo_t *truc, void *context)
 	set_ret_value(130);
 }
 
-static void	catch_sigquit(int sig, siginfo_t *truc, void *context)
+void		catch_sigquit(int sig, siginfo_t *truc, void *context)
 {
 	(void)sig;
 	(void)truc;
