@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:30:49 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/14 14:23:36 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 15:31:51 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static char	*heredoc_child_proc(int *pipe_fds, t_lexer *ls)
 {
 	char	*buffer;
 
+	signals_heredoc();
 	close(pipe_fds[READ]);
 	buffer = stock_buffer(ls);
 	write(pipe_fds[WRITE], buffer, ft_strlen(buffer) + 1);
@@ -77,6 +78,9 @@ int	heredoc_par(t_parstab tab, int i)
 
 	if (pipe(pipe_fds) == -1)
 		return (1);
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGPIPE, SIG_IGN);
 	pid = fork();
 	if (pid == -1)
 		return (1);
