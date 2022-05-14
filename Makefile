@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/05/14 15:18:17 by nguiard          ###   ########.fr        #
+#    Updated: 2022/05/14 15:38:42 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ ADD_FLAGS = -g -fsanitize=address
 
 CFLAGS = -lreadline -Wall -Werror -Wextra ${ADD_FLAGS}
 
-CFLAGS_OBJ =  -Wall -Werror -Wextra ${ADD_FLAGS}
+CFLAGS_OBJ = -Wall -Werror -Wextra ${ADD_FLAGS}
 
 OBJ = ${SRC:.c=.o}
 

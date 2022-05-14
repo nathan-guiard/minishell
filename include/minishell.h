@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 15:14:57 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 15:46:31 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ char		*translate_symbol(t_symbol symbol);
 t_parstab	rename_strings(t_parstab tab);
 char		*ft_getenv(char *name);
 t_list		*get_env_node(char *name);
+int			where_is_equal_sign(char *str);
 
 /*	env	*/
 char		**turn_env_into_tab(void);
