@@ -6,7 +6,7 @@
 #    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/05/14 15:38:42 by nguiard          ###   ########.fr        #
+#    Updated: 2022/05/14 16:44:36 by nguiard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRC =	srcs/main.c										\
 		srcs/prompt.c									\
 		srcs/utils.c									\
 		srcs/signals.c									\
+		srcs/heredoc_signal.c							\
 		builtin/echo.c									\
 		builtin/cd.c									\
 		builtin/pwd.c									\
@@ -68,7 +69,6 @@ SRC =	srcs/main.c										\
 		list/ft_lexerpop.c								\
 		list/ft_lexerprint.c							\
 		exec/builtin.c									\
-		exec/exec_simple_command.c						\
 		exec/pipex/pipex.c								\
 		exec/pipex/utils_pipex.c						\
 		exec/pipex/exec_builtins.c						\
