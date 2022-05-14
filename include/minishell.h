@@ -6,7 +6,7 @@
 /*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:00:38 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 17:09:34 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 18:05:09 by nguiard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
 typedef void	(*t_builtin_fnc)(char **);
 typedef char	**t_doubletab;
 
-# define MERR_STR 	"Malloc error.\n"
-# define HERDOC_ERR	" delimited by end-of-file (wanted `EOF')'\n"
+# define MERR_STR 		"Malloc error.\n"
+# define HERDOC_ERR1	" delimited by end-of-file (wanted `"
 
 extern t_list	*g_env;
 
