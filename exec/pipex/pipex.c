@@ -3,31 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:49:37 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/13 18:26:58 by nguiard          ###   ########.fr       */
+/*   Updated: 2022/05/14 18:04:27 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	open_all_red_out(t_parstab tab)
+void	open_all_red_out(t_lexer *ls)
 {
-	int		i;
 	t_lexer	*buff;
 
-	i = 0;
-	while (tab[i])
+	buff = ls;
+	while (buff)
 	{
-		buff = tab[i];
-		while (buff)
-		{
-			if (buff->symbol == red_out || buff->symbol == append)
-				open_files(buff->symbol, buff);
+		if (buff->symbol == red_out || buff->symbol == append)
+			open_files(buff->symbol, buff);
 		buff = buff->next;
-		}
-		i++;
 	}
 }
 
@@ -38,10 +32,10 @@ void	init_red_out_struct(t_exec *ex, t_lexer *ls)
 	symbout = api_get_symb(ls);
 	if (symbout == red_out)
 		ex->fd_out = open(api_last_red_out(ls), O_RDWR | O_CREAT
-				| O_TRUNC, S_IRWXU);
+				| O_TRUNC, 0644);
 	else if (symbout == append)
 		ex->fd_out = open(api_last_red_out(ls), O_RDWR | O_CREAT
-				| O_APPEND, S_IRWXU);
+				| O_APPEND, 0644);
 }
 
 t_exec	init_struct_exec(t_lexer *ls, char **env)
@@ -62,7 +56,7 @@ t_exec	init_struct_exec(t_lexer *ls, char **env)
 		ex.fd_in = STDIN_FILENO;
 	if (api_last_red_out(ls) == NULL)
 		ex.fd_out = STDOUT_FILENO;
-	else if (api_last_red_out(ls) != NULL)
+	else if (api_last_red_out(ls) != NULL && ex.fd_in != -1)
 		init_red_out_struct(&ex, ls);
 	return (ex);
 }
@@ -94,7 +88,6 @@ void	pipex(t_parstab	parsing, char **envp)
 	t_exec	ex;
 	int		pip[2];
 
-	open_all_red_out(parsing);
 	i = 0;
 	if (parsing[i + 1] == NULL
 		&& (is_a_builtin(api_command_name(parsing[i])) == 1))
@@ -107,7 +100,10 @@ void	pipex(t_parstab	parsing, char **envp)
 				return ;
 			ex = init_struct_exec(parsing[i], envp);
 			if (check_fd(&ex, parsing, i) == 0)
+			{
+				open_all_red_out(parsing[i]);
 				exec_cmd(parsing, &ex, i, pip);
+			}
 			i++;
 		}
 		wait_all(parsing, &ex);

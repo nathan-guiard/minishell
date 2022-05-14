@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:04:36 by tgeorgin          #+#    #+#             */
-/*   Updated: 2022/05/14 14:43:27 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:49:56 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_fd(t_exec *ex, t_parstab tab, int i)
 
 	buff = tab[i];
 	cmd = api_command_name(buff);
-	if (buff->symbol == red_out || buff->symbol == append)
+	if ((buff->symbol == red_out || buff->symbol == append) && cmd == NULL)
 		return (1);
 	else if (ex->fd_in == -1)
 	{
@@ -59,6 +59,10 @@ int	heredoc_err(char *delimiter, char *line, int i)
 		return (TRUE);
 	}
 	if (ft_strcmp(line, delimiter) == 0)
+	{
+		if (i == 1)
+			free(line);
 		return (TRUE);
+	}
 	return (FALSE);
 }

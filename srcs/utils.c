@@ -6,7 +6,7 @@
 /*   By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:33:46 by nguiard           #+#    #+#             */
-/*   Updated: 2022/05/14 15:32:39 by tgeorgin         ###   ########.fr       */
+/*   Updated: 2022/05/14 16:20:28 by tgeorgin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,4 @@ void	free_parstab(t_parstab tab)
 		i++;
 	}
 	free(tab);
-}
-
-void	handle_heredoc(int	signum)
-{
-	if (signum == SIGINT)
-	{
-		set_ret_value(130);
-		rl_replace_line("", 0);
-		close(STDIN_FILENO);
-	}
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nguiard <nguiard@student.42.fr>            +#+  +:+       +#+         #
+#    By: tgeorgin <tgeorgin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/05/14 15:18:17 by nguiard          ###   ########.fr        #
+#    Updated: 2022/05/14 15:42:37 by tgeorgin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRC =	srcs/main.c										\
 		srcs/prompt.c									\
 		srcs/utils.c									\
 		srcs/signals.c									\
+		srcs/heredoc_signal.c							\
 		builtin/echo.c									\
 		builtin/cd.c									\
 		builtin/pwd.c									\
